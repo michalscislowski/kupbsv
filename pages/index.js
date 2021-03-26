@@ -1,31 +1,23 @@
 import Head from 'next/head'
+import Header from '../components/header'
 import styles from '../styles/Home.module.css'
+import Footer from '../components/footer'
+import Main from '../components/main'
+
 
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Kup BSV</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
 
-      <main className={styles.main}>
-        <a className={styles.title}>
-          BANACH GROUP
-        </a>
+      <Main />
 
-        <div className={styles.grid}>
-          <p>Shape a new world around you.</p>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a>
-          All rights reserved{' '}
-          <img src="/logo.png" alt="Banach Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <Footer />
     </div>
   )
 }
