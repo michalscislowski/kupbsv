@@ -19,8 +19,9 @@
 .header a.headlogo {
   font-size: 25px;
   font-weight: bold;
+  margin-left: 140px;
+  margin-right: auto;
 }
-
 
 .headerRight {
   float: right;
@@ -49,27 +50,45 @@
   margin-left: auto;
   margin-right: auto;
 }
+.buttons {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .buttons::after {
   clear: both;
 }
+
 .buttons Button{
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 150px;
 }
+
 .calculator {
   width: auto;
-  height: 100px;
+  height: auto;
   border: blue solid 2px;
   padding: 20 px;
 }
+
 .typebox {
   
   display: flex;
   margin: 20px;
 }
-.texfield {
-  margin: 20px;
+
+.textfield {
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 200px;
 }
+
 .footer {
   background-color: black;
   width: 100%;

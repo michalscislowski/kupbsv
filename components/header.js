@@ -5,15 +5,15 @@ export default function Header () {
 
 return (
     <header className={styles.header}>
-    <a href="#default" className={styles.headlogo}>KUPBSV</a>
-      <div className={styles.headerRight}>
-          <a>Money Button</a>
-          <a href="#login">Login</a>
-      </div>
-      <div className={styles.headerLeft}>
-        <SimpleMenu />
-      </div>
-    
+      <a href="#default" className={styles.headlogo}>KUPBSV</a>
+        <div className={styles.headerRight}>
+            <a>Money Button</a>
+            <a href="#login">Login</a>
+        </div>
+        <div className={styles.headerLeft}>
+          <SimpleMenu />
+        </div>
+      
     </header> 
 );
 }

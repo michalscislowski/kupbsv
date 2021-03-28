@@ -4,16 +4,16 @@ import styles from '../styles/Home.module.css';
 
 
 
-export default function BasicTextFields() {
+export default function Calculator() {
   
     return (
         <form className={styles.typebox} noValidate autoComplete="off">
             <div className={styles.textfield}>
-                <TextField className={styles.textfield} id="bsv" label="BSV" />
+                <TextField error={false} className={styles.textfield} id="outlined-basic" label="PLN" helperText="Minimalna wartość 100zł" variant="outlined"/>
             </div>
             
             <div className={styles.textfield}>
-                <TextField className={styles.textfield} id="pln" label="PLN" />
+                <TextField disabled className={styles.textfield} id="outlined-disabled" label="BSV" variant="outlined"/>
             </div>
         </form>
     );
