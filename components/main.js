@@ -10,19 +10,18 @@ export default function Main() {
         <main className={styles.main}>
             <div className={styles.box}>
                 <div className={styles.buttons}>
-                    <Button  variant="outlined" color="primary">
+                    <Button  variant="outlined" color="black">
                         KUP
                     </Button>
-                    <Button variant="outlined" color="primary">
+                    <Button variant="outlined" color="black">
                         SPRZEDAJ
                     </Button>
-                    <Button variant="outlined" color="primary">
+                    <Button variant="outlined" color="black">
                         HISTORIA
                     </Button>
                 </div>
-                <div className={styles.calculator}>
                     <Calculator />
-                </div>
+                    
             </div>
             
         </main>

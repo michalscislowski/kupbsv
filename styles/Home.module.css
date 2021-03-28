@@ -71,22 +71,35 @@
 }
 
 .calculator {
+  border: black solid 2px;
+  border-radius: 10px;
   width: auto;
   height: auto;
-  border: blue solid 2px;
-  padding: 20 px;
 }
-
 .typebox {
-  
+  width: auto;
+  height: auto;
   display: flex;
-  margin: 20px;
+  justify-content: center;
 }
 
 .textfield {
-  margin-right: 10px;
+  margin-top: 30px;
+  margin-bottom: 20px;
   margin-left: 10px;
-  width: 200px;
+  margin-right: 10px;
+  width: auto;
+}
+
+.changebutton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.changebutton Button{
+  width: 150px;
 }
 
 .footer {
@@ -97,7 +110,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: relative;
   bottom: 0; 
   left: 0; 
 }
