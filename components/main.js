@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import styles from '../styles/Home.module.css'
 import Calculator from '../components/calculator.js'
-
+import Livebsv from '../components/livecoinbsv'
   
 
 export default function Main() {
@@ -20,7 +20,8 @@ export default function Main() {
                         HISTORIA
                     </Button>
                 </div>
-                    <Calculator />
+                {/* <Livebsv /> */}
+                <Calculator />
                     
             </div>
             

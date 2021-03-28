@@ -50,6 +50,13 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.livebsvwidget {
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+ 
 .buttons {
   margin-left: auto;
   margin-right: auto;
@@ -83,16 +90,22 @@
   justify-content: center;
 }
 
+.livecoinwatch {
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
 .textfield {
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  width: auto;
+  width: 180px;
 }
 
 .changebutton {
-  width: 100%;
+  width: auto;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
@@ -101,6 +114,8 @@
 .changebutton Button{
   width: 150px;
 }
+
+
 
 .footer {
   background-color: black;
