@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import styles from '../styles/Home.module.css';
 import Button from '@material-ui/core/Button';
-import Livebsv from '../components/livecoinbsv';
+import Livebsv from '../components/livebsv.js';
 
 
 export default function Calculator() {

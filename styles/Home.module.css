@@ -51,11 +51,6 @@
   margin-right: auto;
 }
 
-.livebsvwidget {
-  width: auto;
-  display: flex;
-  justify-content: center;
-}
  
 .buttons {
   margin-left: auto;
@@ -70,15 +65,15 @@
 }
 
 .buttons Button{
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   margin-right: 5px;
   margin-left: 5px;
-  width: 150px;
+  width: 120px;
 }
 
 .calculator {
-  border: black solid 2px;
+  border: black solid 0px;
   border-radius: 10px;
   width: auto;
   height: auto;
@@ -97,7 +92,7 @@
 }
 
 .textfield {
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
@@ -108,11 +103,11 @@
   width: auto;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .changebutton Button{
-  width: 150px;
+  width: 380px;
 }
 
 
