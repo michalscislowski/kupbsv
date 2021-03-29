@@ -1,34 +1,4 @@
 
-.header {
-  position: fixed;
-  top: 0px;
-  background-color: black;
-  text-align: center;
-  width: 100%;
-  overflow: hidden;
-  padding: 20px 10px;
-}
-.header a {
-  color: white;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 4px;
-}
-.header a.headlogo {
-  font-size: 25px;
-  font-weight: bold;
-  margin-left: 140px;
-  margin-right: auto;
-}
-
-.headerRight {
-  float: right;
-}
-.headerLeft {
-  float: left;
-}
 .container {
   min-height: 100vh;
   display: flex;
@@ -100,35 +70,5 @@
 
 .changebutton Button{
   width: 150px;
-}
-
-.footer {
-  background-color: black;
-  width: 100%;
-  height: 70px;
-  border-top: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  bottom: 0; 
-  left: 0; 
-}
-
-.footer img {
-  margin-left: 0.5rem;
-}
-
-.footer a {
-  letter-spacing: 2px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logo {
-  padding-left: 30px;
-  height: 25px;
 }
 
