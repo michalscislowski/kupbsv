@@ -1,10 +1,11 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Livebsv from '../components/livebsv.js';
+import Livebsv from './livebsv.js';
 
 
-export default function Calculator() {
+export default function Calculatorbuy() {
+
   
     return (
         <form className="calculator" noValidate autoComplete="off">
@@ -21,12 +22,12 @@ export default function Calculator() {
                 </div>
             </div>
             <div className="changebutton">
-                    <Button variant="outlined" color="black" style={{width: 380}}>
+                    <Button variant="outlined" color="default" style={{width: 380}}>
                             BLIK
                     </Button>
             </div>
             <div className="changebutton">
-                    <Button variant="outlined" color="black" style={{width: 380}}>
+                    <Button variant="outlined" color="default" style={{width: 380}}>
                             tPAY
                     </Button>
             </div>

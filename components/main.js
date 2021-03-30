@@ -1,25 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
-import Calculator from '../components/calculator.js'
+import Calculatorbuy from './calculatorbuy.js'
+import Calculatorsell from './calculatorsell.js'
   
 
 export default function Main() {
+    const [ showMe, setShowMe ] = useState(true);
+    function toggle (){
+        if  (!showMe) {
+            setShowMe(true);
+        }
+        else {
+            setShowMe(true);
+        }
+    }
+    function toggle2 (){
+        if  (showMe) {
+            setShowMe(false);
+        }
+        else {
+            setShowMe(false);
+        }
+    }
+    
     return (
         <main className="main">
             <div className="box">
                 <div className="buttons">
-                    <Button variant="outlined" color="black" style={{width: 120, marginRight: 10}}>
+                    <Button onClick={toggle} variant="outlined" color="black" style={{width: 120, marginRight: 10}}>
                         KUP
                     </Button>
-                    <Button variant="outlined" color="black" style={{width: 120, marginRight: 10}}>
+                    <Button onClick={toggle2} variant="outlined" color="black" style={{width: 120, marginRight: 10}}>
                         SPRZEDAJ
                     </Button>
                     <Button variant="outlined" color="black" style={{width: 120,}}>
                         HISTORIA
                     </Button>
                 </div>
-                <Calculator />
-                    
+                <div style={{ display: showMe?"block":"none" }}>
+                    <Calculatorbuy />
+                </div>
+                <div style={{ display: !showMe?"block":"none" }}>
+                    <Calculatorsell />
+                </div>
             </div>
             <style jsx> {`
                 .main {
