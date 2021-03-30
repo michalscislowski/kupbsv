@@ -22,7 +22,6 @@ return (
     }
     ul {
       display: flex;
-
     }
     .rightstext {
       font-size: 18.5px;
@@ -35,6 +34,20 @@ return (
       padding-left: 30px;
       height: 25px;
     }
+
+    @media only screen and (max-width: 550px) {
+    .rightstext {
+        font-size: 16px;
+      }
+    .logo {
+      padding-left: 30px;
+      height: 21px;
+    }
+    ul {
+      margin-left:0 ;
+    }
+    }
+
 `}</style>
 
     </div>

@@ -27,21 +27,26 @@ export default function Main() {
                     flex: 1;
                     width: 100%;
                     color: white;
-                    margin-top: 76px;
-                    margin-bottom: 70px;
+                    margin-top: 78px;
                 }
                 .box {
+                    margin: auto;
                     width: auto;
-                    margin-left: auto;
-                    margin-right: auto;
+                    height: 100%;
+                    padding: 30px;
+                    padding-bottom: 2.5%;
+                    /* background-image: linear-gradient(to right top, #cdcdcd, #adadad, #989898, #adadad, #ededed);*/
+                    background-color: #efefef;
+                    box-shadow: 30px 20px;
+                    border-radius: 30px;
+                    box-shadow: 5px 5px 40px 3px rgba(50, 50, 50, 0.75);
                 }
                 .buttons {
-                    margin-left: auto;
-                    margin-right: auto;
-                    margin-top: 5px;
+                    margin: 5px auto 7px auto;
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    filter: none;
                 }
                 .buttons::after {
                     clear: both;
