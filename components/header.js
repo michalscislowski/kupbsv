@@ -12,6 +12,9 @@ export default function Header() {
       </header>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1295b783c6b694cd1fd4c405c6092a7087185226
       <style jsx> {`
         .main {
           position: fixed;
@@ -55,6 +58,7 @@ export default function Header() {
           display: inline-block;
           background: black;
         }
+<<<<<<< HEAD
 
         @media only screen and (max-width: 984px) {
           li {
@@ -113,6 +117,23 @@ export default function Header() {
 
 `}</style>
 >>>>>>> 31fcf50385ca0e9eab5f159222aea264fea230e5
+=======
+
+        @media only screen and (max-width: 984px) {
+          li {
+            font-size: 19px;
+          }
+        }
+
+        @media only screen and (max-width: 800px) {
+          li {
+            font-size: 13px;
+          }
+        }
+
+      
+      `} </style>
+>>>>>>> 1295b783c6b694cd1fd4c405c6092a7087185226
     </div>
   );
 }
