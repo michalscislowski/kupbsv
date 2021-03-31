@@ -28,10 +28,14 @@ export default function Main() {
             <div className="box">
                 <div className="buttons">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <Button onClick={toggle} variant="outlined" color="white" style={{width: 120, marginRight: 10}}>
 =======
                     <Button onClick={toggle} variant="outlined" color="black" style={{width: 120, marginRight: 10}}>
 >>>>>>> 1295b783c6b694cd1fd4c405c6092a7087185226
+=======
+                    <Button onClick={toggle} variant="outlined" color="white" style={{width: 120, marginRight: 10}}>
+>>>>>>> 31fcf50385ca0e9eab5f159222aea264fea230e5
                         KUP
                     </Button>
                     <Button onClick={toggle2} variant="outlined" color="black" style={{width: 120, marginRight: 10}}>
