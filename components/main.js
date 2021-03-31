@@ -27,7 +27,7 @@ export default function Main() {
         <main className="main">
             <div className="box">
                 <div className="buttons">
-                    <Button onClick={toggle} variant="outlined" color="black" style={{width: 120, marginRight: 10}}>
+                    <Button onClick={toggle} variant="outlined" color="white" style={{width: 120, marginRight: 10}}>
                         KUP
                     </Button>
                     <Button onClick={toggle2} variant="outlined" color="black" style={{width: 120, marginRight: 10}}>
@@ -48,17 +48,14 @@ export default function Main() {
                 .main {
                     display: flex;
                     flex: 1;
-                    width: 100%;
                     color: white;
                     margin-top: 78px;
                 }
                 .box {
                     margin: auto;
-                    width: auto;
-                    height: 100%;
+                    width: 460px;
+                    height: 500px;
                     padding: 30px;
-                    padding-bottom: 2.5%;
-                    /* background-image: linear-gradient(to right top, #cdcdcd, #adadad, #989898, #adadad, #ededed);*/
                     background-color: #efefef;
                     box-shadow: 30px 20px;
                     border-radius: 30px;
