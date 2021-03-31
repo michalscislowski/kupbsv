@@ -1,56 +1,56 @@
-export default function Footer () {
-return (
+export default function Footer() {
+  return (
     <div className="main">
       <footer className="footer">
-        <ul>
-          <li>
-            <a className="rightstext">All rights reserved 2021</a>
-          </li>
-          <li>
-            <a><img src="/logo.png" alt="Banach Logo" className="logo" /></a>
-          </li>
-        </ul>
+        <div className="box">
+          <div>
+            <p className="rightstext">All rights reserved 2021</p>
+          </div>
+          <div>
+            <img src="/logo.png" alt="Banach Logo" className="logo" />
+          </div>
+        </div>
       </footer>
-<style jsx>{`
-    .main {
-      width: 100%;
-    }
-    .footer {
-      background-color: black;
-      display: flex;
-      justify-content: center;
-    }
-    ul {
-      display: flex;
-    }
-    .rightstext {
-      font-size: 18.5px;
-    }
-    a {
-      letter-spacing: 2px;
-      color: white;
-    }
-    .logo {
-      padding-left: 30px;
-      height: 25px;
-    }
+      <style jsx>{`
+   .main {
+    width: 100%;
+    background-color: black;
+    height: 63px;
+    color: white;
+    margin: auto;
+  }
+  .box {
+    display: flex;
+    justify-content: center;
+  }
+  .rightstext {
+    font-size: 18.5px;
 
-    @media only screen and (max-width: 550px) {
-    .rightstext {
-        font-size: 16px;
-      }
-    .logo {
-      padding-left: 30px;
-      height: 21px;
+  }
+  p {
+    letter-spacing: 2px;
+  }
+  .logo {
+    height: 25px;
+    padding-left: 30px;
+    margin-top: 18px;
+  }
+
+  @media only screen and (max-width: 550px) {
+  .rightstext {
+      font-size: 16px;
+      margin-top: 23px;
     }
-    ul {
-      margin-left:0 ;
-    }
-    }
+  .logo {
+    padding-left: 20px;
+    margin-top: 23px;
+    height: 21px;
+  }
+  }
 
 `}</style>
 
     </div>
-);
+  );
 }
 
