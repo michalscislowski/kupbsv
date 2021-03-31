@@ -6,7 +6,7 @@ import Livebsv from './livebsv.js';
 
 export default function Calculatorsell() {
 
-  
+
     return (
         <form className="calculator" noValidate autoComplete="off">
             <div>
@@ -14,21 +14,21 @@ export default function Calculatorsell() {
             </div>
             <div className="typebox">
                 <div className="textfield">
-                    <TextField error={false} id="outlined-basic" label="BSV" helperText="Minimalna wartość 50zł" variant="outlined"/>
+                    <TextField error={false} id="outlined-basic" label="BSV" helperText="Minimalna wartość 50zł" variant="outlined" />
                 </div>
-                
+
                 <div className="textfield">
-                    <TextField disabled id="outlined-disabled" label="PLN" variant="outlined"/>
+                    <TextField disabled id="outlined-disabled" label="PLN" variant="outlined" />
                 </div>
             </div>
             <div className="changebutton">
-                    <Button variant="outlined" color="default" style={{width: 380}}>
-                            BLIK
+                <Button variant="outlined" color="default" style={{ width: 380 }}>
+                    BLIK
                     </Button>
             </div>
             <div className="changebutton">
-                    <Button variant="outlined" color="default" style={{width: 380}}>
-                            tPAY
+                <Button variant="outlined" color="default" style={{ width: 380 }}>
+                    tPAY
                     </Button>
             </div>
             <style jsx> {`
@@ -58,7 +58,13 @@ export default function Calculatorsell() {
                     width: 100%;
                 }
 
-            `}</style> 
+                @media only screen and (max-width: 499px) {
+                    .textfield {
+                        width: 50%;
+                        margin: 10px 5px;
+                }
+
+            `}</style>
         </form>
     );
-  }
+}

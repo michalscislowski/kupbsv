@@ -65,12 +65,24 @@ export default function Main() {
                     margin: 5px auto 7px auto;
                     display: flex;
                     justify-content: center;
-                    align-items: center;
-                    filter: none;
                 }
                 .buttons::after {
                     clear: both;
                 }
+
+                @media only screen and (max-width: 499px) {
+                    .box, {
+                      width: 100%;	
+                      height: auto;
+                      margin auto;
+                      padding: 15px 10px;
+                    }
+
+                    .buttons {
+                        margin: 0 auto;
+                        padding-bottom: 0;
+                    }
+                  }
             `}</style>
         </main>
         

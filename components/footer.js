@@ -48,6 +48,27 @@ export default function Footer() {
   }
   }
 
+  @media only screen and (max-width: 499px) {
+    .rightstext {
+        font-size: 10px;
+        margin-top: 27px;
+      }
+      .logo {
+        height: 18px;
+      }
+    }
+
+  @media only screen and (max-width: 400px) {
+    .rightstext {
+      font-size: 8px;
+      margin-top: 27px;
+    }
+    .logo {
+      margin-top: 25px;
+      height: 15px;
+    }
+  }
+
 `}</style>
 
     </div>

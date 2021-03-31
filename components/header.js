@@ -15,6 +15,7 @@ export default function Header() {
   .main {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: auto;
     background-color: black;
@@ -45,8 +46,15 @@ export default function Header() {
   }
 
   @media only screen and (max-width: 555px) {
-    .item, .push {
+    .item, .push, .logo {
       font-size: 18px;	
+      margin auto;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .item, .push, .logo {
+      font-size: 13px;	
       margin auto;
     }
   }

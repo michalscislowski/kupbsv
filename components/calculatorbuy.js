@@ -45,10 +45,7 @@ export default function Calculatorbuy() {
                     justify-content: center;
                 }
                 .textfield {
-                    margin-top: 5px;
-                    margin-bottom: 10px;
-                    margin-left: 10px;
-                    margin-right: 10px;
+                    margin: 5px 10px 10px;
                     width: 180px;
                 }
                 .changebutton {
@@ -57,6 +54,12 @@ export default function Calculatorbuy() {
                     margin-bottom: 10px;
                     width: 100%;
                 }
+
+                @media only screen and (max-width: 499px) {
+                    .textfield {
+                        width: 50%;
+                        margin: 10px 5px;
+                    }
 
             `}</style> 
         </form>
