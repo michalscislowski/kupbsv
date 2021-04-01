@@ -3,7 +3,7 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import BlurOnIcon from '@material-ui/icons/BlurOn';
+
 
 export default function Footer() {
   return (
@@ -17,7 +17,7 @@ export default function Footer() {
         <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/8anach')} /></a>
         <a className="instagram"><InstagramIcon aria-label="Instagram.com" onClick={() => window.open('https://www.instagram.com/8anach')}/></a>
         <a className="twitter"><TwitterIcon aria-label="Twitter.com" onClick={() => window.open('https://twitter.com/8anach')}/></a>
-        <a className="twetch"><BlurOnIcon aria-label="Twetch.com" onClick={() => window.open('https://twetch.app/u/40566')}/></a>
+        <a className="twetch" aria-label="Twetch.com" onClick={() => window.open('https://twetch.app/u/40566')}></a>
         <a className="youtube"><YouTubeIcon aria-label="Youtube.com" onClick={() => window.open('https://www.youtube.com/channel/UCegE3WW7U2-Wb__mWK3oKJA')}/></a>
       </div>
     </footer>
@@ -44,14 +44,41 @@ export default function Footer() {
 
   .socials {
     margin-left: auto;
+    display: flex;
   }
   .socials a {
-    margin-right: 10px;
+    margin-right: 20px;
+  }
+  a:hover {
+    cursor: pointer;
+  }
+  .facebook:hover {
+    color: #3b5998;
+  }
+  .instagram:hover {
+    color: #e4405f;
+  }
+  .twitter:hover {
+    color: #55acee;
+  }
+  .twetch {
+    width: 24px;
+    height: 24px;
+    background: url('/twetchlogo.png');
+    background-size: 24px 24px;
+  }
+  .twetch:hover {
+    background: url('/twetchlogoblue.png');
+    background-size: 24px 24px;
+  }
+  .youtube:hover {
+    color: #cd201f;
   }
   .logo {
     height: 25px;
     margin-left: 2em;
   }
+  
 
   @media only screen and (max-width: 550px) {
   .rightstext {
