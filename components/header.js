@@ -12,137 +12,49 @@ export default function Header() {
         <a className="item"><SimpleMenu /></a>
       </header>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 1295b783c6b694cd1fd4c405c6092a7087185226
-      <style jsx> {`
+
+      <style jsx>{`
         .main {
           position: fixed;
           top: 0;
+          left: 0;
           width: 100%;
           height: auto;
           background-color: black;
+          font-size: 25px;	
+          font-weight: 300;	
         }
         a {
           color: white;
           letter-spacing: 2px;
           text-decoration: none;
           padding: 20px 15px;
-          display: inline-block
+          justify-content: flex-end;
         }
         .logo {
           font-weight: 700;
-          justify-content: flex-start;
-          margin-left: 10px;
-        }
-        .item {
-          display: flex;	
-          font-size: 25px;	
-          font-weight: 300;	
-          justify-content: flex-end;
-        }
-      
-        ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          overflow: hidden;
-          vertical-align: middle;
-        }
-        .liLogo {
-          flex-grow: 3;
-        }
-        li {
+          margin-left: 15px;
           font-size: 25px;
-          display: inline-block;
-          background: black;
+          float: left;
         }
-<<<<<<< HEAD
+        
+        .push {
+          margin-left: auto;
+        }
 
-        @media only screen and (max-width: 984px) {
-          li {
-            font-size: 19px;
+        .header {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        @media only screen and (max-width: 555px) {
+          .item, .push, .logo {
+            font-size: 18px;	
+            margin auto;
           }
         }
+      `}</style>
 
-        @media only screen and (max-width: 800px) {
-          li {
-            font-size: 13px;
-          }
-        }
-
-      
-      `} </style>
-=======
-      <style jsx>{`
-  .main {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    background-color: black;
-    font-size: 25px;	
-    font-weight: 300;	
-  }
-  a {
-    color: white;
-    letter-spacing: 2px;
-    text-decoration: none;
-    padding: 20px 15px;
-    justify-content: flex-end;
-  }
-   .logo {
-    font-weight: 700;
-    margin-left: 15px;
-    font-size: 25px;
-    float: left;
-   }
-   
-   .push {
-    margin-left: auto;
-  }
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  @media only screen and (max-width: 555px) {
-    .item, .push, .logo {
-      font-size: 18px;	
-      margin auto;
-    }
-  }
-
-  @media only screen and (max-width: 400px) {
-    .item, .push, .logo {
-      font-size: 13px;	
-      margin auto;
-    }
-  }
-
-`}</style>
->>>>>>> 31fcf50385ca0e9eab5f159222aea264fea230e5
-=======
-
-        @media only screen and (max-width: 984px) {
-          li {
-            font-size: 19px;
-          }
-        }
-
-        @media only screen and (max-width: 800px) {
-          li {
-            font-size: 13px;
-          }
-        }
-
-      
-      `} </style>
->>>>>>> 1295b783c6b694cd1fd4c405c6092a7087185226
     </div>
   );
 }
