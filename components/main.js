@@ -27,13 +27,14 @@ export default function Main() {
         <main className="main">
             <div className="box">
                 <div className="buttons">
-                    <Button onClick={toggle} variant="outlined" color="white" style={{width: 120, marginRight: 10}}>
+
+                    <Button onClick={toggle} variant="outlined" color="primary" style={{width: 120, marginRight: 10}}>
                         KUP
                     </Button>
-                    <Button onClick={toggle2} variant="outlined" color="black" style={{width: 120, marginRight: 10}}>
+                    <Button onClick={toggle2} variant="outlined" color="secondary" style={{width: 120, marginRight: 10}}>
                         SPRZEDAJ
                     </Button>
-                    <Button variant="outlined" color="black" style={{width: 120,}}>
+                    <Button variant="outlined" color="default" style={{width: 120,}}>
                         HISTORIA
                     </Button>
                 </div>
@@ -65,12 +66,24 @@ export default function Main() {
                     margin: 5px auto 7px auto;
                     display: flex;
                     justify-content: center;
-                    align-items: center;
-                    filter: none;
                 }
                 .buttons::after {
                     clear: both;
                 }
+
+                @media only screen and (max-width: 499px) {
+                    .box, {
+                      width: 100%;	
+                      height: auto;
+                      margin auto;
+                      padding: 15px 10px;
+                    }
+
+                    .buttons {
+                        margin: 0 auto;
+                        padding-bottom: 0;
+                    }
+                  }
             `}</style>
         </main>
         

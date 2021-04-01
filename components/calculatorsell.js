@@ -6,7 +6,7 @@ import Livebsv from './livebsv.js';
 
 export default function Calculatorsell() {
     const [value, setValue] = useState(0);
-  
+
     return (
         <form className="calculator" noValidate autoComplete="off">
             <div>
@@ -25,25 +25,30 @@ export default function Calculatorsell() {
                         }
                       }}
                     onChange={(e) => setValue(e.currentTarget.value)}
+                    onKeyPress={(e) => {
+                        if (!/[0-9]/.test(e.key)) {
+                          e.preventDefault();
+                        }
+                      }}
                     onBlur={(e) => {
                       if (e.currentTarget.value < 0.01 ) setValue(0.01);
                     }}
                     />
                 </div>
-                
+
                 <div className="textfield">
                     <TextField disabled id="outlined-disabled" value={(value*850).toFixed(2)} label="PLN" variant="outlined" 
                 />
                 </div>
             </div>
             <div className="changebutton">
-                    <Button variant="outlined" color="default" style={{width: 380}}>
-                            BLIK
+                <Button variant="outlined" color="default" style={{ width: 380 }}>
+                    BLIK
                     </Button>
             </div>
             <div className="changebutton">
-                    <Button variant="outlined" color="default" style={{width: 380}}>
-                            tPAY
+                <Button variant="outlined" color="default" style={{ width: 380 }}>
+                    tPAY
                     </Button>
             </div>
             <style jsx> {`
@@ -73,7 +78,13 @@ export default function Calculatorsell() {
                     width: 100%;
                 }
 
-            `}</style> 
+                @media only screen and (max-width: 499px) {
+                    .textfield {
+                        width: 50%;
+                        margin: 10px 5px;
+                }
+
+            `}</style>
         </form>
     );
-  }
+}
