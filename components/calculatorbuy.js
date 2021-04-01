@@ -20,6 +20,11 @@ export default function Calculatorbuy() {
                     InputProps={{ inputProps: { min: "100", max: "5000", step: "0.01" } }}
                     variant="outlined"
                     onChange={(e) => setValue(e.currentTarget.value)}
+                    onKeyPress={(e) => {
+                        if (!/[0-9]/.test(e.key)) {
+                          e.preventDefault();
+                        }
+                      }}
                     onBlur={(e) => {
                       if (e.currentTarget.value > 0 & e.currentTarget.value < 100 ) setValue(100);
                     }}
