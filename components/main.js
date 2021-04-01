@@ -27,13 +27,13 @@ export default function Main() {
         <main className="main">
             <div className="box">
                 <div className="buttons">
-                    <Button onClick={toggle} variant="outlined" color="white" style={{width: 120, marginRight: 10}}>
+                    <Button onClick={toggle} variant="outlined" color="primary" style={{width: 120, marginRight: 10}}>
                         KUP
                     </Button>
-                    <Button onClick={toggle2} variant="outlined" color="black" style={{width: 120, marginRight: 10}}>
+                    <Button onClick={toggle2} variant="outlined" color="secondary" style={{width: 120, marginRight: 10}}>
                         SPRZEDAJ
                     </Button>
-                    <Button variant="outlined" color="black" style={{width: 120,}}>
+                    <Button variant="outlined" color="default" style={{width: 120,}}>
                         HISTORIA
                     </Button>
                 </div>
