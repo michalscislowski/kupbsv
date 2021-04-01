@@ -19,6 +19,11 @@ export default function Calculatorsell() {
                     value={value}
                     InputProps={{ inputProps: { min: "0.01", max: "5000", step: "0.0001" } }}
                     variant="outlined"
+                    onKeyPress={(e) => {
+                        if (!/[0-9.]/.test(e.key)) {
+                          e.preventDefault();
+                        }
+                      }}
                     onChange={(e) => setValue(e.currentTarget.value)}
                     onBlur={(e) => {
                       if (e.currentTarget.value < 0.01 ) setValue(0.01);
