@@ -21,7 +21,10 @@ export default function Calculatorbuy() {
                     variant="outlined"
                     onChange={(e) => setValue(e.currentTarget.value)}
                     onBlur={(e) => {
-                      if (e.currentTarget.value > 0 & e.currentTarget.value < 100 ) setValue(100);
+                      if (e.currentTarget.value > 0 & e.currentTarget.value < 100 ) 
+                        setValue(100);
+                      else (e.currentTarget.value > 5000) 
+                        setValue(5000);
                     }}
                     />
                 </div>

@@ -21,7 +21,7 @@ export default function Calculatorsell() {
                     variant="outlined"
                     onChange={(e) => setValue(e.currentTarget.value)}
                     onBlur={(e) => {
-                      if (e.currentTarget.value > 0.0001 & e.currentTarget.value < 0.01 ) setValue(0.01);
+                      if (e.currentTarget.value < 0.01 ) setValue(0.01);
                     }}
                     />
                 </div>

@@ -12,7 +12,7 @@ export default function Header() {
         <a className="item"><SimpleMenu /></a>
       </header>
 
-      <style jsx>{`
+<style jsx>{`
   .main {
     position: fixed;
     top: 0;
