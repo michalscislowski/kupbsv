@@ -12,7 +12,6 @@ export default function Header() {
         <a className="item"><SimpleMenu /></a>
       </header>
 
-
       <style jsx>{`
         .main {
           position: fixed;
@@ -54,7 +53,7 @@ export default function Header() {
           }
         }
       `}</style>
-
+    
     </div>
   );
 }
