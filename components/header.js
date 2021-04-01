@@ -34,11 +34,11 @@ export default function Header() {
     font-weight: 700;
     margin-left: 15px;
     font-size: 25px;
-    float: left;
    }
    
    .push {
     margin-left: auto;
+    text-align: center;
   }
 
   .header {

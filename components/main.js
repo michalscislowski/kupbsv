@@ -44,10 +44,12 @@ export default function Main() {
                     <Calculatorsell />
                 </div>
             </div>
+            <div className="room-for-socials"></div>
             <style jsx> {`
                 .main {
                     display: flex;
                     flex: 1;
+                    flex-direction: column;
                     color: white;
                     margin-top: 78px;
                 }
@@ -69,20 +71,30 @@ export default function Main() {
                 .buttons::after {
                     clear: both;
                 }
+                .room-for-socials {
+                    height: 50px;
+                    display: block;
+                }
 
                 @media only screen and (max-width: 499px) {
                     .box, {
                       width: 100%;	
                       height: auto;
-                      margin auto;
-                      padding: 15px 10px;
+                      padding: 15px 10px 5px 10px;
                     }
 
                     .buttons {
                         margin: 0 auto;
                         padding-bottom: 0;
                     }
-                  }
+                }
+
+                @media only screen and (max-width: 399px) {
+                    .box, {
+                        
+                    }
+
+                }
             `}</style>
         </main>
         
