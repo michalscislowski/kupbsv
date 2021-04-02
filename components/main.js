@@ -77,33 +77,6 @@ export default function Main() {
                 }
                 .socials {
                     display: none;
-                    justify-content: center;
-                  }
-                  .socials a {
-                    margin-left: 15px;
-                  }
-                  a:hover {
-                    cursor: pointer;
-                  }
-                  .facebook:hover {
-                    color: #3b5998;
-                  }
-                  .instagram:hover {
-                    color: #e4405f;
-                  }
-                  .twitter:hover {
-                    color: #55acee;
-                  }
-                  .twetch {
-                    background: url('/twetchlogo.png') no-repeat center center;
-                    background-size: 20px 20px;
-                  }
-                  .twetch:hover {
-                    background: url('/twetchlogoblue.png') no-repeat center center;
-                    background-size: 20px 20px;
-                  }
-                  .youtube:hover {
-                    color: #cd201f;
                   }
                 .buttons {
                     margin: 5px auto 7px auto;
@@ -154,13 +127,32 @@ export default function Main() {
                         background: url('/twetchlogo_gray.png') no-repeat center center;
                         background-size: 20px 20px;
                     }
+                    a:hover {
+                        cursor: pointer;
+                    }
+                    .facebook:hover {
+                        color: #3b5998;
+                    }
+                    .instagram:hover {
+                        color: #e4405f;
+                    }
+                    .twitter:hover {
+                        color: #55acee;
+                    }
+                    .twetch:hover {
+                        background: url('/twetchlogoblue.png') no-repeat center center;
+                        background-size: 20px 20px;
+                    }
+                    .youtube:hover {
+                        color: #cd201f;
+                    }
                 }
                 @media only screen and (max-width: 499px) {
                     .box, {
                       width: 98%;
                       height: auto;
                       padding: 15px 10px 5px 10px;
-                    }
+                }
             `}</style>
         </main>
         
