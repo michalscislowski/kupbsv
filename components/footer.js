@@ -27,13 +27,11 @@ export default function Footer() {
     <style jsx>{`
 
   .main {
-    posiotion: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
     background-color: black;
     color: white;
     text-align: center;
+    width: 100%;
+    min-width: 300px;
   }
   .footer {
     display: flex;
@@ -44,13 +42,9 @@ export default function Footer() {
   p {
     letter-spacing: 2px;
   }
-
   .socials {
     display: flex;
     justify-content: center;
-  }
-  .socials_mobile{
-    display:none;
   }
   .socials a {
     margin-left: 15px;
@@ -86,34 +80,16 @@ export default function Footer() {
   }
 
   @media only screen and (max-width: 650px) {
-    .socials a {
-      margin: 0;
-    }
     .socials {
-      width: 200px;
-      border-bottom: solid 2px gray;
-      color: gray;
-      display: flex;
-      align-items: center;
-      justify-content: space-netween;
-      align-items: baseline;
-	    align-content: center;
-      position: absolute;
-      bottom: 8vh; 
+      display: none;
     }
-    .socials a:first-child{
-      margin-left: 0;
+    .footer {
+      justify-content: center;
     }
-    .socials a {
-      margin-left: 15px;
+    .logo {
+      margin: 0 15px;
     }
-    .twetch {
-      position: relative;
-      top: -2px;
-      background: url('/twetchlogo_gray.png');
-      background-size: 20px 20px;
-    }
-    }
+  }
 
   @media only screen and (max-width: 499px) {
     .allrights, .logo {
@@ -121,20 +97,9 @@ export default function Footer() {
       margin: 0;
     }
     .logo {
-      height: 18px;
-    }
-    .socials {
-      bottom: 12vw; 
-    }
-
-    @media only screen and (max-width: 399px) {
-      .socials {
-        bottom: 10vw; 
-    }
-
-    @media only screen and (max-width: 326px) {
-      .socials {
-        bottom: -25vw; 
+      height: 16px;
+      padding: 2px 15px 0;
+      margin: auto;
     }
       
 `}</style>
