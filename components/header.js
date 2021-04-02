@@ -22,6 +22,7 @@ export default function Header() {
     background-color: black;
     font-size: 25px;	
     font-weight: 300;	
+    z-index: 2;
   }
   a {
     color: white;
