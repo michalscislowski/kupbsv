@@ -13,47 +13,54 @@ export default function Header() {
       </header>
 
       <style jsx>{`
-        .main {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: auto;
-          background-color: black;
-          font-size: 25px;	
-          font-weight: 300;	
-        }
-        a {
-          color: white;
-          letter-spacing: 2px;
-          text-decoration: none;
-          padding: 20px 15px;
-          justify-content: flex-end;
-        }
-        .logo {
-          font-weight: 700;
-          margin-left: 15px;
-          font-size: 25px;
-          float: left;
-        }
-        
-        .push {
-          margin-left: auto;
-        }
+  .main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: black;
+    font-size: 25px;	
+    font-weight: 300;	
+  }
+  a {
+    color: white;
+    letter-spacing: 2px;
+    text-decoration: none;
+    padding: 20px 15px;
+    justify-content: flex-end;
+  }
+   .logo {
+    font-weight: 700;
+    margin-left: 15px;
+    font-size: 25px;
+   }
+   
+   .push {
+    margin-left: auto;
+    text-align: center;
+  }
 
-        .header {
-          display: flex;
-          justify-content: space-between;
-        }
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
 
-        @media only screen and (max-width: 555px) {
-          .item, .push, .logo {
-            font-size: 18px;	
-            margin auto;
-          }
-        }
-      `}</style>
-    
+  @media only screen and (max-width: 555px) {
+    .item, .push, .logo {
+      font-size: 18px;	
+      margin auto;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .item, .push, .logo {
+      font-size: 13px;	
+      margin auto;
+    }
+  }
+
+`}</style>
     </div>
   );
 }
