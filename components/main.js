@@ -6,6 +6,7 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import { request } from 'http';
   
 
 export default function Main() {
@@ -49,7 +50,7 @@ export default function Main() {
                     <Calculatorsell />
                 </div>
             </div>
-            <div className="room-for-socials"></div>
+            <div id="room-for-socials" className="room-for-socials">CENA BITKA</div>
             <div className="socials">
                 <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/8anach')} /></a>
                 <a className="instagram"><InstagramIcon aria-label="Instagram.com" onClick={() => window.open('https://www.instagram.com/8anach')}/></a>
@@ -92,6 +93,9 @@ export default function Main() {
                 }
                 
                 @media only screen and (max-width: 650px) {
+                    a {
+                        transition: 0.4s;
+                    }
                     .box, {
                       height: auto;
                       padding: 15px 10px 5px 10px;
@@ -129,6 +133,7 @@ export default function Main() {
                     }
                     a:hover {
                         cursor: pointer;
+                        transform: scale(1.3);
                     }
                     .facebook:hover {
                         color: #3b5998;
@@ -149,9 +154,10 @@ export default function Main() {
                 }
                 @media only screen and (max-width: 499px) {
                     .box, {
-                      width: 98%;
-                      height: auto;
-                      padding: 15px 10px 5px 10px;
+                        width: 98%;
+                        height: auto;
+                        padding: 15px 10px 5px 10px;
+                    }
                 }
             `}</style>
         </main>
