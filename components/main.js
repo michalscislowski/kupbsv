@@ -6,6 +6,7 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import { request } from 'http';
   
 
 export default function Main() {
@@ -49,7 +50,7 @@ export default function Main() {
                     <Calculatorsell />
                 </div>
             </div>
-            <div className="room-for-socials"></div>
+            <div id="room-for-socials" className="room-for-socials"></div>
             <div className="socials">
                 <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/8anach')} /></a>
                 <a className="instagram"><InstagramIcon aria-label="Instagram.com" onClick={() => window.open('https://www.instagram.com/8anach')}/></a>
@@ -77,33 +78,6 @@ export default function Main() {
                 }
                 .socials {
                     display: none;
-                    justify-content: center;
-                  }
-                  .socials a {
-                    margin-left: 15px;
-                  }
-                  a:hover {
-                    cursor: pointer;
-                  }
-                  .facebook:hover {
-                    color: #3b5998;
-                  }
-                  .instagram:hover {
-                    color: #e4405f;
-                  }
-                  .twitter:hover {
-                    color: #55acee;
-                  }
-                  .twetch {
-                    background: url('/twetchlogo.png') no-repeat center center;
-                    background-size: 20px 20px;
-                  }
-                  .twetch:hover {
-                    background: url('/twetchlogoblue.png') no-repeat center center;
-                    background-size: 20px 20px;
-                  }
-                  .youtube:hover {
-                    color: #cd201f;
                   }
                 .buttons {
                     margin: 5px auto 7px auto;
@@ -119,6 +93,9 @@ export default function Main() {
                 }
                 
                 @media only screen and (max-width: 650px) {
+                    a {
+                        transition: 0.4s;
+                    }
                     .box, {
                       height: auto;
                       padding: 15px 10px 5px 10px;
@@ -154,13 +131,34 @@ export default function Main() {
                         background: url('/twetchlogo_gray.png') no-repeat center center;
                         background-size: 20px 20px;
                     }
+                    a:hover {
+                        cursor: pointer;
+                        transform: scale(1.3);
+                    }
+                    .facebook:hover {
+                        color: #3b5998;
+                    }
+                    .instagram:hover {
+                        color: #e4405f;
+                    }
+                    .twitter:hover {
+                        color: #55acee;
+                    }
+                    .twetch:hover {
+                        background: url('/twetchlogoblue.png') no-repeat center center;
+                        background-size: 20px 20px;
+                    }
+                    .youtube:hover {
+                        color: #cd201f;
+                    }
                 }
                 @media only screen and (max-width: 499px) {
                     .box, {
-                      width: 98%;
-                      height: auto;
-                      padding: 15px 10px 5px 10px;
+                        width: 98%;
+                        height: auto;
+                        padding: 15px 10px 5px 10px;
                     }
+                }
             `}</style>
         </main>
         

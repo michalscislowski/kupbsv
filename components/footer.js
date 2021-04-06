@@ -45,12 +45,15 @@ export default function Footer() {
   .socials {
     display: flex;
     justify-content: center;
+    padding-right: 15px;
   }
   .socials a {
     margin-left: 15px;
+    transition: 0.4s;
   }
   a:hover {
     cursor: pointer;
+    transform: scale(1.25);
   }
   .facebook:hover {
     color: #3b5998;
