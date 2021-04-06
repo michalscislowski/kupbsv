@@ -50,7 +50,7 @@ export default function Main() {
                     <Calculatorsell />
                 </div>
             </div>
-            <div id="room-for-socials" className="room-for-socials">CENA BITKA</div>
+            <div id="room-for-socials" className="room-for-socials"></div>
             <div className="socials">
                 <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/8anach')} /></a>
                 <a className="instagram"><InstagramIcon aria-label="Instagram.com" onClick={() => window.open('https://www.instagram.com/8anach')}/></a>
