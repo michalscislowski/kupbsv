@@ -32,9 +32,7 @@ export default function Calculatorbuy() {
     //console.log(price);
     return (
         <form className="calculator" noValidate autoComplete="off">
-            <div>
-                <Livebsv />
-            </div>
+            <Livebsv />
             <div className="typebox">
                 <div className="textfield">
                     <TextField error={false} id="outlined-number" label="PLN" helperText="Min. wartość 100zł"  

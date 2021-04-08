@@ -1,10 +1,17 @@
 export default function Livebsv () {
+    
     return (
         <div className="livecoinwatch">
-            <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div className="livecoinwatch-widget-1" lcw-coin="BSV" lcw-base="PLN" lcw-secondary="BTC" lcw-period="d" lcw-color-tx="#ffffff" lcw-color-pr="#ffffff" lcw-color-bg="#000000" lcw-border-w="0" ></div>
+            <script src="https://widgets.coingecko.com/coingecko-coin-price-chart-widget.js" async></script>
+                <coingecko-coin-price-chart-widget  
+                    coin-id="bitcoin-cash-sv" 
+                    currency="pln" height="200" 
+                    locale="pl" 
+                    width="380">
+                </coingecko-coin-price-chart-widget>
             <style jsx> {`
                 .livecoinwatch {
-                    
+                    margin-bottom: 10px;
                     display: flex;
                     justify-content: center;
                 }
