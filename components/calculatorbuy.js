@@ -1,14 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Livebsv from './livebsv.js';
 
+const CoinGecko = require('coingecko-api');
+const CoinGeckoClient = new CoinGecko();
 
 
 export default function Calculatorbuy() {
     const [value, setValue] = useState(0);
     
-  
+    
+    const [price, setPrice] = useState();
+    useEffect(() => {
+        const fetchPrice = async () => {
+            const result = await CoinGeckoClient.simple.price({
+                ids: "bitcoin-cash-sv",
+                vs_currencies: "pln",
+            });
+            setPrice(parseFloat(result.data.['bitcoin-cash-sv'].pln));
+        
+        }; 
+        fetchPrice(); 
+        const timerId = setInterval(fetchPrice, 5000); // <-- start interval
+        return () => clearInterval(timerId); // <-- return cleanup
+    },[]);
+
+    useEffect(() => {
+        console.log(price); // <-- log updated state
+      }, [price]); // <-- run on price update
+    //console.log(price);
     return (
         <form className="calculator" noValidate autoComplete="off">
             <div>
@@ -24,16 +45,11 @@ export default function Calculatorbuy() {
                     }}
                     variant="outlined"
                     onKeyPress={(e) => {
-                        if (!/[0-9]/.test(e.key)) {
+                        if (!/[0-9.]/.test(e.key)) {
                           e.preventDefault();
                         }
                       }}
                     onChange={(e) => setValue(e.currentTarget.value)}
-                    onKeyPress={(e) => {
-                        if (!/[0-9]/.test(e.key)) {
-                          e.preventDefault();
-                        }
-                      }}
                     onBlur={(e) => {
                       if (e.currentTarget.value > 0 & e.currentTarget.value < 100 ) 
                         setValue(100);
@@ -44,7 +60,7 @@ export default function Calculatorbuy() {
                 </div>
                 
                 <div className="textfield">
-                    <TextField disabled id="outlined-disabled" value={(value/850).toFixed(8)} label="BSV" variant="outlined" 
+                    <TextField disabled id="outlined-disabled" value={(value/price).toFixed(8)} label="BSV" variant="outlined" 
                 />
                 </div>
             </div>
