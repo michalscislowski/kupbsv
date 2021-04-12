@@ -7,8 +7,7 @@ export default function Header() {
     <div className="main">
       <header className="header">
         <a className="logo" href="#">KUPBSV</a>
-        <a className="push" href="#">Money Button</a>
-        <a className="item" href="#">Login</a>
+        <a className="push" href="#">Login</a>
         <a className="item"><SimpleMenu /></a>
       </header>
 
@@ -29,7 +28,6 @@ export default function Header() {
     letter-spacing: 2px;
     text-decoration: none;
     padding: 20px 15px;
-    justify-content: flex-end;
   }
    .logo {
     font-weight: 700;
@@ -44,7 +42,7 @@ export default function Header() {
 
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   @media only screen and (max-width: 555px) {

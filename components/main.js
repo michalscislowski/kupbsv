@@ -7,7 +7,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import { request } from 'http';
-  
+import MoneyButton from '@moneybutton/react-money-button'
 
 export default function Main() {
     const [ showMe, setShowMe ] = useState(true);
@@ -50,7 +50,7 @@ export default function Main() {
                     <Calculatorsell />
                 </div>
             </div>
-            <div id="room-for-socials" className="room-for-socials"></div>
+            <div id="room-for-socials" className="room-for-socials"><a className="push"><MoneyButton to="kisiel@moneybutton.com" label="donate" amount="0.5" currency="USD"/></a></div>
             <div className="socials">
                 <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/8anach')} /></a>
                 <a className="instagram"><InstagramIcon aria-label="Instagram.com" onClick={() => window.open('https://www.instagram.com/8anach')}/></a>
@@ -63,6 +63,7 @@ export default function Main() {
                     display: flex;
                     flex: 1;
                     flex-direction: column;
+                    justify-content: center;
                     color: white;
                     margin-top: 78px;
                 }
