@@ -1,20 +1,20 @@
-//import MoneyButton from '@moneybutton/react-money-button';
 import SimpleMenu from '../components/simplemenu'
-import PayButton from '../components/moneybutton'
+import Authuser from '../components/auth'
 export default function Header() {
 
   return (
     <div className="main">
       <header className="header">
         <a className="logo" href="#">KUPBSV</a>
-        <a className="push" href="#">Login</a>
+        <a className="push" onClick={Authuser}>MONEYBUTTON</a>
+        <a className="item" href="#">Login</a>
         <a className="item"><SimpleMenu /></a>
       </header>
 
       <style jsx>{`
   .main {
     position: fixed;
-    top: 0;
+    top: 0; 
     left: 0;
     width: 100%;
     height: auto;
@@ -39,6 +39,7 @@ export default function Header() {
    .push {
     margin-left: auto;
     text-align: center;
+    cursor: pointer;
   }
 
   .header {
