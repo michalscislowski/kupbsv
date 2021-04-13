@@ -29,7 +29,7 @@ export default function Calculatorsell() {
             setRank(parseFloat(result.data['0'].market_cap_rank));
             setLow(parseFloat(result.data['0'].low_24h));
             setHigh(parseFloat(result.data['0'].high_24h));
-            setPercent24(parseFloat(result.data['0'].price_change_percentage_24h));
+            setPercent24(parseFloat(result.data['0'].price_change_percentage_24h).toFixed(2));
         };
         fetchData();
         const timerId = setInterval(fetchData, 5000);
@@ -51,7 +51,7 @@ export default function Calculatorsell() {
                 </div>
                 <div className="changingData">
                     <a>Cena: <strong>{price} PLN</strong></a>
-                    <a>Zmiana: <strong>{percent24.toFixed(2)}% </strong></a>
+                    <a>Zmiana: <strong>{percent24}% </strong></a>
                     <a>MarketCap Rank: <strong>#{rank} </strong></a>
                     <a>Min. 24h: <strong>{low} PLN </strong></a>
                     <a>Maks. 24h: <strong>{high} PLN </strong></a>
