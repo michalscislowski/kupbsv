@@ -1,14 +1,13 @@
+//import MoneyButton from '@moneybutton/react-money-button';
 import SimpleMenu from '../components/simplemenu'
-
-
+import PayButton from '../components/moneybutton'
 export default function Header() {
 
   return (
     <div className="main">
       <header className="header">
         <a className="logo" href="#">KUPBSV</a>
-        <a className="push" href="#">Money Button</a>
-        <a className="item" href="#">Login</a>
+        <a className="push" href="#">Login</a>
         <a className="item"><SimpleMenu /></a>
       </header>
 

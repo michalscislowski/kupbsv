@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Livebsv from './livebsv.js';
+import Image from 'next/image';
 
 const CoinGecko = require('coingecko-api');
 const CoinGeckoClient = new CoinGecko();
@@ -10,18 +10,30 @@ export default function Calculatorsell() {
     const [value, setValue] = useState(0);
 
     const [price, setPrice] = useState();
+    const [rank, setRank] = useState();
+    const [low, setLow] = useState();
+    const [high, setHigh] = useState();
+    const [percent24, setPercent24] = useState();
+
     useEffect(() => {
-        const fetchPrice = async () => {
-            const result = await CoinGeckoClient.simple.price({
+        const fetchData = async () => {
+            const result = await CoinGeckoClient.coins.markets({
+                vs_currency: "pln",
                 ids: "bitcoin-cash-sv",
-                vs_currencies: "pln",
+                order: "market_cap_desc",
+                per_page: "100",
+                page: "1",
+                price_change_percentage: "24h",
             });
-            setPrice(parseFloat(result.data.['bitcoin-cash-sv'].pln));
-        
-        }; 
-        fetchPrice(); 
-        const timerId = setInterval(fetchPrice, 5000); // <-- start interval
-        return () => clearInterval(timerId); // <-- return cleanup
+            setPrice(parseFloat(result.data['0'].current_price));
+            setRank(parseFloat(result.data['0'].market_cap_rank));
+            setLow(parseFloat(result.data['0'].low_24h));
+            setHigh(parseFloat(result.data['0'].high_24h));
+            setPercent24(parseFloat(result.data['0'].price_change_percentage_24h));
+        };
+        fetchData();
+        const timerId = setInterval(fetchData, 5000);
+        return () => clearInterval(timerId);
     },[]);
 
     useEffect(() => {
@@ -30,7 +42,27 @@ export default function Calculatorsell() {
 
     return (
         <form className="calculator" noValidate autoComplete="off">
-            <Livebsv />
+           {/* // <Livebsv /> */}
+           <div className="customWidget">
+                <div className="staticData">
+                    <Image
+                        src="/bsvlogo.svg"
+                        alt="BSV logo"
+                        width="64"
+                        height="64"
+                    />
+                    <h1>Bitcoin SV</h1>
+                    <p>BSV/PLN</p>            
+                </div>
+                <div className="changingData">
+                    <a>Cena: {price} PLN <br/> {percent24} % </a>
+                    <br/>
+                    <a>Ranking: #{rank} </a>
+                    <br/>
+                    <a>Min. 24h: {low} PLN </a>
+                    <a>Maks. 24h: {high} PLN </a>
+                </div>
+           </div>
             <div className="typebox">
                 <div className="textfield">
                     <TextField error={false} id="outlined-number" label="BSV" helperText="Min. wartość 0,01 BSV"  
@@ -71,6 +103,14 @@ export default function Calculatorsell() {
                     border-radius: 10px;
                     width: auto;
                     height: auto;
+                }
+                .customWidget {
+                    background: black;
+                    display: flex;
+                    box-shadow: 5px 4px;
+                    border-radius: 10px;
+                    width: 380px;
+                    margin-left: 10px;
                 }
                 .typebox {
                     width: auto;
