@@ -45,22 +45,16 @@ export default function Calculatorsell() {
            {/* // <Livebsv /> */}
            <div className="customWidget">
                 <div className="staticData">
-                    <Image
-                        src="/bsvlogo.svg"
-                        alt="BSV logo"
-                        width="64"
-                        height="64"
-                    />
-                    <h1>Bitcoin SV</h1>
-                    <p>BSV/PLN</p>            
+                    <a><Image src="/bsvlogo.svg" alt="BSV logo" width="64" height="64"/></a>
+                    <a>Bitcoin SV</a>
+                    <a>BSV/PLN</a>            
                 </div>
                 <div className="changingData">
-                    <a>Cena: {price} PLN <br/> {percent24} % </a>
-                    <br/>
-                    <a>Ranking: #{rank} </a>
-                    <br/>
-                    <a>Min. 24h: {low} PLN </a>
-                    <a>Maks. 24h: {high} PLN </a>
+                    <a>Cena: <strong>{price} PLN</strong></a>
+                    <a>Zmiana: <strong>{percent24.toFixed(2)}% </strong></a>
+                    <a>MarketCap Rank: <strong>#{rank} </strong></a>
+                    <a>Min. 24h: <strong>{low} PLN </strong></a>
+                    <a>Maks. 24h: <strong>{high} PLN </strong></a>
                 </div>
            </div>
             <div className="typebox">
@@ -105,12 +99,30 @@ export default function Calculatorsell() {
                     height: auto;
                 }
                 .customWidget {
-                    background: black;
+                    background: linear-gradient(#212121, #485849);
+                    border-radius: 5px;
+                    margin: 20px 10px;
+                    padding: 10px 15px;
                     display: flex;
-                    box-shadow: 5px 4px;
-                    border-radius: 10px;
-                    width: 380px;
-                    margin-left: 10px;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    min-height: 180px;
+                }
+                .changingData, .staticData {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin: auto;
+                }
+                .staticData {
+                    align-items: center;
+                }
+                .changingData a {
+                    line-height: 25px;
+                }
+                .staticData a:nth-child(2) {
+                    font-weight: bold;
+                    font-size: 22px;
                 }
                 .typebox {
                     width: auto;
