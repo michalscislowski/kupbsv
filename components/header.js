@@ -1,13 +1,14 @@
 import SimpleMenu from '../components/simplemenu'
 import Authuser from '../components/auth'
+import LoginDialog from '../components/logindialog'
+
 export default function Header() {
 
   return (
     <div className="main">
       <header className="header">
         <a className="logo" href="#">KUPBSV</a>
-        <a className="push" onClick={Authuser}>MONEYBUTTON</a>
-        <a className="item" href="#">Login</a>
+        <a className="push" ><LoginDialog /></a>
         <a><SimpleMenu /></a>
       </header>
 
@@ -40,15 +41,12 @@ export default function Header() {
     margin-left: auto;
     text-align: center;
     cursor: pointer;
+    margin-right: 20px;
   }
 
   .header {
     display: flex;
     justify-content: space-between;
-  }
-
-  .item {
-    margin-right: 20px;
   }
 
   @media only screen and (max-width: 555px) {
