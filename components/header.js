@@ -1,5 +1,4 @@
 import SimpleMenu from '../components/simplemenu'
-import Authuser from '../components/auth'
 import LoginDialog from '../components/logindialog'
 
 export default function Header() {

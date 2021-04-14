@@ -8,6 +8,7 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import Authuser from '../components/auth'
 
 const styles = (theme) => ({
   root: {
@@ -75,7 +76,7 @@ export default function LoginDialog() {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" autoFocus onClick={handleClose} color="primary">
+          <Button variant="contained" autoFocus onClick={handleClose, Authuser} color="primary">
             Przejdź do MoneyButton
           </Button>
         </DialogActions>
