@@ -8,7 +8,7 @@ export default function Header() {
         <a className="logo" href="#">KUPBSV</a>
         <a className="push" onClick={Authuser}>MONEYBUTTON</a>
         <a className="item" href="#">Login</a>
-        <a className="item"><SimpleMenu /></a>
+        <a><SimpleMenu /></a>
       </header>
 
       <style jsx>{`
@@ -45,6 +45,10 @@ export default function Header() {
   .header {
     display: flex;
     justify-content: space-between;
+  }
+
+  .item {
+    margin-right: 20px;
   }
 
   @media only screen and (max-width: 555px) {

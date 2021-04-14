@@ -81,16 +81,7 @@ export default function Calculatorsell() {
                 />
                 </div>
             </div>
-            <div className="changebutton">
-                <Button variant="outlined" color="default" style={{ width: 380 }}>
-                    BLIK
-                    </Button>
-            </div>
-            <div className="changebutton">
-                <Button variant="outlined" color="default" style={{ width: 380 }}>
-                    tPAY
-                    </Button>
-            </div>
+
             <style jsx> {`
                 .calculator {
                     border: black solid 0px;
