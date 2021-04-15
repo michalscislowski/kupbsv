@@ -33,13 +33,13 @@ export default function Main() {
             <div className="box">
                 <div className="buttons">
 
-                    <Button onClick={toggle} variant="contained" color="primary" style={{width: 120, marginRight: 10, backgroundColor: '#4caf50', }}>
+                    <Button onClick={toggle} variant="contained" color="primary" style={{width: 120, marginRight: 10, backgroundColor: '#2e7d32', }}>
                         KUP
                     </Button>
-                    <Button onClick={toggle2} variant="contained" color="secondary" style={{width: 120, marginRight: 10}}>
+                    <Button onClick={toggle2} variant="contained" color="secondary" style={{width: 120, marginRight: 10, backgroundColor: '#b71c1c'}}>
                         SPRZEDAJ
                     </Button>
-                    <Button variant="contained" color="primary" style={{width: 120,}}>
+                    <Button variant="contained" color="primary" style={{width: 120, backgroundColor: '#0d47a1'}}>
                         HISTORIA
                     </Button>
                 </div>
