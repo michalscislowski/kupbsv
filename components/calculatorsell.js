@@ -139,6 +139,28 @@ export default function Calculatorsell() {
                     .textfield {
                         width: 50%;
                         margin: 10px 5px;
+                    }
+                    .customWidget {
+                        font-size: 11px;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                    }
+                    .staticData a:nth-child(2) {
+                        font-size: 15px;
+                        line-height: 26px;
+                    }
+                    .staticData {
+                        margin-right: 15px;
+                    }
+                }
+                @media only screen and (max-width: 350px) {
+                    .customWidget {
+                        font-size: 9px;
+                    }
+                    .staticData a:nth-child(2) {
+                        font-size: 14px;
+                        line-height: 26px;
+                    }
                 }
 
             `}</style>

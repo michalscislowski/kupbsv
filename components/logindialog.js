@@ -21,14 +21,14 @@ const styles = (theme) => ({
     top: theme.spacing(1),
     color: theme.palette.grey[500],
   },
-  
+
 });
 
 const DialogTitle = withStyles(styles)((props) => {
   const { children, classes, onClose, ...other } = props;
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
-      <Typography variant="h5" style={{fontWeight:'900'}}>{children}</Typography>
+      <Typography variant="h5" style={{ fontWeight: '900' }}>{children}</Typography>
       {onClose ? (
         <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
           <CloseIcon />
@@ -63,8 +63,8 @@ export default function LoginDialog() {
 
   return (
     <div>
-      <Button color="secondary" onClick={handleClickOpen} style={{color: '#ffffff', fontSize: '16px', }}>
-        Zaloguj Się
+      <Button color="secondary" onClick={handleClickOpen} style={{ color: '#ffffff', fontSize: '16px', }}>
+        <a classname="textDialog">Zaloguj Się</a>
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
@@ -81,6 +81,13 @@ export default function LoginDialog() {
           </Button>
         </DialogActions>
       </Dialog>
+      <style jsx>{`
+        @media only screen and (max-width: 350px) {
+          a {
+            font-size: 12px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
