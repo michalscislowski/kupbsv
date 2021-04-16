@@ -7,6 +7,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import handleAuthuser from '../components/handleauth'  
+import {useRouter} from "next/router";
 
 export default function Main() {
     const [ showMe, setShowMe ] = useState(true);
@@ -25,6 +26,12 @@ export default function Main() {
         else {
             setShowMe(false);
         }
+    }
+
+    const { query } = useRouter();
+
+    if (query.code) {
+        handleAuthuser();
     }
     
     return (
