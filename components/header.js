@@ -49,14 +49,14 @@ export default function Header() {
   }
 
   @media only screen and (max-width: 555px) {
-    .item, .push, .logo {
+    .push, .logo {
       font-size: 18px;	
       margin auto;
     }
   }
 
   @media only screen and (max-width: 400px) {
-    .item, .push, .logo {
+    .push, .logo {
       font-size: 13px;	
       margin auto;
     }
