@@ -7,5 +7,5 @@ export default async function handleAuthuser () {
     const { id, name } = await client.getIdentity()
     console.log(`The id is ${id} and the name is ${name}`)
     const profile = await client.getUserProfile(id)
-    console.log(JSON.stringify(profile.email))
+    console.log(JSON.stringify(profile))
 }
