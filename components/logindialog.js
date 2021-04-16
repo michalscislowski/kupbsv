@@ -63,7 +63,7 @@ export default function LoginDialog() {
 
   return (
     <div>
-      <Button color="Secondary" onClick={handleClickOpen} style={{color: '#ffffff', fontSize: '16px', }}>
+      <Button color="secondary" onClick={handleClickOpen} style={{color: '#ffffff', fontSize: '16px', }}>
         Zaloguj Się
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
