@@ -1,13 +1,43 @@
 import SimpleMenu from '../components/simplemenu'
 import LoginDialog from '../components/logindialog'
+import {useRouter} from "next/router";
+import handleAuthuser from '../components/handleauth'
+import React, { useState, useEffect } from 'react';
 
 export default function Header() {
+
+  const { query } = useRouter();
+
+  const [name, setName] = useState('')
+  const [primaryPaymail, setPrimaryPaymail] = useState('')
+  const [email, setEmail] = useState('')
+  const [avatarUrl, setAvatarUrl] = useState('')
+  const [userId, setUserId] = useState('')
+
+  if (query.code) {
+    const userProfile = async() => {
+        const authResult = await handleAuthuser();
+        setName(authResult.name);
+        setPrimaryPaymail(authResult.primaryPaymail);
+        setEmail(authResult.email);
+        setAvatarUrl(authResult.avatarUrl);
+        setUserId(authResult.id);
+      }
+    userProfile();
+  }
+  useEffect(() => {
+    console.log(name);
+    console.log(primaryPaymail);
+    console.log(email);
+    console.log(avatarUrl);
+    console.log(userId);
+  },[userId]);
 
   return (
     <div className="main">
       <header className="header">
         <a className="logo" href="#">KUPBSV</a>
-        <a className="push" ><LoginDialog /></a>
+        <a className="push" ><LoginDialog name={name} userId={userId} primaryPaymail = {primaryPaymail} /></a>
         <a><SimpleMenu /></a>
       </header>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -51,8 +51,12 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function LoginDialog() {
+export default function LoginDialog(props) {
   const [open, setOpen] = React.useState(false);
+  const name = props.name;
+  useEffect(() => {
+    console.log(name);
+  },[name]);
 
   const handleClickOpen = () => {
     setOpen(true);
