@@ -6,11 +6,12 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import handleAuthuser from '../components/handleauth'  
-import {useRouter} from "next/router";
+  
+
 
 export default function Main() {
     const [ showMe, setShowMe ] = useState(true);
+
     function toggle (){
         if  (!showMe) {
             setShowMe(true);
@@ -27,13 +28,7 @@ export default function Main() {
             setShowMe(false);
         }
     }
-
-    const { query } = useRouter();
-
-    if (query.code) {
-        handleAuthuser();
-    }
-    
+  
     return (
         <main className="main">
             <div className="box">
@@ -45,7 +40,7 @@ export default function Main() {
                     <Button onClick={toggle2} variant="contained" color="secondary" style={{width: 120, marginRight: 10}}>
                         SPRZEDAJ
                     </Button>
-                    <Button onClick={handleAuthuser} variant="contained" color="primary" style={{width: 120,}}>
+                    <Button variant="contained" color="primary" style={{width: 120,}}>
                         HISTORIA
                     </Button>
                 </div>
