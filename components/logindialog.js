@@ -8,7 +8,9 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-import Authuser from '../components/auth'
+import Authuser from '../components/auth';
+import Avatar from '@material-ui/core/Avatar';
+
 
 const styles = (theme) => ({
   root: {
@@ -54,9 +56,11 @@ const DialogActions = withStyles((theme) => ({
 export default function LoginDialog(props) {
   const [open, setOpen] = React.useState(false);
   const name = props.name;
+  const avatar = props.userAvatar;
   useEffect(() => {
     console.log(name);
   },[name]);
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -68,7 +72,8 @@ export default function LoginDialog(props) {
   return (
     <div>
       <Button color="secondary" onClick={handleClickOpen} style={{ color: '#ffffff', fontSize: '16px', }}>
-        <a classname="textDialog">Zaloguj Się</a>
+        {!name ? 'Zaloguj Się' : <Avatar src={avatar}  style={{width: "30px", height: "30px", marginRight:"10px"}} />}
+        {!name ? '' : name}
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
