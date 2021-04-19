@@ -68,7 +68,7 @@ export default function LoginDialog(props) {
   return (
     <div>
       <Button color="secondary" onClick={handleClickOpen} style={{ color: '#ffffff', fontSize: '16px', }}>
-        <a classname="textDialog">Zaloguj Się</a>
+        Zaloguj Się
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
