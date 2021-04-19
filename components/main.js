@@ -6,11 +6,12 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import { request } from 'http';
   
+
 
 export default function Main() {
     const [ showMe, setShowMe ] = useState(true);
+
     function toggle (){
         if  (!showMe) {
             setShowMe(true);
@@ -27,7 +28,7 @@ export default function Main() {
             setShowMe(false);
         }
     }
-    
+  
     return (
         <main className="main">
             <div className="box">
