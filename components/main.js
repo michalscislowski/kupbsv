@@ -11,20 +11,10 @@ import handleAuthuser from '../components/handleauth'
 export default function Main() {
     const [ showMe, setShowMe ] = useState(true);
     function toggle (){
-        if  (!showMe) {
-            setShowMe(true);
-        }
-        else {
-            setShowMe(true);
-        }
+        !showMe ? setShowMe(true) : setShowMe(true);
     }
     function toggle2 (){
-        if  (showMe) {
-            setShowMe(false);
-        }
-        else {
-            setShowMe(false);
-        }
+        showMe ? setShowMe(false) : setShowMe(false);
     }
     
     return (
