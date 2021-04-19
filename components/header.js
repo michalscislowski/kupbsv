@@ -3,6 +3,7 @@ import LoginDialog from '../components/logindialog'
 import {useRouter} from "next/router";
 import handleAuthuser from '../components/handleauth'
 import React, { useState, useEffect } from 'react';
+import Profile from '../components/profile';
 
 export default function Header() {
 
@@ -37,7 +38,10 @@ export default function Header() {
     <div className="main">
       <header className="header">
         <a className="logo" href="#">KUPBSV</a>
-        <a className="push" ><LoginDialog name={name} userId={userId} primaryPaymail = {primaryPaymail} userAvatar = {avatarUrl} /></a>
+        <a className="push" >
+          {!name ? <LoginDialog name={name} userId={userId} primaryPaymail={primaryPaymail} userAvatar = {avatarUrl}/> :
+          <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userAvatar = {avatarUrl}/> }
+        </a>
         <a><SimpleMenu /></a>
       </header>
 
