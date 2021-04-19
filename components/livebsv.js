@@ -51,7 +51,7 @@ export default function Livebsv() {
             </div>
             <div className="changingData">
                 <a>Cena: <strong>{price} PLN</strong></a>
-                <a>Zmiana: <strong>{percent24}% </strong></a>
+                <a>Zmiana: <strong className={percent24 > 0 ? "green" : "red" }>{percent24}% </strong></a>
                 <a>MarketCap Rank: <strong>#{rank} </strong></a>
                 <a>Min. 24h: <strong>{low} PLN </strong></a>
                 <a>Maks. 24h: <strong>{high} PLN </strong></a>
@@ -66,6 +66,7 @@ export default function Livebsv() {
                 flex-direction: row;
                 justify-content: space-between;
                 min-height: 180px;
+                letter-spacing: 1px;
             }
             .changingData, .staticData {
                 display: flex;
@@ -79,15 +80,26 @@ export default function Livebsv() {
             .changingData a {
                 line-height: 25px;
             }
+            .changingData strong{
+                text-decoration: underline;
+            }
             .staticData a:nth-child(2) {
                 font-weight: bold;
                 font-size: 22px;
+            }
+            .red {
+                color: #d64f4f;
+            }
+            .green {
+                color: #4caf50;
+                //color: #56ffD3;
             }
             @media only screen and (max-width: 499px) {
                 .customWidget {
                     font-size: 11px;
                     margin-top: 10px;
                     margin-bottom: 10px;
+                    letter-spacing: 0;
                 }
                 .staticData a:nth-child(2) {
                     font-size: 15px;
