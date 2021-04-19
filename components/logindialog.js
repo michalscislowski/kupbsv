@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import Authuser from '../components/auth';
-import Avatar from '@material-ui/core/Avatar';
+
 
 
 const styles = (theme) => ({
@@ -72,8 +72,7 @@ export default function LoginDialog(props) {
   return (
     <div>
       <Button color="secondary" onClick={handleClickOpen} style={{ color: '#ffffff', fontSize: '16px', }}>
-        {!name ? 'Zaloguj Się' : <Avatar src={avatar}  style={{width: "30px", height: "30px", marginRight:"10px"}} />}
-        {!name ? '' : name}
+        Zaloguj się
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
