@@ -14,15 +14,19 @@ export default function Header() {
   const [email, setEmail] = useState('')
   const [avatarUrl, setAvatarUrl] = useState('')
   const [userId, setUserId] = useState('')
+  const [userAmount, setUserAmount] = useState('')
+  const [userCurrency, setUserCurrency] = useState('')
 
   if (query.code) {
     const userProfile = async() => {
-        const authResult = await handleAuthuser();
-        setName(authResult.name);
-        setPrimaryPaymail(authResult.primaryPaymail);
-        setEmail(authResult.email);
-        setAvatarUrl(authResult.avatarUrl);
-        setUserId(authResult.id);
+        const {profile, balance} = await handleAuthuser();
+        setName(profile.name);
+        setPrimaryPaymail(profile.primaryPaymail);
+        setEmail(profile.email);
+        setAvatarUrl(profile.avatarUrl);
+        setUserAmount(balance.amount);
+        setUserCurrency(balance.currency);
+        setUserId(profile.id);
       }
     userProfile();
   }
@@ -32,6 +36,8 @@ export default function Header() {
     console.log(email);
     console.log(avatarUrl);
     console.log(userId);
+    console.log(userAmount);
+    console.log(userCurrency);
   },[userId]);
 
   return (
@@ -40,7 +46,7 @@ export default function Header() {
         <a className="logo" href="#">KUPBSV</a>
         <a className="push" >
           {!name ? <LoginDialog name={name} userId={userId} primaryPaymail={primaryPaymail} userAvatar = {avatarUrl}/> :
-          <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userAvatar = {avatarUrl}/> }
+          <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency}/> }
         </a>
         <a><SimpleMenu /></a>
       </header>
