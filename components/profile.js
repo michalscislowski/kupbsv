@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
+import History from '../components/history'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,6 +55,10 @@ export default function Profile(props) {
 
   const name = props.name;
   const avatar = props.userAvatar;
+  const email = props.userEmail;
+  const paymail = props.primaryPaymail;
+  const amount = props.userAmount;
+  const currency = props.userCurrency;
 
   return (
     <div className={classes.root}>
@@ -74,9 +79,11 @@ export default function Profile(props) {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem href="/"  component="a" onClick={handleClose}>Logout</MenuItem>
+                    <History />
+                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Balans konta: {amount} {currency} </MenuItem>
+                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Email: {email} </MenuItem>
+                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Paymail: {paymail} </MenuItem>
+                    <MenuItem href="/" component="a" onClick={handleClose}>Wyloguj</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

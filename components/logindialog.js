@@ -56,7 +56,6 @@ const DialogActions = withStyles((theme) => ({
 export default function LoginDialog(props) {
   const [open, setOpen] = React.useState(false);
   const name = props.name;
-  const avatar = props.userAvatar;
   useEffect(() => {
     console.log(name);
   },[name]);
