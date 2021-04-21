@@ -16,16 +16,28 @@ export default function Header() {
   const [userId, setUserId] = useState('')
   const [userAmount, setUserAmount] = useState('')
   const [userCurrency, setUserCurrency] = useState('')
+  // const [paymentsId, setPaymentId] = useState('')
+  // const [paymentsDate, setPaymentDate] = useState('')
+  // const [paymentsTxid, setPaymentTxid] = useState('')
+  // const [paymentsAmount, setPaymentAmount] = useState('')
+  // const [paymentsCurrency, setPaymentCurrency] = useState('')
+  // const [paymentsStatus, setPaymentStatus] = useState('')
 
   if (query.code) {
     const userProfile = async() => {
-        const {profile, balance} = await handleAuthuser();
+        const {profile, balance, payments} = await handleAuthuser();
         setName(profile.name);
         setPrimaryPaymail(profile.primaryPaymail);
         setEmail(profile.email);
         setAvatarUrl(profile.avatarUrl);
         setUserAmount(balance.amount);
         setUserCurrency(balance.currency);
+        // setPaymentId(payments.id);
+        // setPaymentDate(payments.created-at);
+        // setPaymentTxid(payments.normalized-txid);
+        // setPaymentAmount(payments.amount);
+        // setPaymentCurrency(payments.currency);
+        // setPaymentStatus(payments.status)
         setUserId(profile.id);
       }
     userProfile();
@@ -43,7 +55,7 @@ export default function Header() {
   return (
     <div className="main">
       <header className="header">
-        <a className="logo" href="#">KUPBSV</a>
+        <a className="logo" href="/">KUPBSV</a>
         <a className="push" >
           {!name ? <LoginDialog name={name} userId={userId} primaryPaymail={primaryPaymail} userAvatar = {avatarUrl}/> :
           <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency}/> }
