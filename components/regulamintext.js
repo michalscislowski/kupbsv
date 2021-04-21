@@ -13,7 +13,7 @@ export default function RegulaminText() {
                 <p>3. Dane Osobowe – dane osobowe Użytkowników w rozumieniu art. 6 UODO lub art. 4 pkt 1 RODO przekazywane w związku z korzystaniem z Usługi;</p>
                 <p>4. Przetwarzanie danych osobowych – wszelkie operacje dokonywane na danych osobowych w rozumieniu art. 7 pkt 2 UODO lub art. 4 pkt 2 RODO;</p>
                 <p>5. RODO - Rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (Dz. U. UE 2016 poz. L119), które zacznie być stosowane w Unii Europejskiej od dnia 25 maja 2018r.;</p>
-                <p>6. Serwis – serwis internetowy udostępniany za pośrednictwem domeny bitcantor.com oraz subdomen;</p>
+                <p>6. Serwis – serwis internetowy udostępniany za pośrednictwem domeny kupbsv.pl oraz subdomen;</p>
                 <p>7. UODO - ustawa z dnia 29 sierpnia 1997 r. o ochronie danych osobowych (tekst jednolity Dz. U. z 2016 r. poz. 922 ze zm.);</p>
                 <p>8. Usługi – świadczone przez Banach Group usługi drogą elektroniczną polegające na zapewnieniu możliwości kojarzenia Użytkowników za pośrednictwem Serwisu w celu zawierania przez nich transakcji kupna lub sprzedaży kryptowalut dostępnych w Serwisie;</p>
                 <p>9. Użytkownik – osoby fizyczne lub prawne, które zaakceptowały Regulamin Serwisu i zawarły z Banach Group Sp. z o.o. umowę o świadczenie Usługi.</p>
@@ -28,10 +28,10 @@ export default function RegulaminText() {
                 <p>1. Korzystanie z Usług wiąże się z koniecznością podania przez Użytkowników Danych Osobowych. Brak podania wszystkich żądanych przez Banach Group Danych Osobowych może powodować niemożność świadczenia przez Banach Group Usług. </p>
                 <p>2. Serwis zbiera informacje podane przez Użytkownika. </p>
                 <p>3. Serwis może zapisać ponadto informacje o parametrach połączenia (oznaczenie czasu, adres IP, itd.).</p>
-                <p>4.Dane pozyskane od Użytkowników nie są udostępniane podmiotom trzecim, chyba że; <br/>
+                <p>4. Dane pozyskane od Użytkowników nie są udostępniane podmiotom trzecim, chyba że; <br/>
                 &middot;   użytkownik wyrazi na to zgodę; <br/>
                 &middot;   będzie to uzasadnione przepisami prawa; <br/>
-                &middot;   będzie to niezbędne w celu świadczenia Usług, w szczególności z zakresie technicznym, serwisów obsługujących płatności lub też innych podmiotów, z którymi Digital Money współpracuje przy realizacji Usługi.</p> 
+                &middot;   będzie to niezbędne w celu świadczenia Usług, w szczególności z zakresie technicznym, serwisów obsługujących płatności lub też innych podmiotów, z którymi Banach Group współpracuje przy realizacji Usługi.</p> 
             </a>
             <a className="zakres">
                 <h3>IV.Zakres Danych Osobowych i ich przetwarzania</h3>
