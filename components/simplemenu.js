@@ -28,10 +28,11 @@ export default function SimpleMenu() {
         onClose={handleClose}
       >
         <MenuItem href="/regulamin"  component="a" onClick={handleClose }>Regulamin</MenuItem>
-        <MenuItem href="/my"  component="a" onClick={handleClose }>O nas</MenuItem>
-        <MenuItem href="/blog"  component="a" onClick={handleClose }>BLOG</MenuItem>
+        <MenuItem href="/onas"  component="a" onClick={handleClose }>O nas</MenuItem>
+        <MenuItem href="/faq"  component="a" onClick={handleClose }>FAQ</MenuItem>  
         <MenuItem href="/kontakt"  component="a" onClick={handleClose }>Kontakt</MenuItem>
         <MenuItem href="/rodo"  component="a" onClick={handleClose }>RODO</MenuItem>
+        <MenuItem href="/blog"  component="a" onClick={handleClose }>BLOG</MenuItem>
       </Menu>
     </div>
   );

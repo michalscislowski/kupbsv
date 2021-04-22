@@ -25,7 +25,7 @@ export default function Header() {
 
   if (query.code) {
     const userProfile = async() => {
-        const {profile, balance, payments} = await handleAuthuser();
+    const {profile, balance/*, payments*/} = await handleAuthuser();
         setName(profile.name);
         setPrimaryPaymail(profile.primaryPaymail);
         setEmail(profile.email);
