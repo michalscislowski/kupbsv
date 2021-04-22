@@ -124,16 +124,15 @@ export default function RegulaminText() {
             </ol>
             <style jsx> {`
                 .main {
-                    display: flex;
-                    flex: 1;
-                    flex-direction: column;
-                    margin-top: 78px;
-                    margin-left: 20px;
+                    margin-top: 110px;
+                    padding: 0 80px 40px 40px;
+                    text-align: justify;
                 }
                 li {
                     line-height: 25px;
                 }
                 .rozdzialy {
+                    margin-left: -20px;
                     list-style-type: upper-roman;
                 }
                 .rozdzialy > li {
@@ -150,6 +149,22 @@ export default function RegulaminText() {
                 }
                 ul {
                     list-style-type: initial;
+                }
+                @media only screen and (max-width: 499px) {
+                    .main {
+                        margin: 0;
+                        width: 100%;
+                        margin-top: 98px;
+                        padding-right: 30px;
+                        margin-left: -10px;
+                        text-align: justify;
+                    }
+                    .rozdzialy > li > ol > li{
+                        margin-left: -20px;
+                    }
+                    .rozdzialy > li > ol, .rozdzialy > li > ol > li > ul {
+                        margin-left: -10px;
+                    }
                 }
             `}</style>
         </main>
