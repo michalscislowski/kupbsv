@@ -4,6 +4,7 @@ import {useRouter} from "next/router";
 import handleAuthuser from '../components/handleauth'
 import React, { useState, useEffect } from 'react';
 import Profile from '../components/profile';
+import DarkMode from './darkMode';
 
 export default function Header() {
 
@@ -62,7 +63,9 @@ export default function Header() {
         </a>
         <a><SimpleMenu /></a>
       </header>
-
+      <div className="changeTheme">
+        <DarkMode />
+      </div>
       <style jsx>{`
   .main {
     position: fixed;
@@ -98,6 +101,11 @@ export default function Header() {
   .header {
     display: flex;
     justify-content: space-between;
+  }
+  .changeTheme {
+    position: absolute;
+    top: 100px;
+    right: 20px;
   }
 
   @media only screen and (max-width: 555px) {
