@@ -50,9 +50,9 @@ export default function Livebsv() {
                 <a>BSV/PLN</a>
             </div>
             <div className="changingData">
-                <a>Cena: <strong>{price} PLN</strong></a>
-                <a>Zmiana: <strong className={percent24 > 0 ? "green" : "red" }>{percent24}% </strong></a>
-                <a>MarketCap Rank: <strong>#{rank} </strong></a>
+                <a>1 BSV ~ <strong>{price} PLN</strong></a>
+                <a>Zmiana 24h: <strong className={percent24 > 0 ? "green" : "red" }>{percent24}% </strong></a>
+                <a>Market Cap Rank: <strong>#{rank} </strong></a>
                 <a>Min. 24h: <strong>{low} PLN </strong></a>
                 <a>Maks. 24h: <strong>{high} PLN </strong></a>
             </div>
@@ -79,9 +79,6 @@ export default function Livebsv() {
             }
             .changingData a {
                 line-height: 25px;
-            }
-            .changingData strong{
-                text-decoration: underline;
             }
             .staticData a:nth-child(2) {
                 font-weight: bold;
