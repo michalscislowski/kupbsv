@@ -1,13 +1,65 @@
 import SimpleMenu from '../components/simplemenu'
 import LoginDialog from '../components/logindialog'
+import {useRouter} from "next/router";
+import handleAuthuser from '../components/handleauth'
+import React, { useState, useEffect } from 'react';
+import Profile from '../components/profile';
 
 export default function Header() {
+
+  const { query } = useRouter();
+
+  const [name, setName] = useState('')
+  const [primaryPaymail, setPrimaryPaymail] = useState('')
+  const [email, setEmail] = useState('')
+  const [avatarUrl, setAvatarUrl] = useState('')
+  const [userId, setUserId] = useState('')
+  const [userAmount, setUserAmount] = useState('')
+  const [userCurrency, setUserCurrency] = useState('')
+  // const [paymentsId, setPaymentId] = useState('')
+  // const [paymentsDate, setPaymentDate] = useState('')
+  // const [paymentsTxid, setPaymentTxid] = useState('')
+  // const [paymentsAmount, setPaymentAmount] = useState('')
+  // const [paymentsCurrency, setPaymentCurrency] = useState('')
+  // const [paymentsStatus, setPaymentStatus] = useState('')
+
+  if (query.code) {
+    const userProfile = async() => {
+    const {profile, balance/*, payments*/} = await handleAuthuser();
+        setName(profile.name);
+        setPrimaryPaymail(profile.primaryPaymail);
+        setEmail(profile.email);
+        setAvatarUrl(profile.avatarUrl);
+        setUserAmount(balance.amount);
+        setUserCurrency(balance.currency);
+        // setPaymentId(payments.id);
+        // setPaymentDate(payments.created-at);
+        // setPaymentTxid(payments.normalized-txid);
+        // setPaymentAmount(payments.amount);
+        // setPaymentCurrency(payments.currency);
+        // setPaymentStatus(payments.status)
+        setUserId(profile.id);
+      }
+    userProfile();
+  }
+  useEffect(() => {
+    console.log(name);
+    console.log(primaryPaymail);
+    console.log(email);
+    console.log(avatarUrl);
+    console.log(userId);
+    console.log(userAmount);
+    console.log(userCurrency);
+  },[userId]);
 
   return (
     <div className="main">
       <header className="header">
-        <a className="logo" href="#">KUPBSV</a>
-        <a className="push" ><LoginDialog /></a>
+        <a className="logo" href="/">KUPBSV</a>
+        <a className="push" >
+          {!name ? <LoginDialog name={name} userId={userId} primaryPaymail={primaryPaymail} userAvatar = {avatarUrl}/> :
+          <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency}/> }
+        </a>
         <a><SimpleMenu /></a>
       </header>
 

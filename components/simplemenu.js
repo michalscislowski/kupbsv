@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
-import Link from 'next/link';
 
 export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -28,11 +27,12 @@ export default function SimpleMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <Link href="/regulamin"><MenuItem onClick={handleClose}>Regulamin</MenuItem></Link>
-        <Link href="/my"><MenuItem onClick={handleClose}>O nas</MenuItem></Link>
-        <Link href="/blog"><MenuItem onClick={handleClose}>BLOG</MenuItem></Link>
-        <Link href="/kontakt"><MenuItem onClick={handleClose}>Kontakt</MenuItem></Link>
-        <Link href="/rodo"><MenuItem onClick={handleClose}>RODO</MenuItem></Link>
+        <MenuItem href="/regulamin"  component="a" onClick={handleClose }>Regulamin</MenuItem>
+        <MenuItem href="/onas"  component="a" onClick={handleClose }>O nas</MenuItem>
+        <MenuItem href="/faq"  component="a" onClick={handleClose }>FAQ</MenuItem>  
+        <MenuItem href="/kontakt"  component="a" onClick={handleClose }>Kontakt</MenuItem>
+        <MenuItem href="/rodo"  component="a" onClick={handleClose }>RODO</MenuItem>
+        <MenuItem href="/blog"  component="a" onClick={handleClose }>BLOG</MenuItem>
       </Menu>
     </div>
   );

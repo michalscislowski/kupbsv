@@ -6,31 +6,31 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import handleAuthuser from '../components/handleauth'  
+  
+
 
 export default function Main() {
     const [ showMe, setShowMe ] = useState(true);
+
     function toggle (){
         !showMe ? setShowMe(true) : setShowMe(true);
     }
     function toggle2 (){
         showMe ? setShowMe(false) : setShowMe(false);
     }
-    
+  
     return (
         <main className="main">
             <div className="box">
                 <div className="buttons">
 
-                    <Button onClick={toggle} variant="contained" color="primary" style={{width: 120, marginRight: 10, backgroundColor: '#4caf50', }}>
+                    <Button onClick={toggle} variant="contained" color="primary" style={{width: '50%', marginRight: 10, marginLeft: 10, backgroundColor: '#2e7d32', }}>
                         KUP
                     </Button>
-                    <Button onClick={toggle2} variant="contained" color="secondary" style={{width: 120, marginRight: 10}}>
+                    <Button onClick={toggle2} variant="contained" color="secondary" style={{width: '50%', marginRight: 10, backgroundColor: '#b71c1c'}}>
                         SPRZEDAJ
                     </Button>
-                    <Button onClick={handleAuthuser} variant="contained" color="primary" style={{width: 120,}}>
-                        HISTORIA
-                    </Button>
+
                 </div>
                 <div style={{ display: showMe?"block":"none" }}>
                     <Calculatorbuy />
@@ -44,7 +44,7 @@ export default function Main() {
                 <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/8anach')} /></a>
                 <a className="instagram"><InstagramIcon aria-label="Instagram.com" onClick={() => window.open('https://www.instagram.com/8anach')}/></a>
                 <a className="twitter"><TwitterIcon aria-label="Twitter.com" onClick={() => window.open('https://twitter.com/8anach')}/></a>
-                <a className="twetch"><a aria-label="Twetch.com" onClick={() => window.open('https://twetch.app/u/40566')}/></a>
+                <a className="twetch" aria-label="Twetch.com" onClick={() => window.open('https://twetch.app/u/40566')}></a>
                 <a className="youtube"><YouTubeIcon aria-label="Youtube.com" onClick={() => window.open('https://www.youtube.com/channel/UCegE3WW7U2-Wb__mWK3oKJA')}/></a>
             </div>
             <style jsx> {`
