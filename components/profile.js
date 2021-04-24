@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
@@ -53,12 +53,16 @@ export default function Profile(props) {
     prevOpen.current = open;
   }, [open]);
 
-  const name = props.name;
-  const avatar = props.userAvatar;
-  const email = props.userEmail;
-  const paymail = props.primaryPaymail;
-  const amount = props.userAmount;
-  const currency = props.userCurrency;
+  
+
+  
+    const name = props.name;
+    const avatar = props.userAvatar;
+    const email = props.userEmail;
+    const paymail = props.primaryPaymail;
+    const amount = props.userAmount;
+    const currency = props.userCurrency;
+ 
 
   return (
     <div className={classes.root}>
