@@ -53,12 +53,8 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function LoginDialog(props) {
+export default function LoginDialog() {
   const [open, setOpen] = React.useState(false);
-  const name = props.name;
-  useEffect(() => {
-    console.log(name);
-  },[name]);
 
 
   const handleClickOpen = () => {
