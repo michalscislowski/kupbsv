@@ -2,8 +2,10 @@ import Head from 'next/head'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import ONasText from '../components/onastext'
+import { useRouter} from 'next/router'
 
-export default function Regulamin() {
+export default function Onas() {
+  const router = useRouter();
     return (
       <div className="container">
         <Head>
