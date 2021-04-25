@@ -24,7 +24,7 @@ export default function Header() {
   // const [paymentsCurrency, setPaymentCurrency] = useState('')
   // const [paymentsStatus, setPaymentStatus] = useState('')
 
-  if (query.code) {
+  if (query.code && !name) {
     const userProfile = async() => {
     const {profile, balance/*, payments*/} = await handleAuthuser();
         setName(profile.name);
@@ -58,7 +58,7 @@ export default function Header() {
       <header className="header">
         <a className="logo" href="/">KUPBSV</a>
         <a className="push" >
-          {!name ? <LoginDialog name={name} userId={userId} primaryPaymail={primaryPaymail} userAvatar = {avatarUrl}/> :
+          {!name ? <LoginDialog /> :
           <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency}/> }
         </a>
         <a><SimpleMenu /></a>

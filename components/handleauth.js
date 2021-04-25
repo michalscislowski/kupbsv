@@ -5,7 +5,7 @@ export default async function handleAuthuser () {
     const client = new MoneyButtonClient('cd8072b2a8b1557cc7ad71d96d038658');
     client.handleAuthorizationResponse();
 
-    const refreshToken = client.getRefreshToken();
+    //const refreshToken = client.getRefreshToken();
 
     const { id } = await client.getIdentity()
     //console.log(`The id is ${id} and the name is ${name}`)
@@ -19,6 +19,6 @@ export default async function handleAuthuser () {
         profile: profile,
         balance: balance,
         // payments: payments
-        refreshToken: refreshToken
+        //refreshToken: refreshToken
     }
 }
