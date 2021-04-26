@@ -5,6 +5,7 @@ import handleAuthuser from '../components/handleauth'
 import React, { useState, useEffect } from 'react';
 import Profile from '../components/profile';
 import DarkMode from './darkMode';
+import Link from 'next/link';
 
 export default function Header() {
 
@@ -56,7 +57,7 @@ export default function Header() {
   return (
     <div className="main">
       <header className="header">
-        <a className="logo" href="/">KUPBSV</a>
+      <Link as="/" href="/" ><a className="logo">KUPBSV</a></Link>
         <a className="push" >
           {!name ? <LoginDialog /> :
           <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency}/> }
