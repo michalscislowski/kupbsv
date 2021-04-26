@@ -32,7 +32,7 @@ export default function FaqText() {
             <p>Obsługującym nas bankiem jest: ... w Poznaniu</p>
         
             <h3>Moje pytanie nie jest tutaj opisane, jak mogę uzyskać dodatkową pomoc?</h3>
-            <p>Jeśli potrzebujesz dodatkowej pomocy, napisz do nas na adres e-mail: kontakt@bitcantor.com lub skontaktuj się z nami przez czat.</p>
+            <p>Jeśli potrzebujesz dodatkowej pomocy, napisz do nas na adres e-mail: office@8anach.com lub skontaktuj się z nami przez czat.</p>
         
             <h3>Pozdrowienia, Zespół KupBSV</h3>
             
