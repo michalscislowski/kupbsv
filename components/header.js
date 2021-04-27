@@ -35,7 +35,7 @@ export default function Header() {
     // };
 
       const userProfile = async() => { 
-        if (query.code) { 
+        if (query.code && !userId) { 
           const { profile, balance } = await handleAuthuser();
           setName(profile.name);
           setPrimaryPaymail(profile.primaryPaymail);
