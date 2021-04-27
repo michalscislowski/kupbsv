@@ -9,6 +9,7 @@ import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import History from '../components/history'
+import storage from 'local-storage-fallback';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,7 +63,10 @@ export default function Profile(props) {
     const paymail = props.primaryPaymail;
     const amount = props.userAmount;
     const currency = props.userCurrency;
- 
+  
+  function signOut () {
+    storage.clear();
+  }
 
   return (
     <div className={classes.root}>
@@ -87,7 +91,7 @@ export default function Profile(props) {
                     <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Balans konta: {amount} {currency} </MenuItem>
                     <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Email: {email} </MenuItem>
                     <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Paymail: {paymail} </MenuItem>
-                    <MenuItem href="/" component="a" onClick={handleClose}>Wyloguj</MenuItem>
+                    <MenuItem href="/" component="a" onClick={handleClose, signOut}>Wyloguj</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
