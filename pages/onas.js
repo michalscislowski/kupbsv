@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import ONasText from '../components/onastext'
+import ONasText from '../components/textmain/onastext'
 import { useRouter} from 'next/router'
 
 export default function Onas() {

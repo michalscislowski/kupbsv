@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import History from '../components/history'
+import History from './history';
 import storage from 'local-storage-fallback';
 
 const useStyles = makeStyles((theme) => ({
@@ -65,7 +65,11 @@ export default function Profile(props) {
     const currency = props.userCurrency;
   
   function signOut () {
-    storage.clear();
+    storage.removeItem('mb_js_client:oauth_access_token');  
+    storage.removeItem('mb_js_client:oauth_expiration_time');
+    storage.removeItem('mb_js_client:oauth_redirect_uri');
+    storage.removeItem('mb_js_client:oauth_refresh_token');
+    storage.removeItem('mb_js_client:oauth_state');
   }
 
   return (

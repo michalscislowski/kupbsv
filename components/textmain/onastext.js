@@ -26,6 +26,12 @@ export default function ONasText() {
                 <li>Rozwój fundacji Bitcoin SV w Polsce i promocja równego dostępu do technologii</li>
                 <li>Wprowadzenie serii usług opartych o walutę bitcoina SV</li>
             </ul>
+
+            <h3>Kontakt</h3>
+            <ul>
+                <li>Adres siedziby: Wilczak 12F/48</li>
+                <li>Adres email: office@8anach.com</li>
+            </ul>
             <style jsx> {`
             h1 {
                 font-size: 32px;
