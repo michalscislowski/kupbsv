@@ -6,11 +6,12 @@ import React, { useState, useEffect } from 'react';
 import Profile from '../components/profile';
 import DarkMode from './darkMode';
 import Link from 'next/link';
+import storage from 'local-storage-fallback';
+const { MoneyButtonClient } = require('@moneybutton/api-client')
 
 export default function Header() {
-
   const { query } = useRouter();
-
+  const router = useRouter();
   const [name, setName] = useState('')
   const [primaryPaymail, setPrimaryPaymail] = useState('')
   const [email, setEmail] = useState('')
@@ -18,48 +19,67 @@ export default function Header() {
   const [userId, setUserId] = useState('')
   const [userAmount, setUserAmount] = useState('')
   const [userCurrency, setUserCurrency] = useState('')
-  // const [paymentsId, setPaymentId] = useState('')
-  // const [paymentsDate, setPaymentDate] = useState('')
-  // const [paymentsTxid, setPaymentTxid] = useState('')
-  // const [paymentsAmount, setPaymentAmount] = useState('')
-  // const [paymentsCurrency, setPaymentCurrency] = useState('')
-  // const [paymentsStatus, setPaymentStatus] = useState('')
+    // if (storage.getItem('mb_js_client:oauth_access_token') && !query.code) {
+    //   const userProfile = async() => {
+    //       const { profile, balance } = await handleAuthuser();
+    //       setName(profile.name);
+    //       setPrimaryPaymail(profile.primaryPaymail);
+    //       setEmail(profile.email);
+    //       setAvatarUrl(profile.avatarUrl);
+    //       setUserAmount(balance.amount);
+    //       setUserCurrency(balance.currency);
+    //       setUserId(profile.id);
+    //   }
+    //   userProfile();
 
-  if (query.code && !name) {
-    const userProfile = async() => {
-    const {profile, balance/*, payments*/} = await handleAuthuser();
-        setName(profile.name);
-        setPrimaryPaymail(profile.primaryPaymail);
-        setEmail(profile.email);
-        setAvatarUrl(profile.avatarUrl);
-        setUserAmount(balance.amount);
-        setUserCurrency(balance.currency);
-        // setPaymentId(payments.id);
-        // setPaymentDate(payments.created-at);
-        // setPaymentTxid(payments.normalized-txid);
-        // setPaymentAmount(payments.amount);
-        // setPaymentCurrency(payments.currency);
-        // setPaymentStatus(payments.status)
-        setUserId(profile.id);
+    // };
+
+      const userProfile = async() => { 
+        if (query.code) { 
+          const { profile, balance } = await handleAuthuser();
+          setName(profile.name);
+          setPrimaryPaymail(profile.primaryPaymail);
+          setEmail(profile.email);
+          setAvatarUrl(profile.avatarUrl);
+          setUserAmount(balance.amount);
+          setUserCurrency(balance.currency);
+          setUserId(profile.id); 
+        } 
+        else if (storage.getItem('mb_js_client:oauth_access_token') && !name) {
+          const client = new MoneyButtonClient('cd8072b2a8b1557cc7ad71d96d038658');
+          const { id } = await client.getIdentity()
+          const profile = await client.getUserProfile(id)
+          const balance = await client.getBalance(id)
+          setName(profile.name);
+          setPrimaryPaymail(profile.primaryPaymail);
+          setEmail(profile.email);
+          setAvatarUrl(profile.avatarUrl);
+          setUserAmount(balance.amount);
+          setUserCurrency(balance.currency);
+          setUserId(profile.id); 
+        } 
       }
-    userProfile();
-  }
-  useEffect(() => {
-    console.log(name);
-    console.log(primaryPaymail);
-    console.log(email);
-    console.log(avatarUrl);
-    console.log(userId);
-    console.log(userAmount);
-    console.log(userCurrency);
-  },[userId]);
+      userProfile();
+      //setTimeout(router.push('/'),5000);
+
+
+    useEffect(() => {
+      console.log(name);
+      console.log(primaryPaymail);
+      console.log(email);
+      console.log(avatarUrl);
+      console.log(userId);
+      console.log(userAmount);
+      console.log(userCurrency);
+      
+    },[userId]);
 
   return (
     <div className="main">
       <header className="header">
       <Link as="/" href="/" ><a className="logo">KUPBSV</a></Link>
         <a className="push" >
-          {!name ? <LoginDialog /> :
+          {!userId ? <LoginDialog /> :
           <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency}/> }
         </a>
         <a><SimpleMenu /></a>
