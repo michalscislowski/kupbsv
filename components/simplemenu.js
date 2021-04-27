@@ -31,8 +31,6 @@ export default function SimpleMenu() {
         <Link as="/regulamin" href="/regulamin" ><MenuItem component="a" onClick={handleClose }>Regulamin</MenuItem></Link>
         <Link as="/onas" href="/onas"><MenuItem  component="a" onClick={handleClose }>O nas</MenuItem></Link>
         <Link as="/faq" href="/faq"><MenuItem component="a" onClick={handleClose }>FAQ</MenuItem></Link>
-        <Link as="/kontakt" href="/kontakt" ><MenuItem component="a" onClick={handleClose }>Kontakt</MenuItem></Link>
-        <Link as="/rodo" href="/rodo" ><MenuItem component="a" onClick={handleClose }>RODO</MenuItem></Link>
         <Link as="/blog" href="/blog" ><MenuItem component="a" onClick={handleClose }>BLOG</MenuItem></Link>
         
       </Menu>

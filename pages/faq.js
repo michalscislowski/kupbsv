@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import FaqText from '../components/faqtext'
+import FaqText from '../components/textmain/faqtext'
 import { useRouter} from 'next/router'
 
 export default function Regulamin() {
