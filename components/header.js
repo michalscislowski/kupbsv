@@ -77,12 +77,18 @@ export default function Header() {
   return (
     <div className="main">
       <header className="header">
+
+        <a className="logo" href="#">KUPBSV</a>
+        <a className="push" href="#">Login</a>
+        <a className="item"><SimpleMenu /></a>
+
       <Link as="/" href="/" ><a className="logo">KUPBSV</a></Link>
         <a className="push" >
           {!userId ? <LoginDialog /> :
           <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency}/> }
         </a>
         <a><SimpleMenu /></a>
+
       </header>
       <div className="changeTheme">
         <DarkMode />
@@ -104,7 +110,6 @@ export default function Header() {
     letter-spacing: 2px;
     text-decoration: none;
     padding: 20px 15px;
-    justify-content: flex-end;
   }
    .logo {
     font-weight: 700;
@@ -121,7 +126,7 @@ export default function Header() {
 
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
   .changeTheme {
     position: absolute;
