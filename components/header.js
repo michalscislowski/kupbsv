@@ -46,7 +46,7 @@ export default function Header() {
           setUserId(profile.id); 
         } 
         else if (storage.getItem('mb_js_client:oauth_access_token') && !name) {
-          const client = new MoneyButtonClient('cd8072b2a8b1557cc7ad71d96d038658');
+          const client = new MoneyButtonClient('1c098ac11f57bef8e51899f75c03c34e');
           const { id } = await client.getIdentity()
           const profile = await client.getUserProfile(id)
           const balance = await client.getBalance(id)
@@ -61,7 +61,6 @@ export default function Header() {
       }
       userProfile();
       //setTimeout(router.push('/'),5000);
-
 
     useEffect(() => {
       console.log(name);
