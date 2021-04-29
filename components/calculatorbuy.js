@@ -1,36 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Livebsv from './livebsv';
 
 
-const CoinGecko = require('coingecko-api');
-const CoinGeckoClient = new CoinGecko();
-
-export default function Calculatorbuy() {
+export default function Calculatorbuy(props) {
     const [value, setValue] = useState(0);
-    const [price, setPrice] = useState();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await CoinGeckoClient.coins.markets({
-                vs_currency: "pln",
-                ids: "bitcoin-cash-sv",
-                order: "market_cap_desc",
-                per_page: "100",
-                page: "1",
-                price_change_percentage: "24h",
-            });
-            setPrice(parseFloat(result.data['0'].current_price));
-        };
-        fetchData();
-        const timerId = setInterval(fetchData, 5000);
-        return () => clearInterval(timerId);
-    },[]);
-
     return (
-        <form className="calculator" noValidate autoComplete="off">
-            <Livebsv test="gowno"/>
+        <div>
             <div className="typebox">
                 <div className="textfield">
                     <TextField error={false} id="outlined-number" label="PLN" helperText="Min. wartość 100zł"  
@@ -56,18 +32,18 @@ export default function Calculatorbuy() {
                 </div>
                 
                 <div className="textfield">
-                    <TextField disabled id="outlined-disabled" value={(value/price).toFixed(8)} label="BSV" variant="outlined" />
+                    <TextField disabled id="outlined-disabled" value={(value/props.cena).toFixed(8)} label="BSV" variant="outlined" />
                 </div>
             </div>
             <div className="changebutton">
-                    <Button variant="outlined" color="default" style={{width: 380}}>
-                            BLIK
-                    </Button>
+                <Button variant="outlined" color="default" style={{width: 380}}>
+                        BLIK
+                </Button>
             </div>
             <div className="changebutton">
-                    <Button variant="outlined" color="default" style={{width: 380}}>
-                            tPAY
-                    </Button>
+                <Button variant="outlined" color="default" style={{width: 380}}>
+                        tPAY
+                </Button>
             </div>
             <style jsx> {`
                 .calculator {
@@ -100,6 +76,6 @@ export default function Calculatorbuy() {
                     }
                 }
             `}</style> 
-        </form>
+        </div>
     );
   }

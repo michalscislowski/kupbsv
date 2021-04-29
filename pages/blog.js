@@ -1,17 +1,13 @@
 import React from 'react'
-import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import Hidden from '@material-ui/core/Hidden'
-import Link from '@material-ui/core/Link'
 import Container from '@material-ui/core/Container'
 import Head from 'next/head'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import { CardHeader } from '@material-ui/core'
 
 
 const featuredPosts = [
@@ -26,84 +22,60 @@ const featuredPosts = [
     date: 'Nov 11',
     description:
       'This is a wider card with supporting text below as a natural lead-in to additional content.'
+  },
+  {
+    title: 'Post title',
+    date: 'Nov 13',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.'
   }
 ]
 
-  export default function Blog() {
+export default function Blog() {
   return (
     <div className="container">
-    <Head>
-          <title>Kup BSV</title>
-          <link rel="icon" href="/bsvlogo.svg" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-    </Head>
-    <Header />
+      <Head>
+        <title>Kup BSV</title>
+        <link rel="icon" href="/bsvlogo.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+      </Head>
+      <Header />
+      <Container>
 
-      <Container maxWidth="lg">
-        
         <main className="main">
-        <h1>BLOG</h1>
+          <h1>BLOG</h1>
           <Grid container spacing={4}>
             {featuredPosts.map(post => (
               <Grid item key={post.title} xs={12} md={6}>
-                <CardActionArea component="a" href="#">
-                  <Card className="card">
-                    <div className="cardDetails">
-                      <CardContent>
-                        <Typography component="h2" variant="h5">
-                          {post.title}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textSecondary">
-                          {post.date}
-                        </Typography>
-                        <Typography variant="subtitle1" paragraph>
-                          {post.description}
-                        </Typography>
-                      </CardContent>
-                    </div>
-                  </Card>
-                </CardActionArea>
+                <Card elevation={1}>
+                  <CardHeader 
+                    title={post.title}
+                    subheader={post.date}
+                  />
+                  <CardContent>
+                    <Typography variant="subtitle1" paragraph>
+                      {post.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
               </Grid>
             ))}
           </Grid>
         </main>
       </Container>
       <Footer />
-<style jsx> {`
+      <style jsx> {`
     .main {
-    margin: auto;
-    margin-top: 140px;
-    min-width: 400px;
-    font-size: 16px;
-    min-height: 569px;
-    text-align: justify;
-  }
-    .mainFeaturedPost: {
-    position: 'relative';
-    color: theme.palette.common.white;
-
-  }
-  .overlay: {
-    position: 'absolute';
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-  }
-  .mainFeaturedPostContent: {
-    position: 'relative';
-    padding: theme.spacing(3);
-  }
-  .card: {
-    display: 'flex';
-  }
-  .cardDetails: {
-    flex: 1;
-  }
-  .cardMedia: {
-    width: 160;
-  }
+      margin: 140px 0 50px 0;
+      font-size: 16px;
+      text-align: justify;
+    }
+    @media only screen and (max-width: 650px) {
+      .main {
+        margin-left: 15px;
+        margin-right: 15px;
+      }
       `} </style>
-      </div>
+    </div>
   )
 }
