@@ -41,7 +41,7 @@ export default function Main() {
                     <Calculatorsell />
                 </div>
             </div>
-            <div id="room-for-socials" className="room-for-socials"><a className="push"><MoneyButton to="kisiel@moneybutton.com" label="donate" amount="0.5" currency="USD"/></a></div>
+            <div id="room-for-socials" className="room-for-socials"><a className="push"></a></div>
             <div className="socials">
                 <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/8anach')} /></a>
                 <a className="instagram"><InstagramIcon aria-label="Instagram.com" onClick={() => window.open('https://www.instagram.com/8anach')}/></a>
