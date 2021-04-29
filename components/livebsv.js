@@ -1,47 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 
-const CoinGecko = require('coingecko-api');
-const CoinGeckoClient = new CoinGecko();
 
-
-export default function Livebsv() {
-    const [price, setPrice] = useState();
-    const [rank, setRank] = useState();
-    const [low, setLow] = useState();
-    const [high, setHigh] = useState();
-    const [percent24, setPercent24] = useState();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await CoinGeckoClient.coins.markets({
-                vs_currency: "pln",
-                ids: "bitcoin-cash-sv",
-                order: "market_cap_desc",
-                per_page: "100",
-                page: "1",
-                price_change_percentage: "24h",
-            });
-            setPrice(parseFloat(result.data['0'].current_price));
-            setRank(parseFloat(result.data['0'].market_cap_rank));
-            setLow(parseFloat(result.data['0'].low_24h));
-            setHigh(parseFloat(result.data['0'].high_24h));
-            setPercent24(parseFloat(result.data['0'].price_change_percentage_24h).toFixed(2));
-        };
-        fetchData();
-        const timerId = setInterval(fetchData, 5000);
-        return () => clearInterval(timerId);
-    },[]);
-
-    useEffect(() => {
-        console.log(price); // <-- log updated state
-        console.log(rank);
-        console.log(low);
-        console.log(high);
-        console.log(percent24);
-      }, [price]); // <-- run on price update
-    //console.log(price);
-
+export default function Livebsv(props) {
     return (
         <div className="customWidget">
             <div className="staticData">
@@ -50,11 +11,11 @@ export default function Livebsv() {
                 <a>BSV/PLN</a>
             </div>
             <div className="changingData">
-                <a>1 BSV ~ <strong>{price} PLN</strong></a>
-                <a>Zmiana 24h: <strong className={percent24 > 0 ? "green" : "red" }>{percent24}% </strong></a>
-                <a>Market Cap Rank: <strong>#{rank} </strong></a>
-                <a>Min. 24h: <strong>{low} PLN </strong></a>
-                <a>Maks. 24h: <strong>{high} PLN </strong></a>
+                <a>1 BSV ~ <strong>{props.price} PLN</strong></a>
+                <a>Zmiana 24h: <strong className={props.percent24 > 0 ? "green" : "red" }>{props.percent24}% </strong></a>
+                <a>Market Cap Rank: <strong>#{props.rank} </strong></a>
+                <a>Min. 24h: <strong>{props.low} PLN </strong></a>
+                <a>Maks. 24h: <strong>{props.high} PLN </strong></a>
             </div>
             <style jsx>{`
             .customWidget {
