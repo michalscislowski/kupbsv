@@ -63,6 +63,7 @@ export default function Profile(props) {
     const paymail = props.primaryPaymail;
     const amount = props.userAmount;
     const currency = props.userCurrency;
+    const status = props.userStatus;
   
   function signOut () {
     storage.removeItem('mb_js_client:oauth_access_token');  
@@ -95,6 +96,7 @@ export default function Profile(props) {
                     <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Balans konta: {amount} {currency} </MenuItem>
                     <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Email: {email} </MenuItem>
                     <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Paymail: {paymail} </MenuItem>
+                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Status: {status} </MenuItem>
                     <MenuItem href="/" component="a" onClick={handleClose, signOut}>Wyloguj</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
