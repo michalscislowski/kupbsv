@@ -1,12 +1,13 @@
 import SimpleMenu from '../components/simplemenu'
 import LoginDialog from './login/logindialog'
 import {useRouter} from "next/router";
-import handleAuthuser from '../components/handleauth'
+import handleAuthuser from './userAuth/handleauth'
 import React, { useState, useEffect } from 'react';
 import Profile from './login/profile';
 import DarkMode from './darkMode';
 import Link from 'next/link';
 import storage from 'local-storage-fallback';
+import getUserData from './userAuth/getUserData';
 const { MoneyButtonClient } = require('@moneybutton/api-client')
 
 export default function Header() {
@@ -16,9 +17,11 @@ export default function Header() {
   const [primaryPaymail, setPrimaryPaymail] = useState('')
   const [email, setEmail] = useState('')
   const [avatarUrl, setAvatarUrl] = useState('')
-  const [userId, setUserId] = useState('')
+  const [userStatus,setUserStatus] = useState('')
   const [userAmount, setUserAmount] = useState('')
   const [userCurrency, setUserCurrency] = useState('')
+  const [userId, setUserId] = useState('')
+  
     // if (storage.getItem('mb_js_client:oauth_access_token') && !query.code) {
     //   const userProfile = async() => {
     //       const { profile, balance } = await handleAuthuser();
@@ -36,24 +39,24 @@ export default function Header() {
 
       const userProfile = async() => { 
         if (query.code && !userId) { 
-          const { profile, balance } = await handleAuthuser();
+          await handleAuthuser();
+          const { profile, balance, userStatus } = await getUserData();
           setName(profile.name);
           setPrimaryPaymail(profile.primaryPaymail);
           setEmail(profile.email);
           setAvatarUrl(profile.avatarUrl);
+          setUserStatus(userStatus);
           setUserAmount(balance.amount);
           setUserCurrency(balance.currency);
           setUserId(profile.id); 
         } 
         else if (storage.getItem('mb_js_client:oauth_access_token') && !name) {
-          const client = new MoneyButtonClient('cd8072b2a8b1557cc7ad71d96d038658');
-          const { id } = await client.getIdentity()
-          const profile = await client.getUserProfile(id)
-          const balance = await client.getBalance(id)
+          const { profile, balance, userStatus } = await getUserData();
           setName(profile.name);
           setPrimaryPaymail(profile.primaryPaymail);
           setEmail(profile.email);
           setAvatarUrl(profile.avatarUrl);
+          setUserStatus(userStatus.data.status);
           setUserAmount(balance.amount);
           setUserCurrency(balance.currency);
           setUserId(profile.id); 
@@ -62,27 +65,28 @@ export default function Header() {
       userProfile();
       //setTimeout(router.push('/'),5000);
 
-
     useEffect(() => {
       console.log(name);
       console.log(primaryPaymail);
       console.log(email);
       console.log(avatarUrl);
-      console.log(userId);
+      console.log(userStatus);
       console.log(userAmount);
       console.log(userCurrency);
+      console.log(userId);
+      
       
     },[userId]);
 
   return (
     <div className="main">
       <header className="header">
-      <Link as="/" href="/" ><a className="logo">KUPBSV</a></Link>
-        <a className="push" >
-          {!userId ? <LoginDialog /> :
-          <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency}/> }
-        </a>
-        <a><SimpleMenu /></a>
+        <Link as="/" href="/" ><a className="logo">KUPBSV</a></Link>
+          <a className="push" >
+            {!userId ? <LoginDialog /> :
+            <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency}/> }
+          </a>
+          <a><SimpleMenu /></a>
       </header>
       <div className="changeTheme">
         <DarkMode />
@@ -104,7 +108,6 @@ export default function Header() {
     letter-spacing: 2px;
     text-decoration: none;
     padding: 20px 15px;
-    justify-content: flex-end;
   }
    .logo {
     font-weight: 700;
@@ -121,7 +124,7 @@ export default function Header() {
 
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
   .changeTheme {
     position: absolute;
