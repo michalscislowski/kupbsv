@@ -8,7 +8,7 @@ export default async function getUserData () {
     //const refreshToken = client.getRefreshToken();
 
     const { id } = await client.getIdentity()
-    const status = await fetch( 'https://kyc.blockpass.org/kyc/1.0/connect/banach_group/refId/44325', {
+    const status = await fetch( 'https://kyc.blockpass.org/kyc/1.0/connect/banach_group/refId/'+id, {
         headers: {
             'Authorization': '73e01eca9e43ed8039e302484954fec3'
         },
