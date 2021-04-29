@@ -8,11 +8,9 @@ import DarkMode from './darkMode';
 import Link from 'next/link';
 import storage from 'local-storage-fallback';
 import getUserData from './userAuth/getUserData';
-const { MoneyButtonClient } = require('@moneybutton/api-client')
 
 export default function Header() {
   const { query } = useRouter();
-  const router = useRouter();
   const [name, setName] = useState('')
   const [primaryPaymail, setPrimaryPaymail] = useState('')
   const [email, setEmail] = useState('')
@@ -45,7 +43,7 @@ export default function Header() {
           setPrimaryPaymail(profile.primaryPaymail);
           setEmail(profile.email);
           setAvatarUrl(profile.avatarUrl);
-          setUserStatus(userStatus);
+          setUserStatus(userStatus.data.status);
           setUserAmount(balance.amount);
           setUserCurrency(balance.currency);
           setUserId(profile.id); 
@@ -84,7 +82,7 @@ export default function Header() {
         <Link as="/" href="/" ><a className="logo">KUPBSV</a></Link>
           <a className="push" >
             {!userId ? <LoginDialog /> :
-            <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency}/> }
+            <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency} userStatus={userStatus}/> }
           </a>
           <a><SimpleMenu /></a>
       </header>
