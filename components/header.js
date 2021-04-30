@@ -100,6 +100,7 @@ export default function Header() {
     font-size: 25px;	
     font-weight: 300;	
     z-index: 2;
+    border-bottom: 1px solid gray;
   }
   a {
     color: white;
