@@ -5,7 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import HistoryTable from '../components/tablehistory';
+import HistoryTable from './tablehistory';
 
 export default function History() {
   const [open, setOpen] = React.useState(false);
@@ -32,7 +32,7 @@ export default function History() {
 
   return (
     <div>
-      <Button variant="contained" onClick={handleClickOpen('body')} color="primary" style={{width: '100%', backgroundColor: '#0d47a1'}}>
+      <Button variant="contained" onClick={handleClickOpen('body')} color="primary" style={{width: '99%', backgroundColor: '#000000'}}>
         HISTORIA
       </Button>
       <Dialog open={open} onClose={handleClose} scroll={scroll} maxWidth={false} aria-labelledby="scroll-dialog-title" aria-describedby="scroll-dialog-description" >

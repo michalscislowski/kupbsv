@@ -6,7 +6,7 @@ export default function ONasText() {
             <h1>O nas</h1>
    
             <h3>Czym jest Banach Group?</h3>
-            <p>Banach Group w ramach licencji MIP będzie pierwszą firmą w Polsce, która zapewni klientom detalicznym i biznesowym bezpieczny dostęp do rynku Bitcoin SV. Banach Group chce być w centrum sieci Bitcoin SV w kraju, oferując usługi finansowe i technologiczne, a także doradztwo biznesowe w zakresie komercjalizacji i wdrażania technologii. W całej naszej organizacji zawsze staramy się łączyć odpowiednie umiejętności i wiedzę, aby wspierać rozwój technologii, rozwój sieci i obsługę klienta. Dzięki doświadczeniu, które wykracza poza branżę telekomunikacyjną i IT, nasza grupa koncentruje się na wprowadzaniu na rynek najnowocześniejszych rozwiązań. </p>
+            <p>Banach Group będzie pierwszą instytucją w Polsce, która zapewni klientom detalicznym i biznesowym bezpieczny dostęp do rynku Bitcoin SV. Banach Group chce być w centrum sieci Bitcoin SV w kraju, oferując usługi finansowe i technologiczne, a także doradztwo biznesowe w zakresie komercjalizacji i wdrażania technologii. W całej naszej organizacji zawsze staramy się łączyć odpowiednie umiejętności i wiedzę, aby wspierać rozwój technologii, rozwój sieci i obsługę klienta. Dzięki doświadczeniu, które wykracza poza branżę telekomunikacyjną i IT, nasza grupa koncentruje się na wprowadzaniu na rynek najnowocześniejszych rozwiązań. </p>
         
             <h3>Nasza misja</h3>
             <p>Misją Banach Group jest rozwijanie ekosystemu Bitcoin SV w Polsce i budowa biznesu w oparciu o jeden stabilny, globalny łańcuch.</p>
@@ -25,6 +25,12 @@ export default function ONasText() {
                 <li>Dostarczenie użytkownikom kompleksowych narzędzi oraz programów finansowych</li>
                 <li>Rozwój fundacji Bitcoin SV w Polsce i promocja równego dostępu do technologii</li>
                 <li>Wprowadzenie serii usług opartych o walutę bitcoina SV</li>
+            </ul>
+
+            <h3>Kontakt</h3>
+            <ul>
+                <li>Adres siedziby: Wilczak 12F/48</li>
+                <li>Adres email: office@8anach.com</li>
             </ul>
             <style jsx> {`
             h1 {

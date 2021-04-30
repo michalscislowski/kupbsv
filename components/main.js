@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
-import Calculatorbuy from './calculatorbuy.js'
-import Calculatorsell from './calculatorsell.js'
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import { request } from 'http';
+import MoneyButton from '@moneybutton/react-money-button'
+import WholesomeCalculator from './wholesomeCalculator.js';
   
 
 
 export default function Main() {
     const [ showMe, setShowMe ] = useState(true);
 
-    function toggle (){
-        !showMe ? setShowMe(true) : setShowMe(true);
+    function setBuy (){
+        setShowMe(true);
     }
-    function toggle2 (){
-        showMe ? setShowMe(false) : setShowMe(false);
+    function setSell (){
+        setShowMe(false);
     }
   
     return (
@@ -24,22 +25,17 @@ export default function Main() {
             <div className="box">
                 <div className="buttons">
 
-                    <Button onClick={toggle} variant="contained" color="primary" style={{width: '50%', marginRight: 10, marginLeft: 10, backgroundColor: '#2e7d32', }}>
+                    <Button onClick={setBuy} variant="contained" color="primary" style={{width: '50%', marginRight: 10, marginLeft: 10, backgroundColor: '#2e7d32', }}>
                         KUP
                     </Button>
-                    <Button onClick={toggle2} variant="contained" color="secondary" style={{width: '50%', marginRight: 10, backgroundColor: '#b71c1c'}}>
+                    <Button onClick={setSell} variant="contained" color="secondary" style={{width: '50%', marginRight: 10, backgroundColor: '#b71c1c'}}>
                         SPRZEDAJ
                     </Button>
 
                 </div>
-                <div style={{ display: showMe?"block":"none" }}>
-                    <Calculatorbuy />
-                </div>
-                <div style={{ display: !showMe?"block":"none" }}>
-                    <Calculatorsell />
-                </div>
+                <WholesomeCalculator calc={showMe?"buy":"sell"}/>
             </div>
-            <div id="room-for-socials" className="room-for-socials"></div>
+            <div id="room-for-socials" className="room-for-socials"><a className="push"></a></div>
             <div className="socials">
                 <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/8anach')} /></a>
                 <a className="instagram"><InstagramIcon aria-label="Instagram.com" onClick={() => window.open('https://www.instagram.com/8anach')}/></a>
@@ -52,6 +48,7 @@ export default function Main() {
                     display: flex;
                     flex: 1;
                     flex-direction: column;
+                    justify-content: center;
                     color: white;
                     margin-top: 78px;
                 }

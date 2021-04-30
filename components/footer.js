@@ -32,6 +32,7 @@ export default function Footer() {
     text-align: center;
     width: 100%;
     min-width: 300px;
+    border-top: 1px solid gray;
   }
   .footer {
     display: flex;

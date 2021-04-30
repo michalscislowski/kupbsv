@@ -8,7 +8,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import History from '../components/history'
+import History from './history';
+import storage from 'local-storage-fallback';
+import {useRouter} from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,12 +59,28 @@ export default function Profile(props) {
 
   
     const name = props.name;
+    const userId = props.userId;
     const avatar = props.userAvatar;
     const email = props.userEmail;
     const paymail = props.primaryPaymail;
     const amount = props.userAmount;
     const currency = props.userCurrency;
- 
+    const status = props.userStatus;
+    const verificationUrl = ('https://verify-with.blockpass.org/?clientId=banach_group&serviceName=Banach+Group&env=prod&refId='+userId)
+    const router = useRouter();
+
+    const handleClick = (e) => {
+      e.preventDefault()
+      window.open(verificationUrl, '_blank')
+    }
+
+  function signOut () {
+    storage.removeItem('mb_js_client:oauth_access_token');  
+    storage.removeItem('mb_js_client:oauth_expiration_time');
+    storage.removeItem('mb_js_client:oauth_redirect_uri');
+    storage.removeItem('mb_js_client:oauth_refresh_token');
+    storage.removeItem('mb_js_client:oauth_state');
+  }
 
   return (
     <div className={classes.root}>
@@ -84,10 +102,11 @@ export default function Profile(props) {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     <History />
+                    <MenuItem style={{borderBottom: 'solid'}}>Status: {!status ? <Button onClick={handleClick} color="primary" variant="contained" style={{ backgroundColor: '#000000', fontSize: '14px', marginLeft:'10px', height:'35px',}}>ZWERYFIKUJ SIĘ Z BLOCKPASS</Button> : status}</MenuItem>
                     <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Balans konta: {amount} {currency} </MenuItem>
-                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Email: {email} </MenuItem>
-                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Paymail: {paymail} </MenuItem>
-                    <MenuItem href="/" component="a" onClick={handleClose}>Wyloguj</MenuItem>
+                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Email: {email} {userId}</MenuItem>
+                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Paymail: {paymail} </MenuItem>                    
+                    <MenuItem href="/" component="a" onClick={handleClose, signOut}>Wyloguj</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

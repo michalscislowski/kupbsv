@@ -1,67 +1,90 @@
 import SimpleMenu from '../components/simplemenu'
-import LoginDialog from '../components/logindialog'
+import LoginDialog from './login/logindialog'
 import {useRouter} from "next/router";
-import handleAuthuser from '../components/handleauth'
+import handleAuthuser from './userAuth/handleauth'
 import React, { useState, useEffect } from 'react';
-import Profile from '../components/profile';
+import Profile from './login/profile';
 import DarkMode from './darkMode';
+import Link from 'next/link';
+import storage from 'local-storage-fallback';
+import getUserData from './userAuth/getUserData';
 
 export default function Header() {
-
   const { query } = useRouter();
-
   const [name, setName] = useState('')
   const [primaryPaymail, setPrimaryPaymail] = useState('')
   const [email, setEmail] = useState('')
   const [avatarUrl, setAvatarUrl] = useState('')
-  const [userId, setUserId] = useState('')
+  const [userStatus,setUserStatus] = useState('')
   const [userAmount, setUserAmount] = useState('')
   const [userCurrency, setUserCurrency] = useState('')
-  // const [paymentsId, setPaymentId] = useState('')
-  // const [paymentsDate, setPaymentDate] = useState('')
-  // const [paymentsTxid, setPaymentTxid] = useState('')
-  // const [paymentsAmount, setPaymentAmount] = useState('')
-  // const [paymentsCurrency, setPaymentCurrency] = useState('')
-  // const [paymentsStatus, setPaymentStatus] = useState('')
+  const [userId, setUserId] = useState('')
+  
+    // if (storage.getItem('mb_js_client:oauth_access_token') && !query.code) {
+    //   const userProfile = async() => {
+    //       const { profile, balance } = await handleAuthuser();
+    //       setName(profile.name);
+    //       setPrimaryPaymail(profile.primaryPaymail);
+    //       setEmail(profile.email);
+    //       setAvatarUrl(profile.avatarUrl);
+    //       setUserAmount(balance.amount);
+    //       setUserCurrency(balance.currency);
+    //       setUserId(profile.id);
+    //   }
+    //   userProfile();
 
-  if (query.code && !name) {
-    const userProfile = async() => {
-    const {profile, balance/*, payments*/} = await handleAuthuser();
-        setName(profile.name);
-        setPrimaryPaymail(profile.primaryPaymail);
-        setEmail(profile.email);
-        setAvatarUrl(profile.avatarUrl);
-        setUserAmount(balance.amount);
-        setUserCurrency(balance.currency);
-        // setPaymentId(payments.id);
-        // setPaymentDate(payments.created-at);
-        // setPaymentTxid(payments.normalized-txid);
-        // setPaymentAmount(payments.amount);
-        // setPaymentCurrency(payments.currency);
-        // setPaymentStatus(payments.status)
-        setUserId(profile.id);
+    // };
+
+      const userProfile = async() => { 
+        if (query.code && !userId) { 
+          await handleAuthuser();
+          const { profile, balance, userStatus } = await getUserData();
+          setName(profile.name);
+          setPrimaryPaymail(profile.primaryPaymail);
+          setEmail(profile.email);
+          setAvatarUrl(profile.avatarUrl);
+          setUserStatus(userStatus.data.status);
+          setUserAmount(balance.amount);
+          setUserCurrency(balance.currency);
+          setUserId(profile.id); 
+        } 
+        else if (storage.getItem('mb_js_client:oauth_access_token') && !name) {
+          const { profile, balance, userStatus } = await getUserData();
+          setName(profile.name);
+          setPrimaryPaymail(profile.primaryPaymail);
+          setEmail(profile.email);
+          setAvatarUrl(profile.avatarUrl);
+          setUserStatus(userStatus.data.status);
+          setUserAmount(balance.amount);
+          setUserCurrency(balance.currency);
+          setUserId(profile.id); 
+        } 
       }
-    userProfile();
-  }
-  useEffect(() => {
-    console.log(name);
-    console.log(primaryPaymail);
-    console.log(email);
-    console.log(avatarUrl);
-    console.log(userId);
-    console.log(userAmount);
-    console.log(userCurrency);
-  },[userId]);
+      userProfile();
+      //setTimeout(router.push('/'),5000);
+
+    useEffect(() => {
+      console.log(name);
+      console.log(primaryPaymail);
+      console.log(email);
+      console.log(avatarUrl);
+      console.log(userStatus);
+      console.log(userAmount);
+      console.log(userCurrency);
+      console.log(userId);
+      
+      
+    },[userId]);
 
   return (
     <div className="main">
       <header className="header">
-        <a className="logo" href="/">KUPBSV</a>
-        <a className="push" >
-          {!name ? <LoginDialog /> :
-          <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency}/> }
-        </a>
-        <a><SimpleMenu /></a>
+        <Link as="/" href="/" ><a className="logo">KUPBSV</a></Link>
+          <a className="push" >
+            {!userId ? <LoginDialog /> :
+            <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency} userStatus={userStatus}/> }
+          </a>
+          <a><SimpleMenu /></a>
       </header>
       <div className="changeTheme">
         <DarkMode />
@@ -77,13 +100,13 @@ export default function Header() {
     font-size: 25px;	
     font-weight: 300;	
     z-index: 2;
+    border-bottom: 1px solid gray;
   }
   a {
     color: white;
     letter-spacing: 2px;
     text-decoration: none;
     padding: 20px 15px;
-    justify-content: flex-end;
   }
    .logo {
     font-weight: 700;
@@ -100,7 +123,7 @@ export default function Header() {
 
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
   .changeTheme {
     position: absolute;
