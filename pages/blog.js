@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
@@ -32,6 +32,20 @@ const featuredPosts = [
 ]
 
 export default function Blog() {
+
+  const [notes, setNotes] = useState([]);
+
+
+  useEffect(() => {
+    fetch('http://localhost:8000/notes')
+      .then(res => res.json())
+      .then(data => setNotes(data)).catch( function () {
+        setNotes(featuredPosts);
+      })
+  }, []) 
+
+  console.log(notes);
+
   return (
     <div className="container">
       <Head>
@@ -45,7 +59,7 @@ export default function Blog() {
         <main className="main">
           <h1>BLOG</h1>
           <Grid container spacing={4}>
-            {featuredPosts.map(post => (
+            {notes.map(post => (
               <Grid item key={post.title} xs={12} md={6}>
                 <Card elevation={1}>
                   <CardHeader 

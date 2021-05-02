@@ -9,7 +9,7 @@ import Link from 'next/link';
 import storage from 'local-storage-fallback';
 import getUserData from './userAuth/getUserData';
 
-export default function Header() {
+export default function Header(props) {
   const { query } = useRouter();
   const [name, setName] = useState('')
   const [primaryPaymail, setPrimaryPaymail] = useState('')
@@ -129,6 +129,7 @@ export default function Header() {
     position: absolute;
     top: 100px;
     right: 20px;
+    display: ${props.dark == "no" ? "none" : "block"};
   }
 
   @media only screen and (max-width: 555px) {
