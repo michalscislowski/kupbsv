@@ -32,7 +32,7 @@ export default function SimpleMenu() {
         <Link as="/onas" href="/onas"><MenuItem  component="a" onClick={handleClose }>O nas</MenuItem></Link>
         <Link as="/faq" href="/faq"><MenuItem component="a" onClick={handleClose }>FAQ</MenuItem></Link>
         <Link as="/blog" href="/blog" ><MenuItem component="a" onClick={handleClose }>BLOG</MenuItem></Link>
-        
+        <Link as="/Create" href="/Create" ><MenuItem component="a" onClick={handleClose }>Dodaj Post</MenuItem></Link>
       </Menu>
       <style>{`
 
