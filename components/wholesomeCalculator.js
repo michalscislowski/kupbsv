@@ -46,7 +46,7 @@ export default function WholesomeCalculator(props) {
     return (
         <form className="calculator" noValidate autoComplete="off">
             <Livebsv price={price} rank={rank} low={low} high={high} percent24={percent24}/>
-            {props.calc === 'buy' ? <Calculatorbuy className="cssCalc" cena={price}/> : <Calculatorsell className="cssCalc" cena={price}/>}
+            {props.calc === 'buy' ? <Calculatorbuy cena={price}/> : <Calculatorsell cena={price}/>}
         </form>
     );
   }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
@@ -18,6 +18,8 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Brightness2Icon from '@material-ui/icons/Brightness2'; //moon
 import Brightness7Icon from '@material-ui/icons/Brightness7'; //sun
+import useTheme from '../components/useTheme';
+import storage from 'local-storage-fallback';
 
 const useStyles = makeStyles({
   field: {
@@ -45,15 +47,26 @@ const themeDark = createMuiTheme({
 });
 
 export default function Create() {
-
+    const theme = useTheme()
     const classes = useStyles()
     const history = useHistory()
     const [title, setTitle] = useState('')
-    const [details, setDetails] = useState('')
+    const [description, setDescription] = useState('')
     const [titleError, setTitleError] = useState(false)
     const [detailsError, setDetailsError] = useState(false)
     const [selectedDate, setSelectedDate] = React.useState(new Date('2021-05-02'));
-    const [darkMode, SetDarkMode] = useState(false)
+    const [darkMode, SetDarkMode] = useState()
+
+    useEffect(() => {
+      SetDarkMode(getInitialState);
+    }, [])
+
+    function getInitialState() {
+    const savedTheme = storage.getItem('theme');
+      return JSON.parse(savedTheme).mode == "dark"
+        ? true
+        : false;
+    }
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
@@ -78,10 +91,10 @@ export default function Create() {
         if (title == '') {
             setTitleError(true)
         }
-        if (details == '') {
+        if (description == '') {
             setDetailsError(true)
         }
-        if (title && details) {
+        if (title && description) {
           let date = getCurrentDAte();
             fetch('http://localhost:8000/notes', {
                 method: 'POST',
@@ -141,7 +154,7 @@ export default function Create() {
                 }}
               />
               <TextField className={classes.field}
-                onChange={(e) => setDetails(e.target.value)}
+                onChange={(e) => setDescription(e.target.value)}
                 label="Treść"
                 variant="outlined"
                 color="primary"
@@ -163,8 +176,15 @@ export default function Create() {
           </Container>
           <Button className={classes.changeTheme}
             variant={darkMode ? "outlined" : "contained"} 
-            onClick={() => {SetDarkMode(!darkMode); }}>
-              {darkMode ? <Brightness2Icon /> : <Brightness7Icon />}
+            onClick={() => {
+              SetDarkMode(!darkMode); 
+              theme.setTheme(
+                theme.mode === 'dark'
+                    ? { ...theme, mode: 'light' }
+                    : { ...theme, mode: 'dark' }
+                )}
+              }>
+              {darkMode ? <Brightness2Icon style={{transform: 'scaleX(-1)'}}/> : <Brightness7Icon />}
           </Button>
         </main>
         <div className="stopa">
@@ -179,7 +199,12 @@ export default function Create() {
           }
           .container {
             height: 100vh;
-            background: ${darkMode ? "#111" : '#eee'};
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-direction: column;
+            background: ${darkMode ? "#0a0e12" : '#eee'};
             overflow: hidden;
             transition: 0.5s;
           }
