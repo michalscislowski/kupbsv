@@ -17,7 +17,7 @@ import Footer from '../components/footer'
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Brightness2Icon from '@material-ui/icons/Brightness2'; //moon
-import Brightness7Icon from '@material-ui/icons/Brightness7'; //sun
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import useTheme from '../components/useTheme';
 import storage from 'local-storage-fallback';
 
@@ -184,7 +184,7 @@ export default function Create() {
                     : { ...theme, mode: 'dark' }
                 )}
               }>
-              {darkMode ? <Brightness2Icon style={{transform: 'scaleX(-1)'}}/> : <Brightness7Icon />}
+              {darkMode ? <WbSunnyIcon /> : <Brightness2Icon style={{transform: 'scaleX(-1)'}}/>}
           </Button>
         </main>
         <div className="stopa">
