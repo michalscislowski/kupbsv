@@ -20,6 +20,7 @@ import Brightness2Icon from '@material-ui/icons/Brightness2'; //moon
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import useTheme from '../components/useTheme';
 import storage from 'local-storage-fallback';
+import { useRouter} from 'next/router'
 
 const useStyles = makeStyles({
   field: {
@@ -56,6 +57,7 @@ export default function Create() {
     const [detailsError, setDetailsError] = useState(false)
     const [selectedDate, setSelectedDate] = React.useState(new Date('2021-05-02'));
     const [darkMode, SetDarkMode] = useState()
+    const router = useRouter()
 
     useEffect(() => {
       SetDarkMode(getInitialState);
@@ -100,7 +102,7 @@ export default function Create() {
                 method: 'POST',
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({ title, description, date })
-            })
+            }).then(() => router.push('/blog')).catch(() => router.push('/blog'))
         }
     }
 
