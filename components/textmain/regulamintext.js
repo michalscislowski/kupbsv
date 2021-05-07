@@ -124,7 +124,7 @@ export default function RegulaminText() {
             </ol>
             <style jsx> {`
                 .main {
-                    margin-top: 110px;
+                    margin-top: 120px;
                     padding: 0 80px 40px 40px;
                     text-align: justify;
                 }
@@ -132,7 +132,7 @@ export default function RegulaminText() {
                     line-height: 25px;
                 }
                 .rozdzialy {
-                    margin-left: -20px;
+                    margin-left: -5px;
                     list-style-type: upper-roman;
                 }
                 .rozdzialy > li {
@@ -151,19 +151,23 @@ export default function RegulaminText() {
                     list-style-type: initial;
                 }
                 @media only screen and (max-width: 499px) {
-                    .main {
+                    * {
                         margin: 0;
+                        padding: 0;
+                    }
+                    h1 {
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                    }
+                    .main {
+                        padding: 20px;
+                        padding-left: 40px;
                         width: 100%;
-                        margin-top: 98px;
-                        padding-right: 30px;
-                        margin-left: -10px;
+                        margin-top: 100px;
                         text-align: justify;
                     }
-                    .rozdzialy > li > ol > li{
-                        margin-left: -20px;
-                    }
-                    .rozdzialy > li > ol, .rozdzialy > li > ol > li > ul {
-                        margin-left: -10px;
+                    ol > li > ol > li > ul > li {
+                        margin-left: 7px;
                     }
                 }
             `}</style>

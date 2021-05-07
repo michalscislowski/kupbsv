@@ -9,7 +9,7 @@ export default function Footer() {
   return (
 
     <div className="main">
-    <footer className="footer">
+    <footer>
       <p className="allrights">All rights reserved 2021</p>
       <div className="socials">
         <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/BanachGroup')} /></a>
@@ -34,7 +34,7 @@ export default function Footer() {
     min-width: 300px;
     border-top: 1px solid gray;
   }
-  .footer {
+  footer {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -87,7 +87,7 @@ export default function Footer() {
     .socials {
       display: none;
     }
-    .footer {
+    footer {
       justify-content: center;
     }
     .logo {

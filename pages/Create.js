@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core'
 import TextField from '@material-ui/core/TextField'
-import { useHistory } from 'react-router-dom'
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
@@ -14,12 +13,7 @@ import {
 import Head from 'next/head'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import { createMuiTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
-import Brightness2Icon from '@material-ui/icons/Brightness2'; //moon
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import useTheme from '../components/useTheme';
-import storage from 'local-storage-fallback';
+import Card from '@material-ui/core/Card'
 import { useRouter} from 'next/router'
 
 const useStyles = makeStyles({
@@ -28,53 +22,33 @@ const useStyles = makeStyles({
       marginBottom: 20,
       display: 'block'
   },
-  changeTheme: {
-    position: 'absolute',
-    top: 100,
-    right: 20
+  box: {
+    margin: 'auto',
+    padding: '30px',
+    borderRadius: '10px',
+    ['@media (max-width:399px)']: {
+      width: '100',
+      marginTop: 80,
+  }
   }
 })
 
-const themeLight = createMuiTheme({
-  palette: {
-    type: "light"
-  }
-});
-
-const themeDark = createMuiTheme({
-  palette: {
-    type: "dark"
-  }
-});
 
 export default function Create() {
-    const theme = useTheme()
+
     const classes = useStyles()
-    const history = useHistory()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [titleError, setTitleError] = useState(false)
     const [detailsError, setDetailsError] = useState(false)
-    const [selectedDate, setSelectedDate] = React.useState(new Date('2021-05-02'));
-    const [darkMode, SetDarkMode] = useState()
-    const router = useRouter()
-
-    useEffect(() => {
-      SetDarkMode(getInitialState);
-    }, [])
-
-    function getInitialState() {
-    const savedTheme = storage.getItem('theme');
-      return JSON.parse(savedTheme).mode == "dark"
-        ? true
-        : false;
-    }
-
+    const [selectedDate, setSelectedDate] = useState(new Date('2021-05-02'));
+	  const router = useRouter()
+	
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
 
-    const getCurrentDAte = () => {
+    const getDateFromForm = () => {
       let days = selectedDate.getDate();
       let months = selectedDate.getMonth() + 1;
       let years = selectedDate.getFullYear();
@@ -97,7 +71,7 @@ export default function Create() {
             setDetailsError(true)
         }
         if (title && description) {
-          let date = getCurrentDAte();
+          let date = getDateFromForm();
             fetch('http://localhost:8000/notes', {
                 method: 'POST',
                 headers: { "Content-type": "application/json" },
@@ -107,87 +81,76 @@ export default function Create() {
     }
 
     return (
-    <ThemeProvider theme={darkMode ? themeDark : themeLight}>
       <div className="container">
         <Head>
           <title>Kup BSV</title>
           <link rel="icon" href="/bsvlogo.svg" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         </Head>
-        <Header dark="no"/>
-        <main className="main">
+        <Header/>
+        <main>
           <Container>
-            <Typography
-              variant="h5" 
-              color="textSecondary"
-              component="h2"
-              gutterBottom
-            >
-              Dodaj post na blogu
-            </Typography>
-            
-            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                  disableToolbar
-                  variant="inline"
-                  format="MM/dd/yyyy"
-                  margin="normal"
-                  id="date-picker-inline"
-                  label="Data publikacji"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                  KeyboardButtonProps={{
-                      'aria-label': 'change date',
+            <Card elevation={5} className={classes.box}>
+              <Typography
+                variant="h5" 
+                color="textSecondary"
+                component="h2"
+                gutterBottom
+              >
+                Dodaj post na blogu
+              </Typography>
+              
+              <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format="MM/dd/yyyy"
+                    margin="normal"
+                    id="date-picker-inline"
+                    label="Data publikacji"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                    }}
+                />
+                </MuiPickersUtilsProvider>
+                <TextField className={classes.field}
+                  onChange={(e) => setTitle(e.target.value)}
+                  label="Tytuł" 
+                  variant="outlined" 
+                  color="primary" 
+                  fullWidth
+                  required
+                  error={titleError}
+                  onBlur={(e) => {
+                    setDetailsError(false);
+                    setTitleError(false);
                   }}
-              />
-              </MuiPickersUtilsProvider>
-              <TextField className={classes.field}
-                onChange={(e) => setTitle(e.target.value)}
-                label="Tytuł" 
-                variant="outlined" 
-                color="primary" 
-                fullWidth
-                required
-                error={titleError}
-                onBlur={(e) => {
-                  setDetailsError(false);
-                  setTitleError(false);
-                }}
-              />
-              <TextField className={classes.field}
+                />
+                <TextField className={classes.field}
                 onChange={(e) => setDescription(e.target.value)}
-                label="Treść"
-                variant="outlined"
-                color="primary"
-                multiline
-                rows={4}
-                fullWidth
-                required
-                error={detailsError}
-                helperText="Oba pola muszą być wypełnione."
-              />
-              <Button
-                type="submit" 
-                color="default" 
-                variant={darkMode ? "outlined" : "contained"}
-                endIcon={<KeyboardArrowRightIcon />}>
-                Dodaj
-              </Button>
-              </form>
+                  label="Treść"
+                  variant="outlined"
+                  color="primary"
+                  multiline
+                  rows={4}
+                  fullWidth
+                  required
+                  error={detailsError}
+                  helperText="Oba pola muszą być wypełnione."
+                />
+                <Button
+                  type="submit" 
+                  color="default"
+                  variant="outlined"
+                  endIcon={<KeyboardArrowRightIcon />}>
+                  Dodaj
+                </Button>
+                </form>
+            </Card>
           </Container>
-          <Button className={classes.changeTheme}
-            variant={darkMode ? "outlined" : "contained"} 
-            onClick={() => {
-              SetDarkMode(!darkMode); 
-              theme.setTheme(
-                theme.mode === 'dark'
-                    ? { ...theme, mode: 'light' }
-                    : { ...theme, mode: 'dark' }
-                )}
-              }>
-              {darkMode ? <WbSunnyIcon /> : <Brightness2Icon style={{transform: 'scaleX(-1)'}}/>}
-          </Button>
         </main>
         <div className="stopa">
           <Footer/>
@@ -206,15 +169,16 @@ export default function Create() {
             justify-content: center;
             align-items: stretch;
             flex-direction: column;
-            background: ${darkMode ? "#0a0e12" : '#eee'};
-            overflow: hidden;
-            transition: 0.5s;
           }
-          .main {
-            margin: 120px 30px;
+          main {
+            margin: 100px 30px 50px 30px;
+          }
+          @media only screen and (max-width: 499px) {
+            main {
+              margin: 120px 7px;
+            }
           }
         `} </style>
       </div>
-    </ThemeProvider>
     )
 }
