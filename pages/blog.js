@@ -8,6 +8,8 @@ import Head from 'next/head'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import { CardHeader } from '@material-ui/core'
+import IconButton from '@material-ui/core/IconButton'
+import DeleteOutlined from '@material-ui/icons/DeleteOutlined'
 
 
 const featuredPosts = [
@@ -45,6 +47,13 @@ export default function Blog() {
   }, []) 
 
   console.log(notes);
+  const handleDelete = async (id) => {
+    await fetch('http://localhost:8000/notes/' + id, {
+      method: 'DELETE'
+    })
+    const newNotes = notes.filter(note => note.id != id)
+    setNotes(newNotes)
+  }
 
   return (
     <div className="container">
@@ -55,7 +64,6 @@ export default function Blog() {
       </Head>
       <Header />
       <Container>
-
         <main className="main">
           <h1>BLOG</h1>
           <Grid container spacing={4}>
@@ -65,6 +73,11 @@ export default function Blog() {
                   <CardHeader 
                     title={post.title}
                     subheader={post.date}
+                    action={
+                      <IconButton onClick={() => handleDelete(post.id)}>
+                        <DeleteOutlined />
+                      </IconButton>
+                    }
                   />
                   <CardContent>
                     <Typography variant="subtitle1" paragraph>
