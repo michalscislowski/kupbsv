@@ -97,11 +97,6 @@ export default function Blog() {
       font-size: 16px;
       text-align: justify;
     }
-    @media only screen and (max-width: 650px) {
-      .main {
-        margin-left: 15px;
-        margin-right: 15px;
-      }
       `} </style>
     </div>
   )

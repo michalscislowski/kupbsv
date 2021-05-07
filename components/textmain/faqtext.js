@@ -80,6 +80,7 @@ export default function FaqText() {
                     margin: auto;
                     margin-top: 120px;
                     min-width: 300px;
+                    width: 90%;
                 }
             }
 

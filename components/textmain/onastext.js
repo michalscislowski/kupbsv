@@ -52,6 +52,7 @@ export default function ONasText() {
                 min-height: 879px;
                 text-align: justify;
                 letter-spacing: 0.5px;
+                line-height: 1.625;
             }
             .main-dark {
                 background-color: #0a0e12;
@@ -62,6 +63,7 @@ export default function ONasText() {
                     margin: auto;
                     margin-top: 120px;
                     min-width: 300px;
+                    width: 90%;
                 }
             }
             `}</style>
