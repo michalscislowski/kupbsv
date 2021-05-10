@@ -7,6 +7,7 @@ import Profile from './login/profile';
 import Link from 'next/link';
 import storage from 'local-storage-fallback';
 import getUserData from './userAuth/getUserData';
+import VerificationDialog from './login/verificationDialog';
 
 export default function Header(props) {
   const { query } = useRouter();
@@ -82,8 +83,11 @@ export default function Header(props) {
           <a className="push" >
             {!userId ? <LoginDialog /> :
             <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency} userStatus={userStatus}/> }
+            {/* { userId && userStatus == 'QUEUED' || 'UPDATE REQUIRED' || 'IN REVIEW' || 'undefined'
+            ? <VerificationDialog userId={userId} />
+          : null} */}
           </a>
-          <a><SimpleMenu /></a>
+          <a><SimpleMenu userId={userId} /></a>
       </header>
       <style jsx>{`
   .main {

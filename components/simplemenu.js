@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import Link from 'next/link';
 
-export default function SimpleMenu() {
+export default function SimpleMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -15,6 +15,14 @@ export default function SimpleMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const userId = props.userId;
+  // 45350 - Cieszyn
+  // 45112 - Mati
+  // 39715 - Arczi
+  // 44325 - Jeksa
+  // 38978 - Scisly
+
 
   return (
     <div>
@@ -32,7 +40,11 @@ export default function SimpleMenu() {
         <Link as="/onas" href="/onas"><MenuItem  component="a" onClick={handleClose }>O nas</MenuItem></Link>
         <Link as="/faq" href="/faq"><MenuItem component="a" onClick={handleClose }>FAQ</MenuItem></Link>
         <Link as="/blog" href="/blog" ><MenuItem component="a" onClick={handleClose }>BLOG</MenuItem></Link>
-        <Link as="/Create" href="/Create" ><MenuItem component="a" onClick={handleClose }>Dodaj Post</MenuItem></Link>
+        <div>{userId ==  44325 || userId == 45350 || userId == 45112 || userId == 39715 || userId == 38978
+        ? <Link as="/Create" href="/Create" ><MenuItem component="a" onClick={handleClose }>Dodaj Post</MenuItem></Link>
+        : null}
+        </div>
+        
       </Menu>
       <style>{`
 
