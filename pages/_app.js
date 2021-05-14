@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core'
 import useTheme from '../components/useTheme'
 import CssBaseline from "@material-ui/core/CssBaseline"
 import storage from 'local-storage-fallback'
+import {RecoilRoot} from 'recoil'
 
 
 const useStyles = makeStyles({
@@ -105,7 +106,9 @@ export default function MyApp(props) {
               )}}>
             {!darkMode ? <Brightness2Icon className={classes.moon}/> : <WbSunnyIcon />}
         </Button>
-        <Component {...pageProps} />
+        <RecoilRoot>
+          <Component {...pageProps} />
+        </RecoilRoot>
         {/* </Paper> */}
       </ThemeProvider>
     </React.Fragment>
