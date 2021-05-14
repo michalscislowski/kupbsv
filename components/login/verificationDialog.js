@@ -52,22 +52,32 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function VerificationDialog() {
+export default function VerificationDialog(props) {
   const [open, setOpen] = React.useState(false);
-
+  const [temp, setTemp] = React.useState(false);
+  const userId = props.userId;
+  const verificationUrl = ('https://verify-with.blockpass.org/?clientId=banach_group&serviceName=Banach+Group&env=prod&refId='+userId)
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const handleClose = () => {
+  const handleClose = (e) => {
     setOpen(false);
+    e.preventDefault()
+    
+  };
+
+  if (userId && !temp) {
+    setOpen(true)
+    setTemp(true)
   };
 
   return (
     <div>
-      <Button color="secondary" onClick={handleClickOpen} style={{ color: '#ffffff', fontSize: '16px', }}>
+      {/* <Button color="secondary" onClick={handleClickOpen} style={{ color: '#ffffff', fontSize: '16px', }}>
         <a>Zweryfikuj się</a>
-      </Button>
+      </Button> */}
+      <div> {}
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           Wymagana weryfikacja klienta
@@ -83,6 +93,7 @@ export default function VerificationDialog() {
           </Button>
         </DialogActions>
       </Dialog>
+      </div>
       <style jsx>{`
         @media only screen and (max-width: 350px) {
           a {
