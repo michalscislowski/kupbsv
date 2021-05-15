@@ -17,11 +17,13 @@ export default function SimpleMenu(props) {
   };
 
   const userId = props.userId;
-  // 45350 - Cieszyn
-  // 45112 - Mati
-  // 39715 - Arczi
-  // 44325 - Jeksa
-  // 38978 - Scisly
+  const userIds = [
+    "45350", // Cieszyn
+    "45112", // Mati
+    "39715", // Arczi
+    "44325", // Jeksa
+    "38978", // Scisly
+  ];
 
 
   return (
@@ -40,7 +42,7 @@ export default function SimpleMenu(props) {
         <Link as="/onas" href="/onas"><MenuItem  component="a" onClick={handleClose }>O nas</MenuItem></Link>
         <Link as="/faq" href="/faq"><MenuItem component="a" onClick={handleClose }>FAQ</MenuItem></Link>
         <Link as="/blog" href="/blog" ><MenuItem component="a" onClick={handleClose }>BLOG</MenuItem></Link>
-        <div>{userId ==  44325 || userId == 45350 || userId == 45112 || userId == 39715 || userId == 38978
+        <div>{userIds.includes(userId)
         ? <Link as="/Create" href="/Create" ><MenuItem component="a" onClick={handleClose }>Dodaj Post</MenuItem></Link>
         : null}
         </div>

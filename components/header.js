@@ -9,7 +9,6 @@ import storage from 'local-storage-fallback';
 import getUserData from './userAuth/getUserData';
 import {useRecoilState} from 'recoil'
 import {recoilUserId, recoilUserName, recoilUserStatus, recoilUserPrimaryPaymail, recoilUserAmount, recoilUserCurrency, recoilUserAvatarUrl, recoilUserEmail} from './states'
-import VerificationDialog from './login/verificationDialog';
 
 
 export default function Header(props) {
@@ -25,37 +24,32 @@ export default function Header(props) {
   const [userId, setUserId] = useRecoilState(recoilUserId)
   const [refreshToggle, setRefreshToggle] = useState(true)
 
+  function setMoneyButtonData(_profile, _balance, _userStatus) {
+    setUserName(_profile.name);
+    setUserPrimaryPaymail(_profile.primaryPaymail);
+    setUserEmail(_profile.email);
+    setUserAvatarUrl(_profile.avatarUrl);
+    setUserStatus(_userStatus.data.status);
+    setUserAmount(_balance.amount);
+    setUserCurrency(_balance.currency);
+    setUserId(_profile.id);  
+  }
+
 
       const userProfile = async() => { 
         if (query.code && !userId) { 
           await handleAuthuser();
           const { profile, balance, userStatus } = await getUserData();
-          setUserName(profile.name);
-          setUserPrimaryPaymail(profile.primaryPaymail);
-          setUserEmail(profile.email);
-          setUserAvatarUrl(profile.avatarUrl);
-          setUserStatus(userStatus.data.status);
-          setUserAmount(balance.amount);
-          setUserCurrency(balance.currency);
-          setUserId(profile.id);  
+          setMoneyButtonData(profile, balance, userStatus);
         }
 
         if (storage.getItem('mb_js_client:oauth_access_token') && !userId) {
           const { profile, balance, userStatus } = await getUserData();
-          setUserName(profile.name);
-          setUserPrimaryPaymail(profile.primaryPaymail);
-          setUserEmail(profile.email);
-          setUserAvatarUrl(profile.avatarUrl);
-          setUserStatus(userStatus.data.status);
-          setUserAmount(balance.amount);
-          setUserCurrency(balance.currency);
-          setUserId(profile.id); 
+          setMoneyButtonData(profile, balance, userStatus);
         } 
       }
       userProfile();
-
       
-      //setTimeout(router.push('/'),5000);
 
     useEffect(() => {
       // console.log(userName);

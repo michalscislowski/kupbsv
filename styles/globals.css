@@ -9,6 +9,23 @@ body {
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  width: 15px;
+  background: #202324; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #606063; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #707073; 
+}
+
 @font-face {
   font-family: "neutra-text";
   src: local("neutra-text"), url("/fonts/NeutraText-Book.ttf"), format("truetype");
