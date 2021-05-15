@@ -23,13 +23,13 @@ const useStyles = makeStyles({
       display: 'block'
   },
   box: {
-    margin: 'auto',
+    marginTop: 80,
     padding: '30px',
     borderRadius: '10px',
-    ['@media (max-width:399px)']: {
+    ['@media (max-width:374px)']: {
       width: '100',
-      marginTop: 80,
-  }
+      marginTop: 120,
+    }
   }
 })
 
@@ -87,96 +87,85 @@ export default function Create() {
           <link rel="icon" href="/bsvlogo.svg" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         </Head>
-        <Header/>
-        <main>
-          <Container>
-            <Card elevation={5} className={classes.box}>
-              <Typography
-                variant="h5" 
-                color="textSecondary"
-                component="h2"
-                gutterBottom
-              >
-                Dodaj post na blogu
-              </Typography>
-              
-              <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                    disableToolbar
-                    variant="inline"
-                    format="MM/dd/yyyy"
-                    margin="normal"
-                    id="date-picker-inline"
-                    label="Data publikacji"
-                    value={selectedDate}
-                    onChange={handleDateChange}
-                    KeyboardButtonProps={{
-                        'aria-label': 'change date',
+        <div className="wrapper">
+          <div><Header/></div>
+          <div>
+            <Container>
+              <Card elevation={5} className={classes.box}>
+                <Typography
+                  variant="h5" 
+                  color="textSecondary"
+                  component="h2"
+                  gutterBottom
+                >
+                  Dodaj post na blogu
+                </Typography>
+                
+                <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <KeyboardDatePicker
+                      disableToolbar
+                      variant="inline"
+                      format="MM/dd/yyyy"
+                      margin="normal"
+                      id="date-picker-inline"
+                      label="Data publikacji"
+                      value={selectedDate}
+                      onChange={handleDateChange}
+                      KeyboardButtonProps={{
+                          'aria-label': 'change date',
+                      }}
+                  />
+                  </MuiPickersUtilsProvider>
+                  <TextField className={classes.field}
+                    onChange={(e) => setTitle(e.target.value)}
+                    label="Tytuł" 
+                    variant="outlined" 
+                    color="primary" 
+                    fullWidth
+                    required
+                    error={titleError}
+                    onBlur={(e) => {
+                      setDetailsError(false);
+                      setTitleError(false);
                     }}
-                />
-                </MuiPickersUtilsProvider>
-                <TextField className={classes.field}
-                  onChange={(e) => setTitle(e.target.value)}
-                  label="Tytuł" 
-                  variant="outlined" 
-                  color="primary" 
-                  fullWidth
-                  required
-                  error={titleError}
-                  onBlur={(e) => {
-                    setDetailsError(false);
-                    setTitleError(false);
-                  }}
-                />
-                <TextField className={classes.field}
-                onChange={(e) => setDescription(e.target.value)}
-                  label="Treść"
-                  variant="outlined"
-                  color="primary"
-                  multiline
-                  rows={4}
-                  fullWidth
-                  required
-                  error={detailsError}
-                  helperText="Oba pola muszą być wypełnione."
-                />
-                <Button
-                  type="submit" 
-                  color="default"
-                  variant="outlined"
-                  endIcon={<KeyboardArrowRightIcon />}>
-                  Dodaj
-                </Button>
-                </form>
-            </Card>
-          </Container>
-        </main>
-        <div className="stopa">
-          <Footer/>
+                  />
+                  <TextField className={classes.field}
+                  onChange={(e) => setDescription(e.target.value)}
+                    label="Treść"
+                    variant="outlined"
+                    color="primary"
+                    multiline
+                    rows={4}
+                    fullWidth
+                    required
+                    error={detailsError}
+                    helperText="Oba pola muszą być wypełnione."
+                  />
+                  <Button
+                    type="submit" 
+                    color="default"
+                    variant="outlined"
+                    endIcon={<KeyboardArrowRightIcon />}>
+                    Dodaj
+                  </Button>
+                  </form>
+              </Card>
+            </Container>
+          </div>
+          <div><Footer/></div>
         </div>
         <style jsx> {`
-          .stopa {
-            width: 100%;
-            position: absolute;
-            bottom:0;
-            left: 0;
-          }
           .container {
             height: 100vh;
             width: 100%;
+          }
+          .wrapper {
+            height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: stretch;
             flex-direction: column;
-          }
-          main {
-            margin: 100px 30px 50px 30px;
-          }
-          @media only screen and (max-width: 499px) {
-            main {
-              margin: 120px 7px;
-            }
+            justify-content: space-between;
+            align-items: stretch;
           }
         `} </style>
       </div>

@@ -20,19 +20,27 @@ const useStyles = makeStyles({
         ['@media (max-width:499px)']: {
             width: '100%',
             height: 'auto',
-            padding: '15px 10px 5px 10px'
+            padding: '15px 10px 10px 10px'
         }
     },
     buttonBuy: {
         width: '50%', 
         marginRight: 10, 
         marginLeft: 10, 
-        backgroundColor: '#2e7d32', 
+        color: 'white',
+        background: '#1d6c21', 
+        '&:hover': {
+            background: "#3f8e43",
+         },
     },
     buttonSell: {
         width: '50%', 
         marginRight: 10, 
-        backgroundColor: '#b71c1c'
+        color: 'white',
+        background: '#a60b0b',
+        '&:hover': {
+            background: "#c82d2d",
+         },
     }
 })
 
@@ -52,22 +60,17 @@ export default function Main() {
   
     return (
         <main>
-            {/* <div className="box"> */}
             <Card elevation={12} className={classes.box} md={6}>
                 <div className="buttons">
-
-                    <Button onClick={setBuy} variant="contained" color="secondary" className={classes.buttonBuy}>
+                    <Button onClick={setBuy} variant="contained" className={classes.buttonBuy}>
                         KUP
                     </Button>
-                    <Button onClick={setSell} variant="contained" color="secondary" className={classes.buttonSell}>
+                    <Button onClick={setSell} variant="contained" className={classes.buttonSell}>
                         SPRZEDAJ
                     </Button>
-
                 </div>
                 <WholesomeCalculator calc={showMe?"buy":"sell"}/>
             </Card>
-            {/* </div> */}
-            {/* <div id="room-for-socials" className="room-for-socials"><a className="push"></a></div> */}
             <div className="socials">
                 <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/8anach')} /></a>
                 <a className="instagram"><InstagramIcon aria-label="Instagram.com" onClick={() => window.open('https://www.instagram.com/8anach')}/></a>
@@ -169,6 +172,10 @@ export default function Main() {
                         width: 98%;
                         height: auto;
                         padding: 15px 10px 5px 10px;
+                    }
+                    .buttons {
+                        margin-top: 10px;
+                        margin-bottom: 15px;
                     }
                 }
             `}</style>

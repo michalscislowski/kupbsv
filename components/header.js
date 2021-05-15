@@ -7,52 +7,45 @@ import Profile from './login/profile';
 import Link from 'next/link';
 import storage from 'local-storage-fallback';
 import getUserData from './userAuth/getUserData';
+import {useRecoilState} from 'recoil'
+import {recoilUserId, recoilUserName, recoilUserStatus, recoilUserPrimaryPaymail, recoilUserAmount, recoilUserCurrency, recoilUserAvatarUrl, recoilUserEmail} from './states'
+import VerificationDialog from './login/verificationDialog';
+
 
 export default function Header(props) {
   const { query } = useRouter();
-  const [name, setName] = useState('')
-  const [primaryPaymail, setPrimaryPaymail] = useState('')
-  const [email, setEmail] = useState('')
-  const [avatarUrl, setAvatarUrl] = useState('')
-  const [userStatus,setUserStatus] = useState('')
-  const [userAmount, setUserAmount] = useState('')
-  const [userCurrency, setUserCurrency] = useState('')
-  const [userId, setUserId] = useState('')
-  
-    // if (storage.getItem('mb_js_client:oauth_access_token') && !query.code) {
-    //   const userProfile = async() => {
-    //       const { profile, balance } = await handleAuthuser();
-    //       setName(profile.name);
-    //       setPrimaryPaymail(profile.primaryPaymail);
-    //       setEmail(profile.email);
-    //       setAvatarUrl(profile.avatarUrl);
-    //       setUserAmount(balance.amount);
-    //       setUserCurrency(balance.currency);
-    //       setUserId(profile.id);
-    //   }
-    //   userProfile();
+  const router = useRouter();
+  const [userName, setUserName] = useRecoilState(recoilUserName)
+  const [userPrimaryPaymail, setUserPrimaryPaymail] = useRecoilState(recoilUserPrimaryPaymail)
+  const [userEmail, setUserEmail] = useRecoilState(recoilUserEmail)
+  const [userAvatarUrl, setUserAvatarUrl] = useRecoilState(recoilUserAvatarUrl)
+  const [userStatus, setUserStatus] = useRecoilState(recoilUserStatus)
+  const [userAmount, setUserAmount] = useRecoilState(recoilUserAmount)
+  const [userCurrency, setUserCurrency] = useRecoilState(recoilUserCurrency)
+  const [userId, setUserId] = useRecoilState(recoilUserId)
+  const [refreshToggle, setRefreshToggle] = useState(true)
 
-    // };
 
       const userProfile = async() => { 
         if (query.code && !userId) { 
           await handleAuthuser();
           const { profile, balance, userStatus } = await getUserData();
-          setName(profile.name);
-          setPrimaryPaymail(profile.primaryPaymail);
-          setEmail(profile.email);
-          setAvatarUrl(profile.avatarUrl);
+          setUserName(profile.name);
+          setUserPrimaryPaymail(profile.primaryPaymail);
+          setUserEmail(profile.email);
+          setUserAvatarUrl(profile.avatarUrl);
           setUserStatus(userStatus.data.status);
           setUserAmount(balance.amount);
           setUserCurrency(balance.currency);
-          setUserId(profile.id); 
-        } 
-        else if (storage.getItem('mb_js_client:oauth_access_token') && !name) {
+          setUserId(profile.id);  
+        }
+
+        if (storage.getItem('mb_js_client:oauth_access_token') && !userId) {
           const { profile, balance, userStatus } = await getUserData();
-          setName(profile.name);
-          setPrimaryPaymail(profile.primaryPaymail);
-          setEmail(profile.email);
-          setAvatarUrl(profile.avatarUrl);
+          setUserName(profile.name);
+          setUserPrimaryPaymail(profile.primaryPaymail);
+          setUserEmail(profile.email);
+          setUserAvatarUrl(profile.avatarUrl);
           setUserStatus(userStatus.data.status);
           setUserAmount(balance.amount);
           setUserCurrency(balance.currency);
@@ -60,13 +53,15 @@ export default function Header(props) {
         } 
       }
       userProfile();
+
+      
       //setTimeout(router.push('/'),5000);
 
     useEffect(() => {
-      console.log(name);
-      console.log(primaryPaymail);
-      console.log(email);
-      console.log(avatarUrl);
+      // console.log(userName);
+      console.log(userPrimaryPaymail);
+      //console.log(userEmail);
+      console.log(userAvatarUrl);
       console.log(userStatus);
       console.log(userAmount);
       console.log(userCurrency);
@@ -75,15 +70,33 @@ export default function Header(props) {
       
     },[userId]);
 
+    useEffect(() => {
+      (function(w,d,v3){
+        console.log(userName)
+        console.log(userEmail)
+        w.chaportConfig = {
+        appId : '609ef156cffe24321140dea7',
+        };
+        
+        if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
+        
+        window.chaport.on('ready', function () {
+          window.chaport.setVisitorData({
+            name: (userName),
+            email: (userEmail), 
+          })
+        })
+    },[userId]);
+
   return (
     <div className="main">
       <header className="header">
         <Link as="/" href="/" ><a className="logo">KUPBSV</a></Link>
           <a className="push" >
             {!userId ? <LoginDialog /> :
-            <Profile name={name} userId={userId} primaryPaymail={primaryPaymail} userEmail={email} userAvatar={avatarUrl} userAmount={userAmount} userCurrency={userCurrency} userStatus={userStatus}/> }
+            <Profile name={userName} userId={userId} primaryPaymail={userPrimaryPaymail} userEmail={userEmail} userAvatar={userAvatarUrl} userAmount={userAmount} userCurrency={userCurrency} userStatus={userStatus}/> }
           </a>
-          <a><SimpleMenu /></a>
+          <a><SimpleMenu userId={userId} /></a>
       </header>
       <style jsx>{`
   .main {

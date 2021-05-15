@@ -9,7 +9,7 @@ export default function Calculatorsell(props) {
         <div>
             <div className="typebox">
                 <div className="textfield">
-                    <TextField error={false} id="outlined-number" label="BSV" helperText="Min. wartość 0,01 BSV"  
+                    <TextField error={false} id="outlined-number" label="BSV" helperText="min. 0.01 BSV"  
                     type="tel"
                     value={value}
                     InputProps={{ inputProps: { min: "0.01", max: "5000", step: "0.01" } }}
@@ -32,12 +32,6 @@ export default function Calculatorsell(props) {
             </div>
 
             <style jsx> {`
-                .calculator {
-                    border: black solid 0px;
-                    border-radius: 10px;
-                    width: auto;
-                    height: auto;
-                }
                 .typebox {
                     width: auto;
                     height: auto;
@@ -60,7 +54,7 @@ export default function Calculatorsell(props) {
 
                 @media only screen and (max-width: 499px) {
                     .textfield {
-                        width: 50%;
+                        width: 45%;
                         margin: 10px 5px;
                     }
                 }
