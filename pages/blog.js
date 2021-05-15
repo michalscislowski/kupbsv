@@ -10,6 +10,7 @@ import Footer from '../components/footer'
 import { CardHeader } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteOutlined from '@material-ui/icons/DeleteOutlined'
+import Socials from '../components/socials'
 
 
 const featuredPosts = [
@@ -90,6 +91,7 @@ export default function Blog() {
           </Grid>
         </main>
       </Container>
+      <Socials />
       <Footer />
       <style jsx> {`
     .main {
