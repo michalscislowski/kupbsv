@@ -11,6 +11,7 @@ import {useRecoilState} from 'recoil'
 import {recoilUserId, recoilUserName, recoilUserStatus, recoilUserPrimaryPaymail, recoilUserAmount, recoilUserCurrency, recoilUserAvatarUrl, recoilUserEmail} from './states'
 import VerificationDialog from './login/verificationDialog';
 
+
 export default function Header(props) {
   const { query } = useRouter();
   const router = useRouter();
@@ -23,21 +24,7 @@ export default function Header(props) {
   const [userCurrency, setUserCurrency] = useRecoilState(recoilUserCurrency)
   const [userId, setUserId] = useRecoilState(recoilUserId)
   const [refreshToggle, setRefreshToggle] = useState(true)
-  
-    // if (storage.getItem('mb_js_client:oauth_access_token') && !query.code) {
-    //   const userProfile = async() => {
-    //       const { profile, balance } = await handleAuthuser();
-    //       setName(profile.name);
-    //       setPrimaryPaymail(profile.primaryPaymail);
-    //       setEmail(profile.email);
-    //       setAvatarUrl(profile.avatarUrl);
-    //       setUserAmount(balance.amount);
-    //       setUserCurrency(balance.currency);
-    //       setUserId(profile.id);
-    //   }
-    //   userProfile();
 
-    // };
 
       const userProfile = async() => { 
         if (query.code && !userId) { 
@@ -71,9 +58,9 @@ export default function Header(props) {
       //setTimeout(router.push('/'),5000);
 
     useEffect(() => {
-      console.log(userName);
+      // console.log(userName);
       console.log(userPrimaryPaymail);
-      console.log(userEmail);
+      //console.log(userEmail);
       console.log(userAvatarUrl);
       console.log(userStatus);
       console.log(userAmount);
@@ -81,6 +68,24 @@ export default function Header(props) {
       console.log(userId);
       
       
+    },[userId]);
+
+    useEffect(() => {
+      (function(w,d,v3){
+        console.log(userName)
+        console.log(userEmail)
+        w.chaportConfig = {
+        appId : '609ef156cffe24321140dea7',
+        };
+        
+        if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
+        
+        window.chaport.on('ready', function () {
+          window.chaport.setVisitorData({
+            name: (userName),
+            email: (userEmail), 
+          })
+        })
     },[userId]);
 
   return (
