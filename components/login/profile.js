@@ -103,8 +103,9 @@ export default function Profile(props) {
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     <History />
                     <MenuItem style={{borderBottom: 'solid'}}>Status: {!status ? <Button onClick={handleClick} color="primary" variant="contained" style={{ backgroundColor: '#000000', fontSize: '14px', marginLeft:'10px', height:'35px',}}>ZWERYFIKUJ SIĘ Z BLOCKPASS</Button> : status}</MenuItem>
+                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>UserId: {userId}</MenuItem>
                     <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Balans konta: {amount} {currency} </MenuItem>
-                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Email: {email} {userId}</MenuItem>
+                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Email: {email}</MenuItem>
                     <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Paymail: {paymail} </MenuItem>                    
                     <MenuItem href="/" component="a" onClick={handleClose, signOut}>Wyloguj</MenuItem>
                   </MenuList>

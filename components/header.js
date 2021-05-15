@@ -9,6 +9,7 @@ import storage from 'local-storage-fallback';
 import getUserData from './userAuth/getUserData';
 import {useRecoilState} from 'recoil'
 import {recoilUserId, recoilUserName, recoilUserStatus, recoilUserPrimaryPaymail, recoilUserAmount, recoilUserCurrency, recoilUserAvatarUrl, recoilUserEmail} from './states'
+import VerificationDialog from './login/verificationDialog';
 
 
 export default function Header(props) {
@@ -95,7 +96,7 @@ export default function Header(props) {
             {!userId ? <LoginDialog /> :
             <Profile name={userName} userId={userId} primaryPaymail={userPrimaryPaymail} userEmail={userEmail} userAvatar={userAvatarUrl} userAmount={userAmount} userCurrency={userCurrency} userStatus={userStatus}/> }
           </a>
-          <a><SimpleMenu /></a>
+          <a><SimpleMenu userId={userId} /></a>
       </header>
       <style jsx>{`
   .main {
