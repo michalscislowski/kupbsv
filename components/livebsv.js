@@ -19,7 +19,7 @@ export default function Livebsv(props) {
             </div>
             <style jsx>{`
             .customWidget {
-                background: linear-gradient(#212121, #485849);
+                background: linear-gradient(#191b1c, #3c4144);
                 border-radius: 5px;
                 margin: 20px 10px;
                 padding: 10px 15px;

@@ -50,11 +50,11 @@ export default function Footer() {
   }
   .socials a {
     margin-left: 15px;
-    transition: 0.4s;
+    transition: 0.3s;
   }
   a:hover {
     cursor: pointer;
-    transform: scale(1.25);
+    transform: scale(1.15);
   }
   .facebook:hover {
     color: #3b5998;

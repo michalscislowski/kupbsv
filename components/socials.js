@@ -19,7 +19,7 @@ export default function Socials() {
                 }             
                 @media only screen and (max-width: 650px) {
                     a {
-                        transition: 0.4s;
+                        transition: 0.3s;
                     }
                     .socials a {
                         margin: 0;

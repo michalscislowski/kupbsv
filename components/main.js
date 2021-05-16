@@ -15,9 +15,11 @@ const useStyles = makeStyles({
         color: 'white',
         borderRadius: '30px',
         ['@media (max-width:499px)']: {
-            width: '100%',
+            marginLeft: 10,
+            marginRight: 10,
+            width: 'calc(100% - 20px)',
             height: 'auto',
-            padding: '15px 10px 10px 10px'
+            padding: '15px 10px 0 10px'
         }
     },
     buttonBuy: {
@@ -67,6 +69,12 @@ export default function Main() {
                     </Button>
                 </div>
                 <WholesomeCalculator calc={showMe?"buy":"sell"}/>
+                <div className="powered">Powered by
+                    <a onClick={() => window.open('https://www.coingecko.com/')} >CoinGecko</a>
+                    <a onClick={() => window.open('https://blockpass.org/')} >Blockpass</a>
+                    <a onClick={() => window.open('https://www.moneybutton.com/')} >Moneybutton</a>
+                    <a onClick={() => window.open('https://vercel.com/')} >Vercel</a>
+                </div>
             </Card>
             <Socials />
             <style jsx> {`
@@ -86,18 +94,34 @@ export default function Main() {
                 .buttons::after {
                     clear: both;
                 }
-                
+                .powered {
+                    float: right;
+                    color: #606060;
+                    font-size: 10px;
+                    text-align: center;
+                    margin-right: 8px;
+                }
+                a {
+                    color: gray;
+                    font-weight: 500;
+                    display: inline-block;
+                    padding: 5px 2.5px;
+                    cursor: pointer;
+                    transition: 0.2s;
+                }
+                a:hover {
+                    color: #a2a2a2;
+                }
                 @media only screen and (max-width: 650px) {
                     main {
                         margin-top: 120px;
                     }
-                    .box, {
-                      height: auto;
-                      padding: 15px 10px 5px 10px;
-                    }
                     .buttons {
                         margin-top: 5px;
                         padding: 0;
+                    }
+                    .powered {
+                        margin-right: 10px;
                     }
                 }
                 @media only screen and (max-width: 499px) {
