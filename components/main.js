@@ -20,7 +20,7 @@ const useStyles = makeStyles({
             marginRight: 10,
             width: 'calc(100% - 20px)',
             height: 'auto',
-            padding: '15px 10px 0 10px'
+            padding: '15px 10px 20px 10px'
         }
     },
     buttonBuy: {
@@ -125,7 +125,7 @@ export default function Main() {
                         padding: 0;
                     }
                     .powered {
-                        margin-right: 10px;
+                        margin-right: -10px;
                     }
                 }
                 @media only screen and (max-width: 499px) {
