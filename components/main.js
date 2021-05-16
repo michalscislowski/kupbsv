@@ -14,6 +14,7 @@ const useStyles = makeStyles({
         padding: '30px',
         color: 'white',
         borderRadius: '30px',
+        position: 'relative',
         ['@media (max-width:499px)']: {
             marginLeft: 10,
             marginRight: 10,
@@ -100,6 +101,9 @@ export default function Main() {
                     font-size: 10px;
                     text-align: center;
                     margin-right: 8px;
+                    position: absolute;
+                    bottom: 0;
+                    right: 30px;
                 }
                 a {
                     color: gray;

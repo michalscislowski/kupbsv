@@ -39,10 +39,7 @@ export default function Calculatorsell(props) {
                     justify-content: center;
                 }
                 .textfield {
-                    margin-top: 5px;
-                    margin-bottom: 10px;
-                    margin-left: 10px;
-                    margin-right: 10px;
+                    margin: 5px 10px 10px;
                     width: 180px;
                 }
                 .changebutton {
