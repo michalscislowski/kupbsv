@@ -118,7 +118,7 @@ export default function Main() {
                 }
                 @media only screen and (max-width: 650px) {
                     main {
-                        margin-top: 120px;
+                        margin-top: 125px;
                     }
                     .buttons {
                         margin-top: 5px;

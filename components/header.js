@@ -111,13 +111,12 @@ export default function Header(props) {
     text-decoration: none;
     padding: 20px 15px;
   }
-   .logo {
+  .logo {
     font-weight: 700;
     margin-left: 15px;
-    font-size: 25px;
    }
    
-   .push {
+  .push {
     margin-left: auto;
     text-align: center;
     cursor: pointer;
@@ -128,23 +127,13 @@ export default function Header(props) {
     display: flex;
     justify-content: flex-end;
   }
-  .changeTheme {
-    position: absolute;
-    top: 100px;
-    right: 20px;
-  }
-
-  @media only screen and (max-width: 555px) {
+  @media only screen and (max-width: 499px) {
     .push, .logo {
-      font-size: 18px;	
+      font-size: 22px;	
       margin auto;
     }
-  }
-
-  @media only screen and (max-width: 400px) {
-    .push, .logo {
-      font-size: 13px;	
-      margin auto;
+    a {
+      padding: 20px 0;
     }
   }
 
