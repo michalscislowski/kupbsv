@@ -7,7 +7,10 @@ export default async function handleAuthuser () {
     const client = new MoneyButtonClient('cd8072b2a8b1557cc7ad71d96d038658');
     
     client.handleAuthorizationResponse();
-    router.push('/home', undefined);
+    setTimeout(() => {
+        router.push('/home', undefined);
+    }, 100);
+    
     
     //const refreshToken = client.getRefreshToken();
 
