@@ -3,18 +3,11 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Main from '../components/main'
 import { useRouter} from 'next/router'
-import React, { useEffect } from 'react';
+
 
 
 export default function Home() {
   const router = useRouter();
-
-  useEffect(() => {
-    console.log('wersje w home')
-    router.push('/', undefined)
-    
-  }, []);
-  
   return (
     <div className="container">
       <Head>
