@@ -80,6 +80,7 @@ export default function Profile(props) {
     storage.removeItem('mb_js_client:oauth_redirect_uri');
     storage.removeItem('mb_js_client:oauth_refresh_token');
     storage.removeItem('mb_js_client:oauth_state');
+    router.reload();  
   }
 
   const handleHistory = (e) => {

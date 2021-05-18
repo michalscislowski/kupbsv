@@ -10,7 +10,6 @@ import getUserData from './userAuth/getUserData';
 import {useRecoilState} from 'recoil'
 import {recoilUserId, recoilUserName, recoilUserStatus, recoilUserPrimaryPaymail, recoilUserAmount, recoilUserCurrency, recoilUserAvatarUrl, recoilUserEmail} from './states'
 
-
 export default function Header(props) {
   const { query } = useRouter();
   const router = useRouter();
@@ -22,7 +21,7 @@ export default function Header(props) {
   const [userAmount, setUserAmount] = useRecoilState(recoilUserAmount)
   const [userCurrency, setUserCurrency] = useRecoilState(recoilUserCurrency)
   const [userId, setUserId] = useRecoilState(recoilUserId)
-  const [refreshToggle, setRefreshToggle] = useState(true)
+
 
   function setMoneyButtonData(_profile, _balance, _userStatus) {
     setUserName(_profile.name);
@@ -48,13 +47,16 @@ export default function Header(props) {
           setMoneyButtonData(profile, balance, userStatus);
         } 
       }
-      userProfile();
-      
+      if (query.code) {
+      userProfile().then(router.push('/home'));
+      } else {
+        userProfile();
+      }
 
     useEffect(() => {
-      // console.log(userName);
+      console.log(userName);
       console.log(userPrimaryPaymail);
-      //console.log(userEmail);
+      console.log(userEmail);
       console.log(userAvatarUrl);
       console.log(userStatus);
       console.log(userAmount);
