@@ -48,10 +48,13 @@ export default function Header(props) {
           setMoneyButtonData(profile, balance, userStatus);
         } 
       }
-      userProfile();
+     userProfile();
+     
+      
       
 
     useEffect(() => {
+      
       // console.log(userName);
       console.log(userPrimaryPaymail);
       //console.log(userEmail);
@@ -62,7 +65,7 @@ export default function Header(props) {
       console.log(userId);
       
       
-    },[userId]);
+    },[]);
 
     useEffect(() => {
       (function(w,d,v3){
@@ -81,6 +84,13 @@ export default function Header(props) {
           })
         })
     },[userId]);
+
+    useEffect(() => {
+      if (query.code && !userId ) {
+        router.push('/home', null, { shallow: true })
+        console.log('wersja z useEffect')
+      }
+    }, [query]);
 
   return (
     <div className="main">
