@@ -80,6 +80,12 @@ export default function Profile(props) {
     storage.removeItem('mb_js_client:oauth_redirect_uri');
     storage.removeItem('mb_js_client:oauth_refresh_token');
     storage.removeItem('mb_js_client:oauth_state');
+    router.reload();  
+  }
+
+  const handleHistory = (e) => {
+    e.preventDefault()
+      window.open('https://www.moneybutton.com/history', '_blank')
   }
 
   return (
@@ -101,7 +107,9 @@ export default function Profile(props) {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    <History />
+                    <Button variant="contained" onClick={handleHistory} color="primary" style={{width: '99%', backgroundColor: '#000000'}}>
+                    HISTORIA
+                    </Button>
                     <MenuItem style={{borderBottom: 'solid'}}>Status: {!status ? <Button onClick={handleClick} color="primary" variant="contained" style={{ backgroundColor: '#000000', fontSize: '14px', marginLeft:'10px', height:'35px',}}>ZWERYFIKUJ SIĘ Z BLOCKPASS</Button> : status}</MenuItem>
                     <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>UserId: {userId}</MenuItem>
                     <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Balans konta: {amount} {currency} </MenuItem>
