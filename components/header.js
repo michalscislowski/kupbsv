@@ -35,17 +35,23 @@ export default function Header(props) {
   }
 
 
-  useEffect(() => {
-    const userProfile = async() => { 
-      if (!storage.getItem('mb_js_client:oauth_access_token')) return;
-      if (storage.getItem('mb_js_client:oauth_access_token') && !userId ) { 
+      const userProfile = async() => { 
+        if (query.code && !userId) { 
+          await handleAuthuser();
           const { profile, balance, userStatus } = await getUserData();
           setMoneyButtonData(profile, balance, userStatus);
-          router.push('/')
-      } 
-    }
-    userProfile();
-  }, [storage.getItem('mb_js_client:oauth_access_token')])
+        }
+
+        if (storage.getItem('mb_js_client:oauth_access_token') && !userId) {
+          const { profile, balance, userStatus } = await getUserData();
+          setMoneyButtonData(profile, balance, userStatus);
+        } 
+      }
+      if (query.code) {
+      userProfile().then(router.push('/home'));
+      } else {
+        userProfile();
+      }
 
     useEffect(() => {
       console.log(userName);
