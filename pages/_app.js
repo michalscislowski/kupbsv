@@ -11,6 +11,8 @@ import useTheme from '../components/useTheme'
 import CssBaseline from "@material-ui/core/CssBaseline"
 import storage from 'local-storage-fallback'
 import {RecoilRoot} from 'recoil'
+import {useRouter} from "next/router";
+import handleAuthuser from '../components/userAuth/handleauth'
 
 
 const useStyles = makeStyles({
@@ -65,10 +67,25 @@ export default function MyApp(props) {
   const theme = useTheme();
   const classes = useStyles();
   const [darkMode, SetDarkMode] = useState()
+  const router = useRouter();
+  const { query } = useRouter();
 
   useEffect(() => {
     SetDarkMode(getInitialState);
   }, [])
+
+  useEffect(() => {
+    const userProfile = async() => { 
+        if (!router.isReady) return;
+        if (query.code) { 
+          await handleAuthuser().then(router.push('/home'));
+          
+          //router.push('/home');
+        }
+    }
+    userProfile();
+  }, [router.isReady])
+
 
   function getInitialState() {
   const savedTheme = storage.getItem('theme');
