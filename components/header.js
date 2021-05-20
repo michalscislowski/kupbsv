@@ -35,24 +35,36 @@ export default function Header(props) {
   }
 
 
-      const userProfile = async() => { 
-        if (query.code && !userId) { 
-          await handleAuthuser();
-          const { profile, balance, userStatus } = await getUserData();
-          setMoneyButtonData(profile, balance, userStatus);
+      // const userProfile = async() => { 
+      //   if (query.code && !userId) { 
+      //     await handleAuthuser();
+      //     const { profile, balance, userStatus } = await getUserData();
+      //     setMoneyButtonData(profile, balance, userStatus);
+      //   }
+
+      //   if (storage.getItem('mb_js_client:oauth_access_token') && !userId) {
+      //     const { profile, balance, userStatus } = await getUserData();
+      //     setMoneyButtonData(profile, balance, userStatus);
+      //   } 
+      // }
+      // userProfile();
+
+      useEffect(() => {
+        const userProfile = async() => { 
+          if (query.code && !userId) { 
+            await handleAuthuser();
+            const { profile, balance, userStatus } = await getUserData();
+            setMoneyButtonData(profile, balance, userStatus);
+          }
+  
+          if (storage.getItem('mb_js_client:oauth_access_token') && !userId) {
+            const { profile, balance, userStatus } = await getUserData();
+            setMoneyButtonData(profile, balance, userStatus);
+          } 
         }
-
-        if (storage.getItem('mb_js_client:oauth_access_token') && !userId) {
-          const { profile, balance, userStatus } = await getUserData();
-          setMoneyButtonData(profile, balance, userStatus);
-        } 
-      }
-      if (query.code) {
-      userProfile().then(router.push('/home'));
-      } else {
-        userProfile();
-      }
-
+        userProfile().then(router.push('/home'));
+      }, [router.isReady]);
+    
     useEffect(() => {
       console.log(userName);
       console.log(userPrimaryPaymail);
