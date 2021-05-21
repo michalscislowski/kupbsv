@@ -3,11 +3,15 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Main from '../components/main'
 import { useRouter} from 'next/router'
+import { useEffect } from 'react'
 
 
 
 export default function Home() {
   const router = useRouter();
+  // useEffect(() => {
+  //   window.location.assign('/');
+  // })
   return (
     <div className="container">
       <Head>

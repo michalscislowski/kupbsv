@@ -47,11 +47,21 @@ export default function Header(props) {
           setMoneyButtonData(profile, balance, userStatus);
         } 
       }
-      if (query.code) {
-      userProfile().then(router.push('/home'));
-      } else {
-        userProfile();
-      }
+
+      userProfile();
+
+
+      useEffect(() => {
+
+        if (query.code) {
+        router.push('/home')
+        }
+      }, [userProfile])
+      // if (query.code) {
+      // userProfile().then(router.push('/home'));
+      // } else {
+      //   userProfile();
+      // }
 
     useEffect(() => {
       console.log(userName);
