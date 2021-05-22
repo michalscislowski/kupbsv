@@ -55,7 +55,7 @@ export default function Header(props) {
   //   userProfile();
   // }
 
-  useEffect( async()=> {
+  useEffect(() => { (async() => {
 
     if (query.code && !userId) { 
        await handleAuthuser().then(router.push('/home'));
@@ -70,6 +70,8 @@ export default function Header(props) {
       setMoneyButtonData(profile, balance, userStatus);
       console.log(storage.getItem('mb_js_client:oauth_access_token'));
    }
+  
+  })()
 
     // if (storage.getItem('mb_js_client:oauth_access_token') && query.code) {
 
