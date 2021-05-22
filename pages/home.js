@@ -12,7 +12,7 @@ export default function Home() {
   if (router.isReady) {
     setTimeout(() => {
       router.push('/')
-    }, 100);
+    }, 2000);
   }
   return (
     <div className="container">
