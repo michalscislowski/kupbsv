@@ -65,11 +65,11 @@ export default function Header(props) {
       //  console.log(storage.getItem('mb_js_client:oauth_access_token'));
     }
 
-    if (!userId) { 
+    // if (!userId) { 
       const { profile, balance, userStatus } = await getUserData();
       setMoneyButtonData(profile, balance, userStatus);
       console.log(storage.getItem('mb_js_client:oauth_access_token'));
-   }
+  //  }
 
     // if (storage.getItem('mb_js_client:oauth_access_token') && query.code) {
 
