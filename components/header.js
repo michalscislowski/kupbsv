@@ -11,8 +11,8 @@ import {useRecoilState} from 'recoil'
 import {recoilUserId, recoilUserName, recoilUserStatus, recoilUserPrimaryPaymail, recoilUserAmount, recoilUserCurrency, recoilUserAvatarUrl, recoilUserEmail} from './states'
 
 export default function Header(props) {
-  const { query } = useRouter();
   const router = useRouter();
+  const { query } = router;
   const [userName, setUserName] = useRecoilState(recoilUserName)
   const [userPrimaryPaymail, setUserPrimaryPaymail] = useRecoilState(recoilUserPrimaryPaymail)
   const [userEmail, setUserEmail] = useRecoilState(recoilUserEmail)
@@ -21,6 +21,7 @@ export default function Header(props) {
   const [userAmount, setUserAmount] = useRecoilState(recoilUserAmount)
   const [userCurrency, setUserCurrency] = useRecoilState(recoilUserCurrency)
   const [userId, setUserId] = useRecoilState(recoilUserId)
+  const [reload, setReload] = useState(false);
 
 
   function setMoneyButtonData(_profile, _balance, _userStatus) {
@@ -35,53 +36,82 @@ export default function Header(props) {
   }
 
 
-      const userProfile = async() => { 
-        if (query.code && !userId) { 
-          await handleAuthuser();
-          const { profile, balance, userStatus } = await getUserData();
-          setMoneyButtonData(profile, balance, userStatus);
-        }
+  // const userProfile = async() => { 
+  //   if (query.code && !userId) { 
+  //     await handleAuthuser();
+  //     const { profile, balance, userStatus } = await getUserData();
+  //     setMoneyButtonData(profile, balance, userStatus);
+  //   }
 
-        if (storage.getItem('mb_js_client:oauth_access_token') && !userId) {
-          const { profile, balance, userStatus } = await getUserData();
-          setMoneyButtonData(profile, balance, userStatus);
-        } 
-      }
-      if (query.code) {
-      userProfile().then(router.push('/home'));
-      } else {
-        userProfile();
-      }
+  //   if (storage.getItem('mb_js_client:oauth_access_token') && !userId) {
+  //     const { profile, balance, userStatus } = await getUserData();
+  //     setMoneyButtonData(profile, balance, userStatus);
+  //   } 
+  // }
+  // userProfile();
+  // if (query.code) {
+  // userProfile().then(router.push('/home'));
+  // } else {
+  //   userProfile();
+  // }
 
-    useEffect(() => {
-      console.log(userName);
-      console.log(userPrimaryPaymail);
-      console.log(userEmail);
-      console.log(userAvatarUrl);
-      console.log(userStatus);
-      console.log(userAmount);
-      console.log(userCurrency);
-      console.log(userId);
+  useEffect(() => { (async() => {
+
+    if (query.code && !userId) { 
+       await handleAuthuser().then(router.push('/home'));
+      //  const { profile, balance, userStatus } = await getUserData();
+      //  setMoneyButtonData(profile, balance, userStatus);
+      //  setReload(true);
+      //  console.log(storage.getItem('mb_js_client:oauth_access_token'));
+    }
+
+    if (!userId) { 
+      const { profile, balance, userStatus } = await getUserData();
+      setMoneyButtonData(profile, balance, userStatus);
+      console.log(storage.getItem('mb_js_client:oauth_access_token'));
+   }
+  
+  })()
+
+    // if (storage.getItem('mb_js_client:oauth_access_token') && query.code) {
+
+    //   router.push('/home');
+    // //     const { profile, balance, userStatus } = await getUserData();
+    // //     setMoneyButtonData(profile, balance, userStatus);
+    // } 
+  },[router.isReady]);
+
+  
+
+  useEffect(() => {
+    console.log(userName);
+    console.log(userPrimaryPaymail);
+    console.log(userEmail);
+    console.log(userAvatarUrl);
+    console.log(userStatus);
+    console.log(userAmount);
+    console.log(userCurrency);
+    console.log(userId);
       
       
-    },[userId]);
+  },[userId]);
 
-    useEffect(() => {
-      (function(w,d,v3){
-        console.log(userName)
-        console.log(userEmail)
-        w.chaportConfig = {
-        appId : '609ef156cffe24321140dea7',
-        };
+  useEffect(() => {
+    (function(w,d,v3){
+      console.log(userName)
+      console.log(userEmail)
+      w.chaportConfig = {
+      appId : '609ef156cffe24321140dea7',
+      };
         
-        if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
+      if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
         
-        window.chaport.on('ready', function () {
-          window.chaport.setVisitorData({
-            name: (userName),
-            email: (userEmail), 
-          })
+      window.chaport.on('ready', function () {
+        window.chaport.setVisitorData({
+        name: (userName),
+        email: (userEmail), 
         })
+      })
     },[userId]);
 
   return (
