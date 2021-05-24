@@ -20,7 +20,6 @@ export default function Home() {
         <link rel="icon" href="/bsvlogo.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </Head>
-      <div className="theme-changer-hider"></div>
       <div className="wrapper">
         <div><Header opacityVal={0}/></div>
 
@@ -37,16 +36,6 @@ export default function Home() {
           100% {
             transform: scale(1);
           }
-        }
-        .theme-changer-hider {
-          display: block;
-          height: 50px;
-          width: 100px;
-          position: absolute;
-          top: 100px;
-          right: 20px;
-          background: #0a0e12;
-          z-index: 10;
         }
         .container {
           height: 100vh;
