@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import Authuser from '../userAuth/auth';
+import { makeStyles } from '@material-ui/core';
 
 
 
@@ -23,7 +24,16 @@ const styles = (theme) => ({
     top: theme.spacing(1),
     color: theme.palette.grey[500],
   },
+});
 
+const useStyles = makeStyles({
+  zalogujSie: {
+    color: '#ffffff', 
+    fontSize: '16px', 
+    ['@media (max-width:350px)']: {
+      fontSize: '14px',
+    }
+  }
 });
 
 const DialogTitle = withStyles(styles)((props) => {
@@ -55,6 +65,7 @@ const DialogActions = withStyles((theme) => ({
 
 export default function LoginDialog() {
   const [open, setOpen] = React.useState(false);
+  const klasy = useStyles();
 
 
   const handleClickOpen = () => {
@@ -66,8 +77,8 @@ export default function LoginDialog() {
 
   return (
     <div>
-      <Button color="secondary" onClick={handleClickOpen} style={{ color: '#ffffff', fontSize: '16px', }}>
-        <a>Zaloguj Się</a>
+      <Button color="secondary" onClick={handleClickOpen} className={klasy.zalogujSie}>
+        Zaloguj Się
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
@@ -84,13 +95,6 @@ export default function LoginDialog() {
           </Button>
         </DialogActions>
       </Dialog>
-      <style jsx>{`
-        @media only screen and (max-width: 350px) {
-          a {
-            font-size: 12px;
-          }
-        }
-      `}</style>
     </div>
   );
 }

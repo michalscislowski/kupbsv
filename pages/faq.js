@@ -3,6 +3,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import FaqText from '../components/textmain/faqtext'
 import { useRouter} from 'next/router'
+import Socials from '../components/socials'
 
 export default function Regulamin() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function Regulamin() {
 
         <Header />
         <FaqText />
+        <Socials />
         <Footer />
         <style jsx> {`
 

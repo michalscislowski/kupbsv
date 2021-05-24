@@ -5,7 +5,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
 
-export default function Footer() {
+export default function Footer(props) {
   return (
 
     <div className="main">
@@ -33,6 +33,7 @@ export default function Footer() {
     width: 100%;
     min-width: 300px;
     border-top: 1px solid gray;
+    opacity: ${props.opacityVal};
   }
   footer {
     display: flex;
@@ -50,11 +51,11 @@ export default function Footer() {
   }
   .socials a {
     margin-left: 15px;
-    transition: 0.4s;
+    transition: 0.3s;
   }
   a:hover {
     cursor: pointer;
-    transform: scale(1.25);
+    transform: scale(1.15);
   }
   .facebook:hover {
     color: #3b5998;

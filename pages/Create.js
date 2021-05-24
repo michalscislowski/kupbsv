@@ -5,11 +5,6 @@ import Container from '@material-ui/core/Container'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import { makeStyles } from '@material-ui/core'
 import TextField from '@material-ui/core/TextField'
-import DateFnsUtils from '@date-io/date-fns';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardDatePicker,
-} from '@material-ui/pickers';
 import Head from 'next/head'
 import Header from '../components/header'
 import Footer from '../components/footer'
@@ -41,23 +36,26 @@ export default function Create() {
     const [description, setDescription] = useState('')
     const [titleError, setTitleError] = useState(false)
     const [detailsError, setDetailsError] = useState(false)
-    const [selectedDate, setSelectedDate] = useState(new Date('2021-05-02'));
 	  const router = useRouter()
 	
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-    };
+    function getTime() {
 
-    const getDateFromForm = () => {
-      let days = selectedDate.getDate();
-      let months = selectedDate.getMonth() + 1;
-      let years = selectedDate.getFullYear();
+      let today = new Date();
+      let year = today.getFullYear();
+      let month = today.getMonth() + 1;
+      let day = today.getDay();
+      let hours = today.getHours();
+      let minutes = today.getMinutes();
+      let seconds = today.getSeconds();
 
-      if (months < 10) {months = "0" + months;}
-      let _date = days + "." + months+ "." + years;
+      if (hours < 10) {hours = "0" + hours}
+      if (minutes < 10) {minutes = "0" + minutes}
+      if (seconds < 10) {seconds = "0" + seconds}
+      if (month < 10) {month = "0" + month}
 
-      return _date
-    }
+      let time = hours + ":" + minutes + ":" + seconds + ", " + day + "." + month + "." + year;
+      return time;
+  }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -71,7 +69,7 @@ export default function Create() {
             setDetailsError(true)
         }
         if (title && description) {
-          let date = getDateFromForm();
+          let date = getTime();
             fetch('http://localhost:8000/notes', {
                 method: 'POST',
                 headers: { "Content-type": "application/json" },
@@ -102,21 +100,6 @@ export default function Create() {
                 </Typography>
                 
                 <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                  <KeyboardDatePicker
-                      disableToolbar
-                      variant="inline"
-                      format="MM/dd/yyyy"
-                      margin="normal"
-                      id="date-picker-inline"
-                      label="Data publikacji"
-                      value={selectedDate}
-                      onChange={handleDateChange}
-                      KeyboardButtonProps={{
-                          'aria-label': 'change date',
-                      }}
-                  />
-                  </MuiPickersUtilsProvider>
                   <TextField className={classes.field}
                     onChange={(e) => setTitle(e.target.value)}
                     label="Tytuł" 

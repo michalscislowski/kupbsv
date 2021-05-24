@@ -3,6 +3,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import ONasText from '../components/textmain/onastext'
 import { useRouter} from 'next/router'
+import Socials from '../components/socials'
 
 export default function Onas() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function Onas() {
 
         <Header />
         <ONasText />
+        <Socials />
         <Footer />
         <style jsx> {`
 
