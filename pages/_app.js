@@ -11,7 +11,7 @@ import useTheme from '../components/useTheme'
 import CssBaseline from "@material-ui/core/CssBaseline"
 import storage from 'local-storage-fallback'
 import {RecoilRoot} from 'recoil'
-
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles({
   changeTheme: {
@@ -64,7 +64,8 @@ export default function MyApp(props) {
   const { Component, pageProps } = props;
   const theme = useTheme();
   const classes = useStyles();
-  const [darkMode, SetDarkMode] = useState()
+  const [darkMode, SetDarkMode] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     SetDarkMode(getInitialState);
@@ -95,7 +96,7 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme.mode === 'dark' ? darkTheme : lightTheme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Button className={classes.changeTheme}
+        {router.pathname == '/home' ? null : <Button className={classes.changeTheme}
           variant= {darkMode ? "outlined" : "contained"}
           onClick={() => {
             SetDarkMode(!darkMode); 
@@ -105,7 +106,7 @@ export default function MyApp(props) {
                   : { ...theme, mode: 'dark' }
               )}}>
             {!darkMode ? <Brightness2Icon className={classes.moon}/> : <WbSunnyIcon />}
-        </Button>
+        </Button>}
         <RecoilRoot>
           <Component {...pageProps} />
         </RecoilRoot>
