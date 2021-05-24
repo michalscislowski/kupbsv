@@ -97,6 +97,7 @@ export default function Header(props) {
   },[userId]);
 
   useEffect(() => {
+    if (router.pathname != '/home') {
     (function(w,d,v3){
       console.log(userName)
       console.log(userEmail)
@@ -111,7 +112,7 @@ export default function Header(props) {
         name: (userName),
         email: (userEmail), 
         })
-      })
+      })}
     },[userId]);
 
   return (
