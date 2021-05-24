@@ -136,6 +136,7 @@ export default function Header(props) {
     font-weight: 300;	
     z-index: 2;
     border-bottom: 1px solid gray;
+    opacity: ${props.opacityVal};
   }
   a {
     color: white;

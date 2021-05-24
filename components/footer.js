@@ -5,7 +5,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
 
-export default function Footer() {
+export default function Footer(props) {
   return (
 
     <div className="main">
@@ -33,6 +33,7 @@ export default function Footer() {
     width: 100%;
     min-width: 300px;
     border-top: 1px solid gray;
+    opacity: ${props.opacityVal};
   }
   footer {
     display: flex;
