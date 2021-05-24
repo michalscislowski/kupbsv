@@ -47,6 +47,7 @@ export default function Home() {
           flex-direction: column;
           justify-content: space-between;
           align-items: stretch;
+          background: black;
         }
         .loading-page {
           margin-top: 80px;
@@ -55,8 +56,14 @@ export default function Home() {
         }
         img{
           animation: 2s ease-out 0s 1 zoomInLogo;
-          width: 400px;
-          height: 400px;
+          width: 500px;
+          height: 500px;
+        }
+        @media only screen and (max-width: 499px) {
+          img{
+            width: 90vw;
+            height: 90vw;
+          }
         }
       `} </style>
     </div>
