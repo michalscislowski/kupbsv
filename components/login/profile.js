@@ -8,7 +8,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import History from './history';
 import storage from 'local-storage-fallback';
 import {useRouter} from "next/router";
 
@@ -19,6 +18,18 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     marginRight: theme.spacing(2),
   },
+  menuItem: {
+    borderBottom: '1px solid #606060',
+    fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji',
+    fontWeight: 500,
+  },
+  blockpass: {
+    fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji',
+    fontWeight: 500,
+    borderBottom: '1px solid #606060', 
+    borderTop: '1px solid #606060',
+    color: '#eab404',
+  }
 }));
 
 export default function Profile(props) {
@@ -56,15 +67,15 @@ export default function Profile(props) {
   }, [open]);
 
   
-
+  // console.log(JSON.stringify(props) + "z profile");
   
-    const name = props.name;
+    const name = props.userProfile.name;
     const userId = props.userId;
-    const avatar = props.userAvatar;
-    const email = props.userEmail;
-    const paymail = props.primaryPaymail;
-    const amount = props.userAmount;
-    const currency = props.userCurrency;
+    const avatar = props.userProfile.avatarUrl;
+    const paymail = props.userProfile.primaryPaymail;
+    const satoshis = parseFloat(props.userAmount.satoshis)/100000000;
+    const balanceInUSD = parseFloat(props.userAmount.amount);
+    const currency = props.userAmount.currency;
     const status = props.userStatus;
     const verificationUrl = ('https://verify-with.blockpass.org/?clientId=banach_group&serviceName=Banach+Group&env=prod&refId='+userId)
     const router = useRouter();
@@ -80,7 +91,7 @@ export default function Profile(props) {
     storage.removeItem('mb_js_client:oauth_redirect_uri');
     storage.removeItem('mb_js_client:oauth_refresh_token');
     storage.removeItem('mb_js_client:oauth_state');
-    router.reload();  
+    router.reload();
   }
 
   const handleHistory = (e) => {
@@ -106,16 +117,12 @@ export default function Profile(props) {
             >
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    <Button variant="contained" onClick={handleHistory} color="primary" style={{width: '99%', backgroundColor: '#000000'}}>
-                    HISTORIA
-                    </Button>
-                    <MenuItem style={{borderBottom: 'solid'}}>Status: {!status ? <Button onClick={handleClick} color="primary" variant="contained" style={{ backgroundColor: '#000000', fontSize: '14px', marginLeft:'10px', height:'35px',}}>ZWERYFIKUJ SIĘ Z BLOCKPASS</Button> : status}</MenuItem>
-                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>UserId: {userId}</MenuItem>
-                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Balans konta: {amount} {currency} </MenuItem>
-                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Email: {email}</MenuItem>
-                    <MenuItem style={{pointerEvents: 'none', borderBottom: 'solid'}}>Paymail: {paymail} </MenuItem>                    
-                    <MenuItem href="/" component="a" onClick={handleClose, signOut}>Wyloguj</MenuItem>
+                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown} style={{ borderRadius: '10px'}}>
+                    <MenuItem className={classes.blockpass} ><span>Status: </span> ZWERYFIKUJ SIĘ Z BLOCKPASS{/* {!status ? <Button onClick={handleClick} color="primary" variant="contained" style={{ backgroundColor: '#000000', fontSize: '14px', marginLeft:'10px', height:'30px',}}>ZWERYFIKUJ SIĘ Z BLOCKPASS</Button> : status} */}</MenuItem>
+                    <MenuItem className={classes.menuItem} ><span>Balans konta: </span> {satoshis.toFixed(6)} BSV / {balanceInUSD.toFixed(2)} {currency} </MenuItem>
+                    <MenuItem className={classes.menuItem} ><span>Paymail: </span> {paymail} </MenuItem>   
+                    <MenuItem className={classes.menuItem} onClick={handleHistory}>Historia transakcji</MenuItem>                 
+                    <MenuItem className={classes.menuItem} onClick={handleClose, signOut}>Wyloguj</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
@@ -123,6 +130,12 @@ export default function Profile(props) {
           )}
         </Popper>
       </div>
+      <style jsx>{`
+      span {
+        color: #909090;
+        padding-right: 5px;
+      }
+      `}</style>
     </div>
   );
 }
