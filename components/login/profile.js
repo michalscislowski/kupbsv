@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import storage from 'local-storage-fallback';
 import {useRouter} from "next/router";
+import CheckIcon from '@material-ui/icons/Check';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,16 +20,36 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   menuItem: {
-    borderBottom: '1px solid #606060',
+    borderTop: '1px solid #606060',
     fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji',
     fontWeight: 500,
+  },
+  menuItemNotClickable: {
+    borderTop: '1px solid #606060',
+    fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji',
+    fontWeight: 500,
+    pointerEvents: 'none',
+    height: 37,
   },
   blockpass: {
     fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji',
     fontWeight: 500,
-    borderBottom: '1px solid #606060', 
-    borderTop: '1px solid #606060',
     color: '#eab404',
+    '&:hover': {
+      color: "#ebc505",
+   }
+  },
+  userMenu: {
+    borderRadius: '15px', 
+    padding: 0,
+    '&:hover': {
+      cursor: "default"
+    }
+  },
+  blockpass_button: {
+    backgroundColor: '#000000', 
+    fontSize: '14px', 
+    marginLeft:'10px', 
   }
 }));
 
@@ -80,7 +101,7 @@ export default function Profile(props) {
     const verificationUrl = ('https://verify-with.blockpass.org/?clientId=banach_group&serviceName=Banach+Group&env=prod&refId='+userId)
     const router = useRouter();
 
-    const handleClick = (e) => {
+    const handleBlockpass = (e) => {
       e.preventDefault()
       window.open(verificationUrl, '_blank')
     }
@@ -117,10 +138,11 @@ export default function Profile(props) {
             >
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown} style={{ borderRadius: '10px'}}>
-                    <MenuItem className={classes.blockpass} ><span>Status: </span> ZWERYFIKUJ SIĘ Z BLOCKPASS{/* {!status ? <Button onClick={handleClick} color="primary" variant="contained" style={{ backgroundColor: '#000000', fontSize: '14px', marginLeft:'10px', height:'30px',}}>ZWERYFIKUJ SIĘ Z BLOCKPASS</Button> : status} */}</MenuItem>
-                    <MenuItem className={classes.menuItem} ><span>Balans konta: </span> {satoshis.toFixed(6)} BSV / {balanceInUSD.toFixed(2)} {currency} </MenuItem>
-                    <MenuItem className={classes.menuItem} ><span>Paymail: </span> {paymail} </MenuItem>   
+                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown} className={classes.userMenu}>
+                    <MenuItem className={classes.blockpass} onClick={handleBlockpass}><span>Status: </span> ZWERYFIKUJ SIĘ Z BLOCKPASS</MenuItem>
+                    <MenuItem className={classes.menuItemNotClickable} ><span>Status: </span> <div style={{color: 'green', position: 'relative', top: -2.5}}>ZWERYFIKOWANY<CheckIcon style={{position: 'relative', top: 5, left: 5}}/></div></MenuItem>
+                    <MenuItem className={classes.menuItemNotClickable} ><span>Balans konta: </span> {satoshis.toFixed(6)} BSV / {balanceInUSD.toFixed(2)} {currency} </MenuItem>
+                    <MenuItem className={classes.menuItemNotClickable} ><span>Paymail: </span> {paymail} </MenuItem>   
                     <MenuItem className={classes.menuItem} onClick={handleHistory}>Historia transakcji</MenuItem>                 
                     <MenuItem className={classes.menuItem} onClick={handleClose, signOut}>Wyloguj</MenuItem>
                   </MenuList>
