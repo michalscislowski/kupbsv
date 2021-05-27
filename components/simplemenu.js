@@ -47,7 +47,6 @@ export default function SimpleMenu(props) {
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
-    setChecked((prev) => !prev);
   };
 
   const handleClose = (event) => {
