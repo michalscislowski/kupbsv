@@ -123,7 +123,7 @@ export default function Profile(props) {
   return (
     <div className={classes.root}>
       <div>
-        <Button ref={anchorRef}
+        <Button variant="primary" ref={anchorRef}
           aria-controls={open ? 'menu-list-grow' : undefined}
           aria-haspopup="true"
           onClick={handleToggle} style={{ color: '#ffffff', fontSize: '16px', }}>

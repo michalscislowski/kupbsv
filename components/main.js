@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     box: {
         margin: 'auto',
         width: '460px',
-        height: '500px',
+        height: 'auto',
         padding: '30px',
         color: 'white',
         borderRadius: '30px',
@@ -21,7 +21,8 @@ const useStyles = makeStyles({
             width: 'calc(100% - 20px)',
             height: 'auto',
             padding: '15px 10px 20px 10px'
-        }
+        },
+        overflow: 'visible',
     },
     buttonBuy: {
         width: '50%', 
@@ -88,7 +89,7 @@ export default function Main() {
                     margin-top: 80px;
                 }
                 .buttons {
-                    margin: 5px auto 7px auto;
+                    margin: 5px auto 0 auto;
                     display: flex;
                     justify-content: center;
                 }
