@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card'
 import Grow from '@material-ui/core/Grow'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import BarChartIcon from '@material-ui/icons/BarChart'
+import CloseIcon from '@material-ui/icons/Close'
 
 const data = [
     {
@@ -129,7 +130,7 @@ const data = [
     }
 ]
 
-let useClickOutside = (handler) => {
+/* let useClickOutside = (handler) => {
     let domNode = useRef();
     useEffect(() => {
         let maybeHandler = (event) => {
@@ -146,7 +147,7 @@ let useClickOutside = (handler) => {
     });
 
     return domNode;
-};
+}; */
 
 const useStyles = makeStyles({
     chart: {
@@ -154,15 +155,15 @@ const useStyles = makeStyles({
         width: 'calc(100% - 20px)',
         height: '150px',
         borderRadius: '5px',
-        marginTop: 10,
         marginBottom: 15,
         marginLeft: 10,
-        ['@media (min-width:930px)']: {
+        ['@media (min-width:999px)']: {
             position: 'absolute',
             top: 25,
             left: 380,
             width: 300,
             height: 150,
+            marginTop: 10,
         },
     },
     chartButton: {
@@ -175,7 +176,6 @@ const useStyles = makeStyles({
         transition: '0.3s',
         color: '#eee',
         '&:hover': {
-            fontSize: '25px',
             color: '#707070'
         }
     }
@@ -185,9 +185,9 @@ export default function Livebsv(props) {
     const classes = useStyles();
     const [hover, setHover] = useState(false);
 
-    let domNode = useClickOutside(() => {
+    /* let domNode = useClickOutside(() => {
         setHover(false);
-    });
+    }); */
     return (
         <div className="widget-container">
             <div className="customWidget">
@@ -196,8 +196,9 @@ export default function Livebsv(props) {
                     <a>Bitcoin SV</a>
                     <a>BSV/PLN</a>
                 </div>
-                <div className="changingData" ref={domNode} >
-                    <BarChartIcon onClick={e => {setHover(!hover)}} className={classes.chartButton}/>
+                <div className="changingData" /* ref={domNode} */ >
+                    {!hover ? <BarChartIcon onClick={e => {setHover(!hover)}} className={classes.chartButton}/>
+                    : <CloseIcon onClick={e => {setHover(!hover)}} className={classes.chartButton}/>}
                     <a>1 BSV ~ <strong>{props.price} PLN</strong></a>
                     <a>Zmiana 24h: <strong className={props.percent24 > 0 ? "green" : "red" }>{props.percent24}% </strong></a>
                     <a>Market Cap Rank: <strong>#{props.rank} </strong></a>
@@ -209,11 +210,11 @@ export default function Livebsv(props) {
                 <Grow in={hover}>
                     <Card elevation={4}>
                         <ResponsiveContainer width="100%" height={150}>
-                            <LineChart label="cena" data={data} margin={{ top: 10, right: 15, bottom: 0, left: -10 }}>
+                            <LineChart label="cena" data={data} margin={{ top: 10, right: 15, bottom: -5, left: -20 }}>
                                 <Line type="monotone" dataKey="price" stroke="#8884d8" />
-                                <CartesianGrid stroke="#ccc" strokeDasharray="4 4" />
-                                <XAxis dataKey={"hour"}/>
-                                <YAxis padding={{ left: 40 }} type="number" domain={['auto', 'auto']}/>
+                                <CartesianGrid stroke="#ccc" strokeDasharray="3 3"/>
+                                <XAxis dataKey={"hour"} interval={3} dx={10}/>
+                                <YAxis type="number" domain={['auto', 'auto']}/>
                                 <Tooltip />
                             </LineChart>
                         </ResponsiveContainer>
