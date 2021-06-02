@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     box: {
         margin: 'auto',
         width: '460px',
+        minHeight: '506px',
         height: 'auto',
         padding: '30px',
         color: 'white',
@@ -53,7 +54,6 @@ export default function Main() {
 
     function setBuy (){
         setShowMe(true);
-        console.log(theme);
     }
     function setSell (){
         setShowMe(false);
