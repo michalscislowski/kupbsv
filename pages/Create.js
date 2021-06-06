@@ -10,6 +10,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Card from '@material-ui/core/Card'
 import { useRouter} from 'next/router'
+import axios from "axios"
 
 const useStyles = makeStyles({
   field: {
@@ -38,25 +39,6 @@ export default function Create() {
     const [detailsError, setDetailsError] = useState(false)
 	  const router = useRouter()
 	
-    function getTime() {
-
-      let today = new Date();
-      let year = today.getFullYear();
-      let month = today.getMonth() + 1;
-      let day = today.getDay();
-      let hours = today.getHours();
-      let minutes = today.getMinutes();
-      let seconds = today.getSeconds();
-
-      if (hours < 10) {hours = "0" + hours}
-      if (minutes < 10) {minutes = "0" + minutes}
-      if (seconds < 10) {seconds = "0" + seconds}
-      if (month < 10) {month = "0" + month}
-
-      let time = hours + ":" + minutes + ":" + seconds + ", " + day + "." + month + "." + year;
-      return time;
-  }
-
     const handleSubmit = (e) => {
         e.preventDefault()
         setTitleError(false)
@@ -69,12 +51,13 @@ export default function Create() {
             setDetailsError(true)
         }
         if (title && description) {
-          let date = getTime();
-            fetch('http://localhost:8000/notes', {
-                method: 'POST',
-                headers: { "Content-type": "application/json" },
-                body: JSON.stringify({ title, description, date })
-            }).then(() => router.push('/blog')).catch(() => router.push('/blog'))
+        const newPost = {
+          title: title,
+          description: description
+        }
+      
+        axios.post('http://localhost:3000/api/createPost', newPost)
+        router.push('/blog');
         }
     }
 

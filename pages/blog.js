@@ -11,7 +11,19 @@ import { CardHeader } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteOutlined from '@material-ui/icons/DeleteOutlined'
 import Socials from '../components/socials'
+import axios from "axios"
+import { useRouter} from 'next/router'
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const featuredPosts = [
   {
@@ -35,25 +47,60 @@ const featuredPosts = [
 ]
 
 export default function Blog() {
-
   const [notes, setNotes] = useState([]);
+  const [isReloaded, setIsReloaded] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [idToDelete, setIdToDelete] = useState();
+  const router = useRouter();
 
+  const handleDeletePost = () => {
+    console.log("ID TO DELETE: ", idToDelete)
+    setIsReloaded(!isReloaded);
+    const _id = {mid: idToDelete}
+    axios.post('http://localhost:3000/api/deletePost', _id);
+    handleClose();
+    setTimeout(() => {
+      router.reload();
+    }, 20);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
+
+  function getTime(_date) {
+
+    let today = new Date(_date);
+    let year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let day = today.getDate();
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let seconds = today.getSeconds();
+
+    if (hours < 10) {hours = "0" + hours}
+    if (minutes < 10) {minutes = "0" + minutes}
+    if (seconds < 10) {seconds = "0" + seconds}
+    if (month < 10) {month = "0" + month}
+
+    let time = "Godzina " + hours + ":" + minutes + ", dnia " + day + "." + month + "." + year;
+    return time;
+}
 
   useEffect(() => {
-    fetch('http://localhost:8000/notes')
-      .then(res => res.json())
-      .then(data => setNotes(data)).catch( function () {
-        setNotes(featuredPosts);
-      })
-  }, []) 
+    fetch("http://localhost:3000/api/blogposts").then(res => {
+      if(res.ok){
+        return res.json()
+      }
+      console.log("JSON" + res.json());
+    }).then(jsonRes => setNotes(jsonRes))
+      .catch( function () { setNotes(featuredPosts) })
+  }, [isReloaded]) 
 
-  console.log(notes);
   const handleDelete = async (id) => {
-    await fetch('http://localhost:8000/notes/' + id, {
-      method: 'DELETE'
-    })
-    const newNotes = notes.filter(note => note.id != id)
-    setNotes(newNotes)
+    setOpen(true);
+    setIdToDelete(id);
   }
 
   return (
@@ -64,6 +111,31 @@ export default function Blog() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </Head>
       <Header />
+      <div>
+        <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle id="alert-dialog-slide-title">{"Usuwanie posta"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              Czy na pewno chcesz usunąć wybrany post?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} variant="contained" color="secondary">
+              Anuluj
+            </Button>
+            <Button onClick={handleDeletePost} variant="contained" color="primary">
+              Usuń
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
       <Container>
         <main className="main">
           <h1>BLOG</h1>
@@ -73,9 +145,9 @@ export default function Blog() {
                 <Card elevation={1}>
                   <CardHeader 
                     title={post.title}
-                    subheader={post.date}
+                    subheader={getTime(post.date)}
                     action={
-                      <IconButton onClick={() => handleDelete(post.id)}>
+                      <IconButton onClick={() => handleDelete(post._id)}>
                         <DeleteOutlined />
                       </IconButton>
                     }

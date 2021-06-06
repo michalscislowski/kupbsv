@@ -39,7 +39,6 @@ export default function SimpleMenu(props) {
   const userId = props.userId;
   const userIds = [
     "45350", // Cieszyn
-    "45112", // Mati
     "39715", // Arczi
     "44325", // Jeksa
     "38978", // Scisly
@@ -47,7 +46,6 @@ export default function SimpleMenu(props) {
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
-    setChecked((prev) => !prev);
   };
 
   const handleClose = (event) => {
