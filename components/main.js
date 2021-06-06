@@ -117,7 +117,7 @@ export default function Main() {
                 a:hover {
                     color: #a2a2a2;
                 }
-                @media only screen and (max-width: 650px) {
+                @media only screen and (max-width: 674px) {
                     main {
                         margin-top: 125px;
                     }

@@ -3,6 +3,7 @@ import YouTubeIcon from '@material-ui/icons/YouTube'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import InstagramIcon from '@material-ui/icons/Instagram'
 import TwitterIcon from '@material-ui/icons/Twitter'
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
 
 export default function Socials() {
 
@@ -10,6 +11,7 @@ export default function Socials() {
         <div className="socials">
             <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/8anach')} /></a>
             <a className="instagram"><InstagramIcon aria-label="Instagram.com" onClick={() => window.open('https://www.instagram.com/8anach')}/></a>
+            <a className="linkedin"><LinkedInIcon aria-label="Linkedin.com" onClick={() => window.open('https://www.linkedin.com/company/banach-group')}/></a>
             <a className="twitter"><TwitterIcon aria-label="Twitter.com" onClick={() => window.open('https://twitter.com/8anach')}/></a>
             <a className="twetch" aria-label="Twetch.com" onClick={() => window.open('https://twetch.app/u/40566')}></a>
             <a className="youtube"><YouTubeIcon aria-label="Youtube.com" onClick={() => window.open('https://www.youtube.com/channel/UCegE3WW7U2-Wb__mWK3oKJA')}/></a>
@@ -17,7 +19,7 @@ export default function Socials() {
                 .socials {
                     display: none;
                 }             
-                @media only screen and (max-width: 650px) {
+                @media only screen and (max-width: 674px) {
                     a {
                         transition: 0.3s;
                     }
@@ -64,6 +66,9 @@ export default function Socials() {
                     }
                     .youtube:hover {
                         color: #cd201f;
+                    }
+                    .linkedin:hover {
+                        color: #0072b1;
                     }
                 }
             `}</style>

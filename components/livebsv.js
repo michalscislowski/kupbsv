@@ -193,7 +193,7 @@ export default function Livebsv(props) {
           }
           console.log("JSON" + res.json());
         }).then(jsonRes => setLastDayPrice(jsonRes))
-        .catch( function () { setNotes(data) })
+        .catch( function () { setLastDayPrice(data) })
     }, []);
     
     /* let domNode = useClickOutside(() => {
