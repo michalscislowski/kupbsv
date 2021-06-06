@@ -187,7 +187,7 @@ export default function Livebsv(props) {
     const [lastDayPrice, setLastDayPrice] = useState([]);
 
     useEffect(()=> {
-        fetch("http://localhost:3000/api/priceChart").then(res => {
+        fetch("https://kupbsv.vercel.app/api/priceChart").then(res => {
           if(res.ok){
             return res.json()
           }

@@ -56,7 +56,7 @@ export default function Create() {
           description: description
         }
       
-        axios.post('http://localhost:3000/api/createPost', newPost)
+        axios.post('https://kupbsv.vercel.app/api/createPost', newPost)
         router.push('/blog');
         }
     }

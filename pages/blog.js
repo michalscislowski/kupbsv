@@ -57,7 +57,7 @@ export default function Blog() {
     console.log("ID TO DELETE: ", idToDelete)
     setIsReloaded(!isReloaded);
     const _id = {mid: idToDelete}
-    axios.post('http://localhost:3000/api/deletePost', _id);
+    axios.post('https://kupbsv.vercel.app/api/deletePost', _id);
     handleClose();
     setTimeout(() => {
       router.reload();
@@ -89,7 +89,7 @@ export default function Blog() {
 }
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/blogposts").then(res => {
+    fetch("https://kupbsv.vercel.app/api/blogposts").then(res => {
       if(res.ok){
         return res.json()
       }
