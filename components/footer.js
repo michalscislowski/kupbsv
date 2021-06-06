@@ -70,7 +70,7 @@ export default function Footer(props) {
     margin-top: 2px;
     width: 20px;
     height: 20px;
-    background: url('/twetchlogo.png');
+    background: url('/twetchlogo.png'), url('/twetchlogoblue.png');
     background-size: 20px 20px;
   }
   .twetch:hover {
