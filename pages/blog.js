@@ -20,6 +20,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import {recoilUserId} from '../components/states'
+import {useRecoilState} from 'recoil'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -44,15 +46,24 @@ const featuredPosts = [
     description:
       'This is a wider card with supporting text below as a natural lead-in to additional content.'
   }
-]
+];
+
+const userIds = [
+  "45350", // Cieszyn
+  "39715", // Arczi
+  "44325", // Jeksa
+  "38978", // Scisly
+];
 
 export default function Blog() {
   const [notes, setNotes] = useState([]);
   const [isReloaded, setIsReloaded] = useState(true);
   const [open, setOpen] = useState(false);
   const [idToDelete, setIdToDelete] = useState();
+  const userId = useRecoilState(recoilUserId)
   const router = useRouter();
 
+  console.log("USERID: ", typeof(userId[0]));
   const handleDeletePost = () => {
     console.log("ID TO DELETE: ", idToDelete)
     setIsReloaded(!isReloaded);
@@ -147,9 +158,11 @@ export default function Blog() {
                     title={post.title}
                     subheader={getTime(post.date)}
                     action={
+                    userIds.includes(userId[0]) ? 
                       <IconButton onClick={() => handleDelete(post._id)}>
                         <DeleteOutlined />
                       </IconButton>
+                    : null
                     }
                   />
                   <CardContent>
