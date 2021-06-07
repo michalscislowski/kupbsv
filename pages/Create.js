@@ -38,6 +38,7 @@ export default function Create() {
     const [titleError, setTitleError] = useState(false)
     const [detailsError, setDetailsError] = useState(false)
 	  const router = useRouter()
+    const url_create = process.env.NEXT_PUBLIC_HOST_URL + "/api/createPost";
 	
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -56,7 +57,7 @@ export default function Create() {
           description: description
         }
       
-        axios.post('https://kupbsv.vercel.app/api/createPost', newPost)
+        axios.post(url_create, newPost)
         router.push('/blog');
         }
     }

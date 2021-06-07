@@ -62,17 +62,18 @@ export default function Blog() {
   const [idToDelete, setIdToDelete] = useState();
   const userId = useRecoilState(recoilUserId)
   const router = useRouter();
+  const url_delete = process.env.NEXT_PUBLIC_HOST_URL + "/api/deletePost";
+  const url_blogposts = process.env.NEXT_PUBLIC_HOST_URL + "/api/blogposts";
 
-  console.log("USERID: ", typeof(userId[0]));
   const handleDeletePost = () => {
     console.log("ID TO DELETE: ", idToDelete)
-    setIsReloaded(!isReloaded);
     const _id = {mid: idToDelete}
-    axios.post('https://kupbsv.vercel.app/api/deletePost', _id);
+    axios.post(url_delete, _id);
+    setIsReloaded(!isReloaded);
     handleClose();
     setTimeout(() => {
       router.reload();
-    }, 20);
+    }, 200);
   };
 
   const handleClose = () => {
@@ -100,7 +101,7 @@ export default function Blog() {
 }
 
   useEffect(() => {
-    fetch("https://kupbsv.vercel.app/api/blogposts").then(res => {
+    fetch(url_blogposts).then(res => {
       if(res.ok){
         return res.json()
       }

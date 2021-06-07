@@ -185,9 +185,10 @@ export default function Livebsv(props) {
     const classes = useStyles();
     const [hover, setHover] = useState(false);
     const [lastDayPrice, setLastDayPrice] = useState([]);
+    const url = process.env.NEXT_PUBLIC_HOST_URL + "/api/priceChart";
 
     useEffect(()=> {
-        fetch("https://kupbsv.vercel.app/api/priceChart").then(res => {
+        fetch(url).then(res => {
           if(res.ok){
             return res.json()
           }
