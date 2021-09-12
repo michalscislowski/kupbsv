@@ -4,7 +4,7 @@ export default async (req, res) => {
   const { db } = await connectToDatabase();
 
   const prices = await db
-    .collection("price_chart")
+    .collection("pricechart")
     .find()
     .toArray();
 
